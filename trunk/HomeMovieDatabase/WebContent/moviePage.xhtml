@@ -1,0 +1,41 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+    <ui:define name="body">
+     <h:panelGrid columns="3">
+    <rich:panel style="border:0px">
+    <h:panelGrid columns="3">
+    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.title}" styleClass="title" />
+    <rich:spacer width="50px"/>
+    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.genere}" />
+    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.year}" />
+    </h:panelGrid>
+    <rich:spacer height="50px"/>
+    <h:graphicImage value="#{MoviePageBean.selectedMovieStateHolder.selected.posterUrl}"/>
+    </rich:panel>
+    
+    <rich:spacer width="50px"/>
+    <rich:panel>
+    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.director}" />
+    <br/> <rich:spacer height="60px"/> <br/>
+    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.actors}" />
+    <br/> <rich:spacer height="60px"/> <br/>
+    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.plot}" />
+    <br/> <rich:spacer height="60px"/> <br/>
+    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.writer}" />
+    <br/> <rich:spacer height="60px"/> <br/>
+    <h:outputText value="Rating: #{MoviePageBean.selectedMovieStateHolder.selected.imdbRating}" />
+    </rich:panel>
+    
+    </h:panelGrid>
+    </ui:define>
+    
+</ui:composition>

@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+.title{
+	font-size: 32px;
+	font-weight:bold;
+	font-style:italic;
+	font-family:arial black, sans-serif;
+	line-height:1;
+	text-align: center;
+	text-shadow: 5px;
+	text-transform:uppercase;
+	color:#000000;
+}

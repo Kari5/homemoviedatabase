@@ -1,0 +1,84 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+    <ui:define name="body">
+	<h:form id="MovieTableForm">
+      <rich:dataTable 	value="#{moviesStateContainer.list}"
+      					var="movie"
+      					id="movieTable"
+      					sortMode="single"
+      					rendered="#{not empty moviesStateContainer.list}"
+      					onRowMouseOver="this.style.backgroundColor='#B1C7B4'"
+      					onRowMouseOut="this.style.backgroundColor='#{a4jSkin.rowBackgroundColor}'">
+      
+      	<rich:column style="width:50px">
+      		<f:facet name="header">
+      			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.no']}" />
+      		</f:facet>
+      			<h:outputText value="#{movie.id}" />
+      		<f:facet name="footer">
+      			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.savenew']}" />
+      		</f:facet>
+      	</rich:column>
+      <rich:column sortBy="#{movie.title}">
+      		<f:facet name="header">
+      			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.title']}" />
+      		</f:facet>
+      			<h:outputText value="#{movie.title}" />
+      		<f:facet name="footer">
+      			<h:inputText value="#{HomePageBean.newMovie.title}" />
+      		</f:facet>
+      	</rich:column>
+      	<rich:column sortBy="#{movie.genere}">
+      		<f:facet name="header">
+      			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.gener']}"/>
+      		</f:facet>
+      			<h:outputText value="#{movie.genere}" />
+      		<f:facet name="footer">
+      			<h:inputText value="#{HomePageBean.newMovie.genere}" />
+      		</f:facet>
+      	</rich:column>
+      	<rich:column sortBy="#{movie.year}">
+      		<f:facet name="header">
+      			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.year']}" />
+      		</f:facet>
+      			<h:outputText value="#{movie.year}" />
+      		<f:facet name="footer">
+      			<h:inputText value="#{HomePageBean.newMovie.year}" />
+      		</f:facet>
+      	</rich:column>
+      	<rich:column>
+      		<f:facet name="header" sortBy="#{movie.imdbRating}">
+      			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.rating']}" />
+      		</f:facet>
+      			<h:outputText value="#{movie.imdbRating}" />
+      		<f:facet name="footer">
+      			<h:selectOneRadio value="#{HomePageBean.newMovie.imdbRating}">
+      			<f:selectItem itemLabel="good" itemValue="5.0"/>
+      			<f:selectItem itemLabel="bad" itemValue="0.0"/>
+      			</h:selectOneRadio>
+      		</f:facet>
+      	</rich:column>
+      	<rich:column>
+      		<f:facet name="header">
+      			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.more']}" />
+      		</f:facet>
+      			<h:commandButton value="#{messages['hu.bme.tesslo.hmdb.more']}" action="#{HomePageBean.changeSelectedMovie(movie)}">
+      			<a4j:support event="onclick" action="MoviePage"/>
+      			</h:commandButton>
+      		<f:facet name="footer">
+      			<a4j:commandButton value="Save" action="#{HomePageBean.saveNewMovie()}" reRender="MovieTableForm"/>
+      		</f:facet>
+      	</rich:column>
+      </rich:dataTable>
+</h:form>
+    </ui:define>
+</ui:composition>
