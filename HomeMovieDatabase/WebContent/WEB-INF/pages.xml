@@ -6,14 +6,38 @@
        no-conversation-view-id="/home.xhtml"
        login-view-id="/login.xhtml">
 
-    <page view-id="*">
+    <page view-id="/home.xhtml">
         <navigation>
-        <begin-conversation join="true"/>
+        <begin-conversation/>
             <rule if-outcome="home">
+            	<end-conversation before-redirect="true"/>
                 <redirect view-id="/home.xhtml"/>
             </rule>
-            <rule if-outcome="MoviePage">
+            <rule if-outcome="moviePage">
                 <redirect view-id="/moviePage.xhtml"/>
+            </rule>
+        </navigation>
+    </page>
+    
+    <page view-id="/moviePage.xhtml">
+        <navigation>
+       <!--  <begin-conversation join="true"/>  -->
+            <rule if-outcome="home">
+                <end-conversation before-redirect="true"/>
+                <redirect view-id="/home.xhtml"/>
+            </rule>
+            <rule if-outcome="movieEditPage">
+                <redirect view-id="/movieEditPage.xhtml"/>
+            </rule>
+        </navigation>
+    </page>
+    
+    <page view-id="/movieEditPage.xhtml">
+        <navigation>
+       <!--  <begin-conversation join="true"/>  -->
+            <rule if-outcome="home">
+                <end-conversation before-redirect="true"/>
+                <redirect view-id="/home.xhtml"/>
             </rule>
         </navigation>
     </page>

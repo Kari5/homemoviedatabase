@@ -68,6 +68,12 @@ public class Movie implements Serializable {
 
 	/** Helyi elérési útvonala. */
 	private String localUrl;
+	
+	/** A film nyelve. */
+	private String language;
+	
+	/** Van-e hozzá felirat. */
+	private Boolean subtitle;
 
 	/**
 	 * Default konstruktor.
@@ -91,11 +97,13 @@ public class Movie implements Serializable {
 	 * @param imdbRating
 	 * @param imdbID
 	 * @param localUrl
+	 * @param language
+	 * @param subtitle
 	 */
-
 	public Movie(String title, Integer year, String runtime, String genere,
 			String director, String writer, String actors, String plot,
-			String posterUrl, Double imdbRating, String imdbID, String localUrl) {
+			String posterUrl, Double imdbRating, String imdbID,
+			String localUrl, String language, Boolean subtitle) {
 		super();
 		this.title = title;
 		this.year = year;
@@ -109,6 +117,24 @@ public class Movie implements Serializable {
 		this.imdbRating = imdbRating;
 		this.imdbID = imdbID;
 		this.localUrl = localUrl;
+		this.language = language;
+		this.subtitle = subtitle;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public Boolean getSubtitle() {
+		return subtitle;
+	}
+
+	public void setSubtitle(Boolean subtitle) {
+		this.subtitle = subtitle;
 	}
 
 	/**

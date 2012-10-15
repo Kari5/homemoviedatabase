@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <diagram model-entity="SeamPagesDiagram">
- <item ID="*" NAME="*" PATH="*" SHAPE="24,17,0,0" TYPE="page" model-entity="SeamPagesDiagramItem">
+ <item ID="#movieEditPage.xhtml" NAME="#xmovieEditPage.xhtml"
+  PATH="/movieEditPage.xhtml" SHAPE="24,17,0,0" TYPE="page" model-entity="SeamPagesDiagramItem">
   <output ID="/home.xhtml" NAME="output" PATH="/home.xhtml"
    TARGET="#xhome.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
-  <output ID="/moviePage.xhtml" NAME="output1" PATH="/moviePage.xhtml"
-   TARGET="#xmoviePage.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
  </item>
  <item ID="org.jboss.seam.framework.EntityNotFoundException"
   NAME="exception:org.jboss.seam.framework.EntityNotFoundException"
@@ -63,12 +62,17 @@
   <output ID="/error.xhtml" NAME="output" PATH="/error.xhtml"
    TARGET="#xerror.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
  </item>
- <item NAME="#xhome.xhtml" PATH="/home.xhtml" SHAPE="344,17,0,0"
-  TYPE="page" model-entity="SeamPagesDiagramItem"/>
+ <item ID="#home.xhtml" NAME="#xhome.xhtml" PATH="/home.xhtml"
+  SHAPE="344,17,0,0" TYPE="page" model-entity="SeamPagesDiagramItem">
+  <output ID="/home.xhtml" NAME="output" PATH="/home.xhtml"
+   TARGET="#xhome.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
+  <output ID="/moviePage.xhtml" NAME="output1" PATH="/moviePage.xhtml"
+   TARGET="#xmoviePage.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
+ </item>
  <item NAME="#xlogin.xhtml" PATH="/login.xhtml" SHAPE="344,849,0,0"
   TYPE="page" model-entity="SeamPagesDiagramItem"/>
  <item NAME="#xerror.xhtml" PATH="/error.xhtml" SHAPE="472,121,0,0"
   TYPE="page" model-entity="SeamPagesDiagramItem"/>
  <item NAME="#xmoviePage.xhtml" PATH="/moviePage.xhtml"
-  SHAPE="376,249,0,0" TYPE="page" model-entity="SeamPagesDiagramItem"/>
+  SHAPE="728,17,0,0" TYPE="page" model-entity="SeamPagesDiagramItem"/>
 </diagram>
