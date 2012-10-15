@@ -1,0 +1,16 @@
+action.package=hu.bme.tesslo.hmdb.session
+action.sources=/HomeMovieDatabase-ejb/ejbModule
+eclipse.preferences.version=1
+model.package=hu.bme.tesslo.hmdb.entity
+model.sources=/HomeMovieDatabase-ejb/ejbModule
+seam.ear.project=HomeMovieDatabase-ear
+seam.ejb.project=HomeMovieDatabase-ejb
+seam.project.connection.profile=HomeMovieDatabase
+seam.project.deployment.type=ear
+seam.project.settings.version=1.1
+seam.project.web.root.folder=/HomeMovieDatabase/WebContent
+seam.runtime.name=jboss-seam-2.2.2.Final
+seam.test.creating=false
+seam.test.project=HomeMovieDatabase-test
+test.package=org.domain.homemoviedatabase.test
+test.sources=/HomeMovieDatabase-test/test-src
