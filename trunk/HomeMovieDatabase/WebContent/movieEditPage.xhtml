@@ -1,0 +1,71 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+    <ui:define name="body">
+    <h:panelGrid column="2">
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.title']}" />
+    <h:inputText value="#{selectedMovieStateHolder.selected.title}" />
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.year']}" />
+    <rich:inputNumberSpinner value="#{selectedMovieStateHolder.selected.year}" minValue="1920" maxValue="2050"/>
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.runtime']}" />
+    <h:inputText value="#{selectedMovieStateHolder.selected.runtime}" />
+    
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.gener']}" />
+    <h:inputText value="#{selectedMovieStateHolder.selected.genere}" />
+    
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.director']}" />
+    <h:inputText value="#{selectedMovieStateHolder.selected.director}" />
+    
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.writer']}" />
+    <h:inputText value="#{selectedMovieStateHolder.selected.writer}" />
+    
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.actors']}" />
+    <h:inputText value="#{selectedMovieStateHolder.selected.actors}" />
+    
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.plot']}" />
+    <h:inputTextarea value="#{selectedMovieStateHolder.selected.title}" />
+    
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.posterURL']}" />
+    <h:inputText value="#{selectedMovieStateHolder.selected.posterUrl}" />
+    
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.imdbRating']}" />
+    <rich:inputNumberSlider value="#{selectedMovieStateHolder.selected.imdbRating}" minValue="0" maxValue="10"/>
+    
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.imdbid']}" />
+    <h:inputText value="#{selectedMovieStateHolder.selected.imdbID}" />
+    
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.localURL']}" />
+    <h:inputText value="#{selectedMovieStateHolder.selected.localUrl}" />
+    
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.language']}" />
+    
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.subtitle']}" />  
+    
+    
+    </h:panelGrid>
+    
+    
+    </ui:define>
+    
+</ui:composition>

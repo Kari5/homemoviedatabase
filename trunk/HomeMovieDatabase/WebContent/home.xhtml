@@ -71,9 +71,7 @@
       		<f:facet name="header">
       			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.more']}" />
       		</f:facet>
-      			<h:commandButton value="#{messages['hu.bme.tesslo.hmdb.more']}" action="#{HomePageBean.changeSelectedMovie(movie)}">
-      			<a4j:support event="onclick" action="MoviePage"/>
-      			</h:commandButton>
+      			<h:commandButton value="#{messages['hu.bme.tesslo.hmdb.more']}" action="#{HomePageBean.changeSelectedMovie(movie)}"/>
       		<f:facet name="footer">
       			<a4j:commandButton value="Save" action="#{HomePageBean.saveNewMovie()}" reRender="MovieTableForm"/>
       		</f:facet>

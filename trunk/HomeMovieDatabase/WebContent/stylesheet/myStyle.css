@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 .title{
-	font-size: 32px;
+	font-size: 28px;
 	font-weight:bold;
 	font-style:italic;
 	font-family:arial black, sans-serif;
@@ -9,4 +9,19 @@
 	text-shadow: 5px;
 	text-transform:uppercase;
 	color:#000000;
+}
+.panel20{
+	width:20%;
+	height:100%;
+	text-align: left;
+	bottom: auto;
+	float:left;
+}
+
+.panel80{
+	width:70%;
+	height:100%;
+	text-align: left;
+	bottom: auto;
+	float:left;
 }

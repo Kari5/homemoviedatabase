@@ -78,8 +78,9 @@ public class HomePageBackBean {
 	 * @param selected
 	 *            újonnan kiválasztott film
 	 */
-	public void changeSelectedMovie(Movie selected) {
+	public String changeSelectedMovie(Movie selected) {
 		logger.info("Kiválasztott film: " + selected.getTitle());
 		this.selectedMovieStateHolder.setSelected(selected);
+		return "moviePage";
 	}
 }

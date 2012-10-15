@@ -25,6 +25,7 @@ public class MoviePageBackBean {
 
 	@Create
 	public void init() {
+		//FIXME:[Kari] Teszthez kell, ki lesz javítva
 		if (selectedMovieStateHolder.getSelected() == null) {
 			Movie movie3 = new Movie(
 					"C film",
@@ -36,7 +37,7 @@ public class MoviePageBackBean {
 					"Színészek:",
 					"Összefoglaló:",
 					"http://blogs-images.forbes.com/erikkain/files/2011/12/atthemovies.jpg",
-					6.9, null, null);
+					6.9, null, null, null, null);
 			selectedMovieStateHolder.setSelected(movie3);
 		}
 	}

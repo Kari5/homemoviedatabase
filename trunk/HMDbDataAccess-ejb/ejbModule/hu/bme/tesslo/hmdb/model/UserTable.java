@@ -43,6 +43,9 @@ public class UserTable implements Serializable {
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Role> roles;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Movie> favoriteMovies;
 
 	/**
 	 * @return the id
@@ -132,6 +135,14 @@ public class UserTable implements Serializable {
 	 */
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	public List<Movie> getFavoriteMovies() {
+		return favoriteMovies;
+	}
+
+	public void setFavoriteMovies(List<Movie> favoriteMovies) {
+		this.favoriteMovies = favoriteMovies;
 	}
 
 	/*

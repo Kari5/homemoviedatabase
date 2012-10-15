@@ -10,8 +10,8 @@
     template="layout/template.xhtml">
 
     <ui:define name="body">
-     <h:panelGrid columns="3">
-    <rich:panel style="border:0px">
+     <h:panelGrid columns="2" style="width:100%" columnClasses="panel20,panel80">
+    <rich:panel style="width:100%">
     <h:panelGrid columns="3">
     <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.title}" styleClass="title" />
     <rich:spacer width="50px"/>
@@ -22,20 +22,45 @@
     <h:graphicImage value="#{MoviePageBean.selectedMovieStateHolder.selected.posterUrl}"/>
     </rich:panel>
     
-    <rich:spacer width="50px"/>
-    <rich:panel>
-    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.director}" />
-    <br/> <rich:spacer height="60px"/> <br/>
-    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.actors}" />
-    <br/> <rich:spacer height="60px"/> <br/>
-    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.plot}" />
-    <br/> <rich:spacer height="60px"/> <br/>
-    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.writer}" />
-    <br/> <rich:spacer height="60px"/> <br/>
-    <h:outputText value="Rating: #{MoviePageBean.selectedMovieStateHolder.selected.imdbRating}" />
+    <rich:panel style="width:100%">
+    <h:panelGrid columns="2"  columnClasses="panel20,panel80" style="width:100%">
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.runtime']}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
+    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.runtime}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.director']}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.director)}"/>
+    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.director}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.director)}"/>
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.writer']}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.writer)}" />
+    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.writer}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.writer)}"/>
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.actors']}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.actors)}" />
+    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.actors}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.actors)}"/>
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.plot']}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.plot)}"/>
+    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.plot}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.plot)}" />
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.imdbRating']}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.imdbRating)}"/>
+    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.imdbRating}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.imdbRating)}"/> 
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.imdbid']}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.imdbID)}"/>
+    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.imdbID}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.imdbID)}"/>
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.localURL']}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.localUrl)}" />
+    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.localUrl}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.localUrl)}" />
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.language']}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.language)}"/>
+    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.language}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.language)}" />
+    
+    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.subtitle']}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.subtitle)}"/>  
+    <h:selectBooleanCheckbox  value="#{MoviePageBean.selectedMovieStateHolder.selected.subtitle}" readonly="true" disabled="true" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.subtitle)}"/>
+    
+    </h:panelGrid>
     </rich:panel>
     
     </h:panelGrid>
+    <h:form>
+    <h:commandButton action="movieEditPage" value="Szerkeszt" />
+    </h:form>
     </ui:define>
     
 </ui:composition>
