@@ -32,6 +32,9 @@ public class MovieDaoImpl extends GenericDaoImpl<Movie> implements MovieDao {
 		return entityManager;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@SuppressWarnings("unchecked")
 	public List<Movie> getAllMovie() {
 		List<Movie> result = new ArrayList<Movie>();
@@ -39,6 +42,44 @@ public class MovieDaoImpl extends GenericDaoImpl<Movie> implements MovieDao {
 		result = (List<Movie>) executeQueryMultipleResult(query);
 		logger.info("Filmek száma: " + result.size());
 		return result;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public Movie getMovie(String title, Integer year){
+		if(year!=null){
+		String query="FROM Movie AS M WHERE M.title = ? AND M.year=?";
+		return (Movie)executeQuerySingleResult(query, title, year);
+		} else {
+			String query="FROM Movie AS M WHERE M.title = ?";
+			return (Movie)executeQuerySingleResult(query, title);
+		}
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void saveOrUpdate(Movie m){
+		Movie existing=getMovie(m.getTitle(), m.getYear());
+		if(existing==null){
+			save(m);
+			return;
+		} else {
+			existing.setTitle(m.getTitle());
+			existing.setActors(m.getActors());
+			existing.setDirector(m.getDirector());
+			existing.setGenre(m.getGenre());
+			existing.setImdbID(m.getImdbID());
+			existing.setImdbRating(m.getImdbRating());
+			existing.setLanguage(m.getLanguage());
+			existing.setLocalUrl(m.getLocalUrl());
+			existing.setPlot(m.getPlot());
+			existing.setPosterUrl(m.getPosterUrl());
+			existing.setRuntime(m.getRuntime());
+			existing.setSubtitle(m.getSubtitle());
+			existing.setWriter(m.getWriter());
+		}
 	}
 
 	public void setDummieDate() {

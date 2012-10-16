@@ -37,13 +37,13 @@
       			<h:inputText value="#{HomePageBean.newMovie.title}" />
       		</f:facet>
       	</rich:column>
-      	<rich:column sortBy="#{movie.genere}">
+      	<rich:column sortBy="#{movie.genre}">
       		<f:facet name="header">
-      			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.gener']}"/>
+      			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.genre']}"/>
       		</f:facet>
-      			<h:outputText value="#{movie.genere}" />
+      			<h:outputText value="#{movie.genre}" />
       		<f:facet name="footer">
-      			<h:inputText value="#{HomePageBean.newMovie.genere}" />
+      			<h:inputText value="#{HomePageBean.newMovie.genre}"/>
       		</f:facet>
       	</rich:column>
       	<rich:column sortBy="#{movie.year}">

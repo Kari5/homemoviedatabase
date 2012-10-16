@@ -5,6 +5,7 @@ package hu.bme.tesslo.hmdb.session;
 
 import hu.bme.tesslo.hmdb.dao.MovieDao;
 import hu.bme.tesslo.hmdb.model.Movie;
+import hu.bme.tesslo.hmdb.util.ImdbReader;
 import hu.bme.tesslo.hmdb.util.StateHolder;
 
 import javax.naming.InitialContext;

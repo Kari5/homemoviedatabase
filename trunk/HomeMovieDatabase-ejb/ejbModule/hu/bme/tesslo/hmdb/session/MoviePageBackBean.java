@@ -3,9 +3,18 @@
  */
 package hu.bme.tesslo.hmdb.session;
 
+import java.util.ArrayList;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+import hu.bme.tesslo.hmdb.dao.MovieDao;
 import hu.bme.tesslo.hmdb.model.Movie;
+import hu.bme.tesslo.hmdb.util.ImdbReader;
+import hu.bme.tesslo.hmdb.util.StateContainer;
 import hu.bme.tesslo.hmdb.util.StateHolder;
 
+import org.jboss.logging.Logger;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Create;
 import org.jboss.seam.annotations.In;
@@ -20,12 +29,20 @@ import org.jboss.seam.annotations.Scope;
 @Scope(ScopeType.EVENT)
 public class MoviePageBackBean {
 
+	/**
+	 * Kiválasztott film stateHoldere, conversation scope-ban van.
+	 * 
+	 */
 	@In(create = true)
 	private StateHolder<Movie> selectedMovieStateHolder;
 
+	/** Logger. */
+	private static final Logger logger = Logger
+			.getLogger(MoviePageBackBean.class);
+
 	@Create
 	public void init() {
-		//FIXME:[Kari] Teszthez kell, ki lesz javítva
+		// FIXME:[Kari] Teszthez kell, ki lesz javítva
 		if (selectedMovieStateHolder.getSelected() == null) {
 			Movie movie3 = new Movie(
 					"C film",
@@ -56,6 +73,42 @@ public class MoviePageBackBean {
 	public void setSelectedMovieStateHolder(
 			StateHolder<Movie> selectedMovieStateHolder) {
 		this.selectedMovieStateHolder = selectedMovieStateHolder;
+	}
+
+	public void changeSelectedMovieData() {
+		System.out.println("Kiválasztott film: "
+				+ this.selectedMovieStateHolder.getSelected().getTitle());
+		ImdbReader reader = new ImdbReader(this.selectedMovieStateHolder
+				.getSelected().getTitle(), this.selectedMovieStateHolder
+				.getSelected().getYear(), this.selectedMovieStateHolder
+				.getSelected().getImdbID());
+		Movie searchResult = reader.parseJson();
+		if (searchResult == null) {
+			return;
+		}
+		String localUrl = this.selectedMovieStateHolder.getSelected()
+				.getLocalUrl();
+		String language = this.selectedMovieStateHolder.getSelected()
+				.getLanguage();
+		Boolean subtitle = this.selectedMovieStateHolder.getSelected()
+				.getSubtitle();
+		this.selectedMovieStateHolder.setSelected(searchResult);
+		this.selectedMovieStateHolder.getSelected().setLocalUrl(localUrl);
+		this.selectedMovieStateHolder.getSelected().setLanguage(language);
+		this.selectedMovieStateHolder.getSelected().setSubtitle(subtitle);
+	}
+
+	public String saveChanges() {
+		MovieDao movieDao;
+		try {
+			movieDao = (MovieDao) InitialContext
+					.doLookup("HomeMovieDatabase-ear/MovieDao/local");
+		} catch (NamingException e) {
+			logger.error("MovieDao nem található!", e);
+			return "#";
+		}
+		movieDao.saveOrUpdate(this.selectedMovieStateHolder.getSelected());
+		return "moviePage";
 	}
 
 }

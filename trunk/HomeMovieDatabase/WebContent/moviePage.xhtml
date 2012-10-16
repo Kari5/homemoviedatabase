@@ -10,12 +10,14 @@
     template="layout/template.xhtml">
 
     <ui:define name="body">
-     <h:panelGrid columns="2" style="width:100%" columnClasses="panel20,panel80">
+     <h:panelGrid columns="2" style="width:100%" columnClasses="panel40,panel60">
     <rich:panel style="width:100%">
-    <h:panelGrid columns="3">
+    
     <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.title}" styleClass="title" />
+    <br/>
+    <h:panelGrid columns="3">
+    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.genre}" />
     <rich:spacer width="50px"/>
-    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.genere}" />
     <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.year}" />
     </h:panelGrid>
     <rich:spacer height="50px"/>
@@ -23,7 +25,7 @@
     </rich:panel>
     
     <rich:panel style="width:100%">
-    <h:panelGrid columns="2"  columnClasses="panel20,panel80" style="width:100%">
+    <h:panelGrid columns="2"  columnClasses="panel40,panel60" style="width:100%">
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.runtime']}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
     <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.runtime}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
     
@@ -43,7 +45,9 @@
     <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.imdbRating}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.imdbRating)}"/> 
     
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.imdbid']}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.imdbID)}"/>
-    <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.imdbID}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.imdbID)}"/>
+    <s:div rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.imdbID)}">
+    <a href="http://www.imdb.com/title/#{MoviePageBean.selectedMovieStateHolder.selected.imdbID}" target="blank">IMDb link </a>
+    </s:div>
     
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.localURL']}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.localUrl)}" />
     <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.localUrl}" rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.localUrl)}" />

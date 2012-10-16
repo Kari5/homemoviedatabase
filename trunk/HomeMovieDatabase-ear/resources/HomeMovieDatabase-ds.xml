@@ -7,10 +7,10 @@
    <local-tx-datasource>
       <jndi-name>HomeMovieDatabaseDatasource</jndi-name>
       <use-java-context>true</use-java-context>
-      <connection-url>jdbc:sqlserver://KARCSI-PC_\SQLEXPRESS:1433;databaseName=HomeMovieDatabase</connection-url>
+      <connection-url>jdbc:sqlserver://localhost:1433;databaseName=HomeMovieDatabase</connection-url>
       <driver-class>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver-class>
       <user-name>Kari</user-name>
-      <password>passwordHMDb</password>
+      <password>password5</password>
    </local-tx-datasource>
     
 </datasources>

@@ -41,7 +41,7 @@ public class Movie implements Serializable {
 	private String runtime;
 
 	/** Mûfaj. */
-	private String genere;
+	private String genre;
 
 	/** Rendezõ. */
 	private String director;
@@ -108,7 +108,7 @@ public class Movie implements Serializable {
 		this.title = title;
 		this.year = year;
 		this.runtime = runtime;
-		this.genere = genere;
+		this.genre = genere;
 		this.director = director;
 		this.writer = writer;
 		this.actors = actors;
@@ -200,16 +200,16 @@ public class Movie implements Serializable {
 	/**
 	 * @return the genere
 	 */
-	public String getGenere() {
-		return genere;
+	public String getGenre() {
+		return genre;
 	}
 
 	/**
 	 * @param genere
 	 *            the genere to set
 	 */
-	public void setGenere(String genere) {
-		this.genere = genere;
+	public void setGenre(String genere) {
+		this.genre = genere;
 	}
 
 	/**
@@ -345,7 +345,7 @@ public class Movie implements Serializable {
 				+ ((getActors() == null) ? 0 : getActors().hashCode());
 		result = prime * result
 				+ ((director == null) ? 0 : director.hashCode());
-		result = prime * result + ((genere == null) ? 0 : genere.hashCode());
+		result = prime * result + ((genre == null) ? 0 : genre.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((imdbID == null) ? 0 : imdbID.hashCode());
 		result = prime * result
@@ -401,6 +401,86 @@ public class Movie implements Serializable {
 		} else if (!getYear().equals(other.getYear()))
 			return false;
 		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Movie [");
+		if (title != null) {
+			builder.append("title=");
+			builder.append(title);
+			builder.append(", ");
+		}
+		if (year != null) {
+			builder.append("year=");
+			builder.append(year);
+			builder.append(", ");
+		}
+		if (runtime != null) {
+			builder.append("runtime=");
+			builder.append(runtime);
+			builder.append(", ");
+		}
+		if (genre != null) {
+			builder.append("genere=");
+			builder.append(genre);
+			builder.append(", ");
+		}
+		if (director != null) {
+			builder.append("director=");
+			builder.append(director);
+			builder.append(", ");
+		}
+		if (writer != null) {
+			builder.append("writer=");
+			builder.append(writer);
+			builder.append(", ");
+		}
+		if (actors != null) {
+			builder.append("actors=");
+			builder.append(actors);
+			builder.append(", ");
+		}
+		if (plot != null) {
+			builder.append("plot=");
+			builder.append(plot);
+			builder.append(", ");
+		}
+		if (posterUrl != null) {
+			builder.append("posterUrl=");
+			builder.append(posterUrl);
+			builder.append(", ");
+		}
+		if (imdbRating != null) {
+			builder.append("imdbRating=");
+			builder.append(imdbRating);
+			builder.append(", ");
+		}
+		if (imdbID != null) {
+			builder.append("imdbID=");
+			builder.append(imdbID);
+			builder.append(", ");
+		}
+		if (localUrl != null) {
+			builder.append("localUrl=");
+			builder.append(localUrl);
+			builder.append(", ");
+		}
+		if (language != null) {
+			builder.append("language=");
+			builder.append(language);
+			builder.append(", ");
+		}
+		if (subtitle != null) {
+			builder.append("subtitle=");
+			builder.append(subtitle);
+		}
+		builder.append("]");
+		return builder.toString();
 	}
 
 }
