@@ -7,8 +7,8 @@
        login-view-id="/login.xhtml">
 
     <page view-id="/home.xhtml">
+    <begin-conversation/>
         <navigation>
-        <begin-conversation/>
             <rule if-outcome="home">
             	<end-conversation before-redirect="true"/>
                 <redirect view-id="/home.xhtml"/>
@@ -20,8 +20,9 @@
     </page>
     
     <page view-id="/moviePage.xhtml">
+    <begin-conversation join="true"/>
         <navigation>
-       <!--  <begin-conversation join="true"/>  -->
+       <!--    -->
             <rule if-outcome="home">
                 <end-conversation before-redirect="true"/>
                 <redirect view-id="/home.xhtml"/>
@@ -33,11 +34,15 @@
     </page>
     
     <page view-id="/movieEditPage.xhtml">
+    <begin-conversation join="true"/>
         <navigation>
-       <!--  <begin-conversation join="true"/>  -->
+         <!-- <begin-conversation join="true"/>  --> 
             <rule if-outcome="home">
                 <end-conversation before-redirect="true"/>
                 <redirect view-id="/home.xhtml"/>
+            </rule>
+            <rule if-outcome="moviePage">
+                <redirect view-id="/moviePage.xhtml"/>
             </rule>
         </navigation>
     </page>

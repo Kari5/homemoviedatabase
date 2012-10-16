@@ -24,5 +24,24 @@ public interface MovieDao extends GenericDao<Movie> {
 	 */
 	public List<Movie> getAllMovie();
 
+	/**
+	 * Cím és év alapján visszad egy filmet.
+	 * 
+	 * @param title
+	 *            cím
+	 * @param year
+	 *            kiadás éve
+	 * @return a keresett film, vagy null, ha nem található
+	 */
+	public Movie getMovie(String title, Integer year);
+
+	/**
+	 * Elment, vagy felülír egy létezõ filem bejegyzést.
+	 * 
+	 * @param m
+	 *            elmentendõ, vagy felülírandó film
+	 */
+	public void saveOrUpdate(Movie m);
+
 	public void setDummieDate();
 }

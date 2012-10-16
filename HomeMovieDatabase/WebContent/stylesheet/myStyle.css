@@ -10,16 +10,16 @@
 	text-transform:uppercase;
 	color:#000000;
 }
-.panel20{
-	width:20%;
+.panel40{
+	width:40%;
 	height:100%;
 	text-align: left;
 	bottom: auto;
 	float:left;
 }
 
-.panel80{
-	width:70%;
+.panel60{
+	width:55%;
 	height:100%;
 	text-align: left;
 	bottom: auto;
