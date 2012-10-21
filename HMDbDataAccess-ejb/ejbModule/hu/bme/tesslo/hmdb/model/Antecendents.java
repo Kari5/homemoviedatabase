@@ -35,11 +35,30 @@ public class Antecendents implements Serializable {
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_antecendents_id")
-	private UserTable user;
+	private User user;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "MoviesAntecendent")
 	private List<Movie> movies;
+
+	/**
+	 * Default konstruktor.
+	 */
+	public Antecendents() {
+		super();
+	}
+
+	/**
+	 * Konstruktor értékátadással.
+	 * 
+	 * @param user
+	 * @param movies
+	 */
+	public Antecendents(User user, List<Movie> movies) {
+		super();
+		this.user = user;
+		this.movies = movies;
+	}
 
 	/**
 	 * @return the id
@@ -59,7 +78,7 @@ public class Antecendents implements Serializable {
 	/**
 	 * @return the user
 	 */
-	public UserTable getUser() {
+	public User getUser() {
 		return user;
 	}
 
@@ -67,7 +86,7 @@ public class Antecendents implements Serializable {
 	 * @param user
 	 *            the user to set
 	 */
-	public void setUser(UserTable user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 

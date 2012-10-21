@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.NotNull;
+import org.jboss.seam.annotations.security.management.RoleName;
+
 /**
  * @author Karcsi
  * 
@@ -26,6 +29,8 @@ public class Role implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@RoleName
+	@NotNull
 	private String name;
 
 	/**
