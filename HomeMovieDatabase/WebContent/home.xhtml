@@ -17,7 +17,9 @@
       					sortMode="single"
       					rendered="#{not empty moviesStateContainer.list}"
       					onRowMouseOver="this.style.backgroundColor='#B1C7B4'"
-      					onRowMouseOut="this.style.backgroundColor='#{a4jSkin.rowBackgroundColor}'">
+      					onRowMouseOut="this.style.backgroundColor='#{a4jSkin.rowBackgroundColor}'"
+      					rows="20" 
+      					reRender="ds">
       
       	<rich:column style="width:50px">
       		<f:facet name="header">
@@ -25,57 +27,69 @@
       		</f:facet>
       			<h:outputText value="#{movie.id}" />
       		<f:facet name="footer">
-      			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.savenew']}" />
+      			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.savenew']}" rendered="#{identity.loggedIn}" />
       		</f:facet>
       	</rich:column>
-      <rich:column sortBy="#{movie.title}">
+      <rich:column sortBy="#{movie.title}"
+      				filterBy="#{movie.title}"
+      				filterEvent="onkeyup"
+      				filterValue="#{MoviePageBean.titleFilter}">
       		<f:facet name="header">
       			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.title']}" />
       		</f:facet>
       			<h:outputText value="#{movie.title}" />
       		<f:facet name="footer">
-      			<h:inputText value="#{HomePageBean.newMovie.title}" />
+      			<h:inputText value="#{HomePageBean.newMovie.title}" rendered="#{identity.loggedIn}" />
       		</f:facet>
       	</rich:column>
-      	<rich:column sortBy="#{movie.genre}">
+      	<rich:column sortBy="#{movie.genre}"
+      				filterBy="#{movie.genre}"
+      				filterEvent="onkeyup"
+      				filterValue="#{MoviePageBean.genreFilter}">
       		<f:facet name="header">
       			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.genre']}"/>
       		</f:facet>
       			<h:outputText value="#{movie.genre}" />
       		<f:facet name="footer">
-      			<h:inputText value="#{HomePageBean.newMovie.genre}"/>
+      			<h:inputText value="#{HomePageBean.newMovie.genre}" rendered="#{identity.loggedIn}"/>
       		</f:facet>
       	</rich:column>
-      	<rich:column sortBy="#{movie.year}">
+      	<rich:column sortBy="#{movie.year}"
+      				filterBy="#{movie.year}"
+      				filterEvent="onkeyup">
       		<f:facet name="header">
       			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.year']}" />
       		</f:facet>
       			<h:outputText value="#{movie.year}" />
       		<f:facet name="footer">
-      			<h:inputText value="#{HomePageBean.newMovie.year}" />
+      			<h:inputText value="#{HomePageBean.newMovie.year}" rendered="#{identity.loggedIn}" />
       		</f:facet>
       	</rich:column>
-      	<rich:column>
-      		<f:facet name="header" sortBy="#{movie.imdbRating}">
+      	<rich:column  sortBy="#{movie.imdbRating}" style="width:100px"
+      				filterBy="#{movie.imdbRating}"
+      				filterEvent="onkeyup">
+      		<f:facet name="header">
       			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.rating']}" />
       		</f:facet>
       			<h:outputText value="#{movie.imdbRating}" />
       		<f:facet name="footer">
-      			<h:selectOneRadio value="#{HomePageBean.newMovie.imdbRating}">
-      			<f:selectItem itemLabel="good" itemValue="5.0"/>
-      			<f:selectItem itemLabel="bad" itemValue="0.0"/>
-      			</h:selectOneRadio>
+      			<rich:inputNumberSlider value="#{HomePageBean.newMovie.imdbRating}" minValue="0" maxValue="10"  showInput="false"
+            enableManualInput="false" rendered="#{identity.loggedIn}"/>
       		</f:facet>
       	</rich:column>
       	<rich:column>
       		<f:facet name="header">
       			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.more']}" />
       		</f:facet>
-      			<h:commandButton value="#{messages['hu.bme.tesslo.hmdb.more']}" action="#{HomePageBean.changeSelectedMovie(movie)}"/>
+      			<h:commandButton value="#{messages['hu.bme.tesslo.hmdb.more']}" action="#{HomePageBean.changeSelectedMovie(movie)}"  rendered="#{identity.loggedIn}"/>
+      			<h:commandButton value="#{messages['hu.bme.tesslo.hmdb.more']}" action="login"  rendered="#{not identity.loggedIn}"/>
       		<f:facet name="footer">
-      			<a4j:commandButton value="Save" action="#{HomePageBean.saveNewMovie()}" reRender="MovieTableForm"/>
+      			<h:commandButton value="Save" action="#{HomePageBean.saveNewMovie()}" rendered="#{identity.loggedIn}"/>
       		</f:facet>
       	</rich:column>
+      	 <f:facet name="footer">
+                <rich:datascroller id="ds" renderIfSinglePage="false"/>
+         </f:facet>
       </rich:dataTable>
 </h:form>
     </ui:define>

@@ -7,11 +7,14 @@
        login-view-id="/login.xhtml">
 
     <page view-id="/home.xhtml">
-    <begin-conversation/>
+    <begin-conversation join="true"/>
         <navigation>
             <rule if-outcome="home">
             	<end-conversation before-redirect="true"/>
                 <redirect view-id="/home.xhtml"/>
+            </rule>
+             <rule if-outcome="login">
+                <redirect view-id="/login.xhtml"/>
             </rule>
             <rule if-outcome="moviePage">
                 <redirect view-id="/moviePage.xhtml"/>
@@ -30,6 +33,9 @@
             <rule if-outcome="movieEditPage">
                 <redirect view-id="/movieEditPage.xhtml"/>
             </rule>
+           <rule if-outcome="moviePage">
+                <redirect view-id="/moviePage.xhtml"/>
+            </rule>
         </navigation>
     </page>
     
@@ -43,6 +49,33 @@
             </rule>
             <rule if-outcome="moviePage">
                 <redirect view-id="/moviePage.xhtml"/>
+            </rule>
+        </navigation>
+    </page>
+    
+    <page view-id="/registration.xhtml">
+        <navigation>
+            <rule if-outcome="home">
+                <redirect view-id="/home.xhtml"/>
+            </rule>
+        </navigation>
+    </page>
+    
+    <page view-id="/login.xhtml">
+        <navigation>
+            <rule if-outcome="home">
+                <redirect view-id="/home.xhtml"/>
+            </rule>
+            <rule if-outcome="registration">
+                <redirect view-id="/registration.xhtml"/>
+            </rule>
+        </navigation>
+    </page>
+    
+    <page view-id="*">
+    <navigation>
+            <rule if-outcome="registration">
+                <redirect view-id="/registration.xhtml"/>
             </rule>
         </navigation>
     </page>

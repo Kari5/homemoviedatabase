@@ -59,13 +59,13 @@
     
     
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.language']}" />
-    
+    <h:inputText value="#{selectedMovieStateHolder.selected.language}" size="100"/>
     
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.subtitle']}" />  
-    
+    <h:selectBooleanCheckbox value="#{selectedMovieStateHolder.selected.subtitle}" />
     
     </h:panelGrid>
-    <a4j:commandButton value="IMDb" action="#{MoviePageBean.changeSelectedMovieData()}" reRender="editPanelGrid" />
+    <a4j:commandButton value="IMDb" action="#{MoviePageBean.searchImdb()}" reRender="editPanelGrid" />
     <a4j:commandButton value="Ment" action="#{MoviePageBean.saveChanges()}"/>
     </h:form>
     </ui:define>

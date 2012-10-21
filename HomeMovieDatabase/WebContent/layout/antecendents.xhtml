@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:subview id="antecendentsFooter" rendered="#{identity.loggedIn}"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:rich="http://richfaces.org/rich" contentType="text/html">
+	<h:form>
+	<rich:dataGrid columns="10"
+		value="#{AntecendentsBackBean.antecendents.movies}" var="antMovie"
+		elements="10" first="1">
+		<f:facet name="header">
+			<h:outputText value="Elozmenyek"/>
+		</f:facet>
+			<h:graphicImage value="#{antMovie.posterUrl}" width="150px" height="200px" title="#{antMovie.title}" rendered="#{not (null==antMovie.posterUrl)}">
+				<a4j:support event="onclick" action="#{HomePageBean.changeSelectedMovie(antMovie)}"/>
+			</h:graphicImage>
+			<a4j:commandLink value="#{antMovie.title}" action="#{HomePageBean.changeSelectedMovie(antMovie)}"  rendered="#{null==antMovie.posterUrl}" />
+		<f:facet name="footer">
+			<rich:datascroller />
+		</f:facet>
+	</rich:dataGrid>
+</h:form>
+</f:subview>

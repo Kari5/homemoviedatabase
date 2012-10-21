@@ -25,3 +25,19 @@
 	bottom: auto;
 	float:left;
 }
+
+.panel20{
+	width:20%;
+	height:100%;
+	text-align: left;
+	bottom: auto;
+	float:left;
+}
+
+.panel80{
+	width:75%;
+	height:100%;
+	text-align: left;
+	bottom: auto;
+	float:left;
+}

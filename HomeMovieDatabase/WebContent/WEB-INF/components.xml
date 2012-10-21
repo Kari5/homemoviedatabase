@@ -30,14 +30,10 @@
 
    <persistence:managed-persistence-context name="entityManager" auto-create="true"
                       persistence-unit-jndi-name="java:/HomeMovieDatabaseEntityManagerFactory"/>
+<security:identity-manager identity-store="#{jpaIdentityStore}"/>
 
-   <drools:rule-base name="securityRules">
-      <drools:rule-files>
-         <value>/security.drl</value>
-      </drools:rule-files>
-   </drools:rule-base>
-
-   <security:rule-based-permission-resolver security-rules="#{securityRules}"/>
+	<security:jpa-identity-store user-class="hu.bme.tesslo.hmdb.model.User"
+		role-class="hu.bme.tesslo.hmdb.model.Role" />
 
    <security:identity authenticate-method="#{authenticator.authenticate}" remember-me="true"/>
 
