@@ -3,16 +3,13 @@
  */
 package hu.bme.tesslo.hmdb.session;
 
-import java.util.ArrayList;
-
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-
 import hu.bme.tesslo.hmdb.dao.MovieDao;
 import hu.bme.tesslo.hmdb.model.Movie;
 import hu.bme.tesslo.hmdb.util.ImdbReader;
-import hu.bme.tesslo.hmdb.util.StateContainer;
 import hu.bme.tesslo.hmdb.util.StateHolder;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 import org.jboss.logging.Logger;
 import org.jboss.seam.ScopeType;
@@ -35,6 +32,10 @@ public class MoviePageBackBean {
 	 */
 	@In(create = true)
 	private StateHolder<Movie> selectedMovieStateHolder;
+
+	private String titleFilter;
+
+	private String genreFilter;
 
 	/** Logger. */
 	private static final Logger logger = Logger
@@ -75,7 +76,7 @@ public class MoviePageBackBean {
 		this.selectedMovieStateHolder = selectedMovieStateHolder;
 	}
 
-	public void changeSelectedMovieData() {
+	public void searchImdb() {
 		System.out.println("Kiválasztott film: "
 				+ this.selectedMovieStateHolder.getSelected().getTitle());
 		ImdbReader reader = new ImdbReader(this.selectedMovieStateHolder
@@ -109,6 +110,36 @@ public class MoviePageBackBean {
 		}
 		movieDao.saveOrUpdate(this.selectedMovieStateHolder.getSelected());
 		return "moviePage";
+	}
+
+	/**
+	 * @return the titleFilter
+	 */
+	public String getTitleFilter() {
+		return titleFilter;
+	}
+
+	/**
+	 * @param titleFilter
+	 *            the titleFilter to set
+	 */
+	public void setTitleFilter(String titleFilter) {
+		this.titleFilter = titleFilter;
+	}
+
+	/**
+	 * @return the genreFilter
+	 */
+	public String getGenreFilter() {
+		return genreFilter;
+	}
+
+	/**
+	 * @param genreFilter
+	 *            the genreFilter to set
+	 */
+	public void setGenreFilter(String genreFilter) {
+		this.genreFilter = genreFilter;
 	}
 
 }
