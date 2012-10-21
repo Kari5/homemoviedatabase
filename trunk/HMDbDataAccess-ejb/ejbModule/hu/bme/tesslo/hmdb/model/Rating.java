@@ -33,7 +33,7 @@ public class Rating implements Serializable {
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "UserRating")
 	@NotNull
-	private UserTable user;
+	private User user;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "MovieRating")
@@ -64,7 +64,7 @@ public class Rating implements Serializable {
 	/**
 	 * @return the user
 	 */
-	public UserTable getUser() {
+	public User getUser() {
 		return user;
 	}
 
@@ -72,7 +72,7 @@ public class Rating implements Serializable {
 	 * @param user
 	 *            the user to set
 	 */
-	public void setUser(UserTable user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 

@@ -13,15 +13,23 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
+
+import org.jboss.seam.annotations.security.management.UserFirstName;
+import org.jboss.seam.annotations.security.management.UserLastName;
+import org.jboss.seam.annotations.security.management.UserPassword;
+import org.jboss.seam.annotations.security.management.UserPrincipal;
+import org.jboss.seam.annotations.security.management.UserRoles;
 
 /**
  * @author Karcsi
  * 
  */
-@Entity
-public class UserTable implements Serializable {
+@Entity(name = "User_")
+public class User implements Serializable {
 
 	/**
 	 * 
@@ -33,17 +41,24 @@ public class UserTable implements Serializable {
 	private Long id;
 
 	@Column(nullable = false)
+	@UserPrincipal
 	private String userName;
 
+	@Column(nullable = false)
+	@UserPassword(hash = "md5")
+	private String password;
+
+	@UserFirstName
 	private String firstName;
 
+	@UserLastName
 	private String lastName;
 
-	private String eMail;
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "Role_User", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
+	@UserRoles
 	private List<Role> roles;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Movie> favoriteMovies;
 
@@ -108,18 +123,18 @@ public class UserTable implements Serializable {
 	}
 
 	/**
-	 * @return the eMail
+	 * @return the password
 	 */
-	public String geteMail() {
-		return eMail;
+	public String getPassword() {
+		return password;
 	}
 
 	/**
-	 * @param eMail
-	 *            the eMail to set
+	 * @param password
+	 *            the password to set
 	 */
-	public void seteMail(String eMail) {
-		this.eMail = eMail;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	/**
@@ -172,7 +187,7 @@ public class UserTable implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UserTable other = (UserTable) obj;
+		User other = (User) obj;
 		if (getUserName() == null) {
 			if (other.getUserName() != null)
 				return false;
