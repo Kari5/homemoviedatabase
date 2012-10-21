@@ -68,11 +68,18 @@
   SHAPE="344,17,0,0" TYPE="page" model-entity="SeamPagesDiagramItem">
   <output ID="/home.xhtml" NAME="output" PATH="/home.xhtml"
    TARGET="#xhome.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
-  <output ID="/moviePage.xhtml" NAME="output1" PATH="/moviePage.xhtml"
+  <output ID="/login.xhtml" NAME="output1" PATH="/login.xhtml"
+   TARGET="#xlogin.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
+  <output ID="/moviePage.xhtml" NAME="output2" PATH="/moviePage.xhtml"
    TARGET="#xmoviePage.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
  </item>
- <item NAME="#xlogin.xhtml" PATH="/login.xhtml" SHAPE="344,849,0,0"
-  TYPE="page" model-entity="SeamPagesDiagramItem"/>
+ <item ID="#login.xhtml" NAME="#xlogin.xhtml" PATH="/login.xhtml"
+  SHAPE="344,849,0,0" TYPE="page" model-entity="SeamPagesDiagramItem">
+  <output ID="/home.xhtml" NAME="output" PATH="/home.xhtml"
+   TARGET="#xhome.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
+  <output ID="/registration.xhtml" NAME="output1"
+   PATH="/registration.xhtml" TARGET="#xregistration.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
+ </item>
  <item NAME="#xerror.xhtml" PATH="/error.xhtml" SHAPE="472,121,0,0"
   TYPE="page" model-entity="SeamPagesDiagramItem"/>
  <item ID="#moviePage.xhtml" NAME="#xmoviePage.xhtml"
@@ -81,5 +88,16 @@
    TARGET="#xhome.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
   <output ID="/movieEditPage.xhtml" NAME="output1"
    PATH="/movieEditPage.xhtml" TARGET="#xmovieEditPage.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
+  <output ID="/moviePage.xhtml" NAME="output2" PATH="/moviePage.xhtml"
+   TARGET="#xmoviePage.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
+ </item>
+ <item ID="#registration.xhtml" NAME="#xregistration.xhtml"
+  PATH="/registration.xhtml" SHAPE="24,1081,0,0" TYPE="page" model-entity="SeamPagesDiagramItem">
+  <output ID="/home.xhtml" NAME="output" PATH="/home.xhtml"
+   TARGET="#xhome.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
+ </item>
+ <item ID="*" NAME="*" PATH="*" SHAPE="56,1209,0,0" TYPE="page" model-entity="SeamPagesDiagramItem">
+  <output ID="/registration.xhtml" NAME="output"
+   PATH="/registration.xhtml" TARGET="#xregistration.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
  </item>
 </diagram>
