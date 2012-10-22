@@ -5,6 +5,7 @@ package hu.bme.tesslo.hmdb.session;
 
 import hu.bme.tesslo.hmdb.dao.MovieDao;
 import hu.bme.tesslo.hmdb.model.Movie;
+import hu.bme.tesslo.hmdb.model.Rating;
 import hu.bme.tesslo.hmdb.util.ImdbReader;
 import hu.bme.tesslo.hmdb.util.StateHolder;
 
@@ -37,12 +38,16 @@ public class MoviePageBackBean {
 
 	private String genreFilter;
 
+	private Rating ownRating;
+
 	/** Logger. */
 	private static final Logger logger = Logger
 			.getLogger(MoviePageBackBean.class);
 
 	@Create
 	public void init() {
+		ownRating = new Rating();
+
 		// FIXME:[Kari] Teszthez kell, ki lesz javítva
 		if (selectedMovieStateHolder.getSelected() == null) {
 			Movie movie3 = new Movie(
@@ -74,6 +79,21 @@ public class MoviePageBackBean {
 	public void setSelectedMovieStateHolder(
 			StateHolder<Movie> selectedMovieStateHolder) {
 		this.selectedMovieStateHolder = selectedMovieStateHolder;
+	}
+
+	/**
+	 * @return the ownRating
+	 */
+	public Rating getOwnRating() {
+		return ownRating;
+	}
+
+	/**
+	 * @param ownRating
+	 *            the ownRating to set
+	 */
+	public void setOwnRating(Rating ownRating) {
+		this.ownRating = ownRating;
 	}
 
 	public void searchImdb() {
