@@ -81,10 +81,10 @@
       		<f:facet name="header">
       			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.more']}" />
       		</f:facet>
-      			<h:commandButton value="#{messages['hu.bme.tesslo.hmdb.more']}" action="#{HomePageBean.changeSelectedMovie(movie)}"  rendered="#{identity.loggedIn}"/>
-      			<h:commandButton value="#{messages['hu.bme.tesslo.hmdb.more']}" action="login"  rendered="#{not identity.loggedIn}"/>
+      			<h:commandButton value="#{messages['hu.bme.tesslo.hmdb.more']}" action="#{HomePageBean.changeSelectedMovie(movie)}" styleClass="myButton" rendered="#{identity.loggedIn}"/>
+      			<h:commandButton value="#{messages['hu.bme.tesslo.hmdb.more']}" action="login" styleClass="myButton" rendered="#{not identity.loggedIn}"/>
       		<f:facet name="footer">
-      			<h:commandButton value="Save" action="#{HomePageBean.saveNewMovie()}" rendered="#{identity.loggedIn}"/>
+      			<h:commandButton value="Save" action="#{HomePageBean.saveNewMovie()}" styleClass="myButton" rendered="#{identity.loggedIn}"/>
       		</f:facet>
       	</rich:column>
       	 <f:facet name="footer">
