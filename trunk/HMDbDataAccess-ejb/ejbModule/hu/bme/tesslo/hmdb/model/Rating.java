@@ -6,12 +6,15 @@ package hu.bme.tesslo.hmdb.model;
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.hibernate.validator.NotNull;
 
@@ -19,6 +22,7 @@ import org.hibernate.validator.NotNull;
  * @author Karcsi
  * 
  */
+@Entity
 public class Rating implements Serializable {
 
 	/**
@@ -30,13 +34,12 @@ public class Rating implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "UserRating")
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "UserId")
 	@NotNull
 	private User user;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "MovieRating")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@NotNull
 	private Movie movie;
 
@@ -45,6 +48,9 @@ public class Rating implements Serializable {
 	private Integer video;
 
 	private Integer summa;
+
+	@Column(length = 8000)
+	private String summary;
 
 	/**
 	 * @return the id
@@ -134,6 +140,21 @@ public class Rating implements Serializable {
 	 */
 	public void setSumma(Integer summa) {
 		this.summa = summa;
+	}
+
+	/**
+	 * @return the summary
+	 */
+	public String getSummary() {
+		return summary;
+	}
+
+	/**
+	 * @param summary
+	 *            the summary to set
+	 */
+	public void setSummary(String summary) {
+		this.summary = summary;
 	}
 
 	/*
