@@ -6,6 +6,8 @@
    TARGET="#xhome.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
   <output ID="/moviePage.xhtml" NAME="output1" PATH="/moviePage.xhtml"
    TARGET="#xmoviePage.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
+  <output ID="/userPage.xhtml" NAME="output2" PATH="/userPage.xhtml"
+   TARGET="#xuserPage.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
  </item>
  <item ID="org.jboss.seam.framework.EntityNotFoundException"
   NAME="exception:org.jboss.seam.framework.EntityNotFoundException"
@@ -72,6 +74,8 @@
    TARGET="#xlogin.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
   <output ID="/moviePage.xhtml" NAME="output2" PATH="/moviePage.xhtml"
    TARGET="#xmoviePage.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
+  <output ID="/userPage.xhtml" NAME="output3" PATH="/userPage.xhtml"
+   TARGET="#xuserPage.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
  </item>
  <item ID="#login.xhtml" NAME="#xlogin.xhtml" PATH="/login.xhtml"
   SHAPE="344,849,0,0" TYPE="page" model-entity="SeamPagesDiagramItem">
@@ -90,6 +94,8 @@
    PATH="/movieEditPage.xhtml" TARGET="#xmovieEditPage.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
   <output ID="/moviePage.xhtml" NAME="output2" PATH="/moviePage.xhtml"
    TARGET="#xmoviePage.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
+  <output ID="/userPage.xhtml" NAME="output3" PATH="/userPage.xhtml"
+   TARGET="#xuserPage.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
  </item>
  <item ID="#registration.xhtml" NAME="#xregistration.xhtml"
   PATH="/registration.xhtml" SHAPE="24,1081,0,0" TYPE="page" model-entity="SeamPagesDiagramItem">
@@ -99,5 +105,12 @@
  <item ID="*" NAME="*" PATH="*" SHAPE="56,1209,0,0" TYPE="page" model-entity="SeamPagesDiagramItem">
   <output ID="/registration.xhtml" NAME="output"
    PATH="/registration.xhtml" TARGET="#xregistration.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
+ </item>
+ <item ID="#userPage.xhtml" NAME="#xuserPage.xhtml"
+  PATH="/userPage.xhtml" SHAPE="920,193,0,0" TYPE="page" model-entity="SeamPagesDiagramItem">
+  <output ID="/home.xhtml" NAME="output" PATH="/home.xhtml"
+   TARGET="#xhome.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
+  <output ID="/moviePage.xhtml" NAME="output1" PATH="/moviePage.xhtml"
+   TARGET="#xmoviePage.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
  </item>
 </diagram>

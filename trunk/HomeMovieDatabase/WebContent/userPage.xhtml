@@ -1,0 +1,75 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" template="layout/template.xhtml">
+
+	<ui:define name="body">
+		<h:form>
+			<h:panelGrid columns="1">
+
+				<rich:simpleTogglePanel switchType="client" label="Ertekelesek">
+					<rich:dataGrid columns="2" value="#{UserPageBean.ownRatings}"
+						var="rating" elements="6" first="0">
+						<h:panelGrid columns="2">
+							<h:graphicImage value="#{rating.movie.posterUrl}" width="150px"
+								height="200px" title="#{rating.movie.title}"
+								rendered="#{not (null==rating.movie.posterUrl)}">
+								<a4j:support event="onclick"
+									action="#{HomePageBean.changeSelectedMovie(rating.movie)}" />
+							</h:graphicImage>
+							<a4j:commandLink value="#{rating.movie.title}"
+								action="#{HomePageBean.changeSelectedMovie(rating.movie)}"
+								rendered="#{null==rating.movie.posterUrl}" />
+
+
+							<rich:panel>
+						<h:panelGrid columns="2">
+									<h:outputText value="#{rating.movie.title}" />
+									<rich:spacer/>
+                                    <rich:separator height="1" lineType="solid" />
+									<rich:separator height="1" lineType="solid" />
+									
+                                    <h:outputText value="Audio:" styleClass="label"/>
+                                    <h:outputText value="#{rating.audio}"/>
+                                    <rich:separator height="1" lineType="solid" />
+									<rich:separator height="1" lineType="solid" />
+
+                                    <h:outputText value="Video:" styleClass="label"/>
+                                    <h:outputText value="#{rating.video}"/>
+                                    <rich:separator height="1" lineType="solid" />
+									<rich:separator height="1" lineType="solid" />
+                                    
+                                    
+                                    <h:outputText value="Summa:" styleClass="label"/>
+                                    <h:outputText value="#{rating.summa}"/>
+                                    <rich:separator height="1" lineType="solid" />
+									<rich:separator height="1" lineType="solid" />
+                                    
+                                    
+                                    <h:outputText value="Summary:" styleClass="label"/>
+                                    <h:outputText value="#{rating.summary}"/>
+                                    <rich:separator height="1" lineType="solid" />
+									<rich:separator height="1" lineType="solid" />
+
+                            </h:panelGrid>
+					</rich:panel>
+						</h:panelGrid>
+						<f:facet name="footer">
+							<rich:datascroller />
+						</f:facet>
+					</rich:dataGrid>
+				</rich:simpleTogglePanel>
+
+				<rich:simpleTogglePanel switchType="client" label="Kedvencek">
+
+				</rich:simpleTogglePanel>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
