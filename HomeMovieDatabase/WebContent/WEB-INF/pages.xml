@@ -19,6 +19,9 @@
             <rule if-outcome="moviePage">
                 <redirect view-id="/moviePage.xhtml"/>
             </rule>
+            <rule if-outcome="userPage">
+                <redirect view-id="/userPage.xhtml"/>
+            </rule>
         </navigation>
     </page>
     
@@ -36,6 +39,9 @@
            <rule if-outcome="moviePage">
                 <redirect view-id="/moviePage.xhtml"/>
             </rule>
+            <rule if-outcome="userPage">
+                <redirect view-id="/userPage.xhtml"/>
+            </rule>
         </navigation>
     </page>
     
@@ -48,6 +54,23 @@
                 <redirect view-id="/home.xhtml"/>
             </rule>
             <rule if-outcome="moviePage">
+                <redirect view-id="/moviePage.xhtml"/>
+            </rule>
+            <rule if-outcome="userPage">
+                <redirect view-id="/userPage.xhtml"/>
+            </rule>
+        </navigation>
+    </page>
+    
+    <page view-id="/userPage.xhtml">
+    <begin-conversation join="true"/>
+        <navigation>
+       <!--    -->
+            <rule if-outcome="home">
+                <end-conversation before-redirect="true"/>
+                <redirect view-id="/home.xhtml"/>
+            </rule>
+           <rule if-outcome="moviePage">
                 <redirect view-id="/moviePage.xhtml"/>
             </rule>
         </navigation>
