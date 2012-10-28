@@ -15,7 +15,7 @@
 		<f:facet name="header">
 			<h:outputText value="Elozmenyek"/>
 		</f:facet>
-			<h:graphicImage value="#{antMovie.posterUrl}" width="150px" height="200px" title="#{antMovie.title}" rendered="#{not (null==antMovie.posterUrl)}">
+			<h:graphicImage value="#{antMovie.posterUrl}" width="150px" height="200px" title="#{antMovie.title}" rendered="#{not (null==antMovie.posterUrl)}" style="cursor:pointer">
 				<a4j:support event="onclick" action="#{HomePageBean.changeSelectedMovie(antMovie)}"/>
 			</h:graphicImage>
 			<a4j:commandLink value="#{antMovie.title}" action="#{HomePageBean.changeSelectedMovie(antMovie)}"  rendered="#{null==antMovie.posterUrl}" />
