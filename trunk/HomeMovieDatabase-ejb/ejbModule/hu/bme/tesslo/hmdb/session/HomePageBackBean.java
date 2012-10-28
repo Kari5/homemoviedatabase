@@ -77,8 +77,11 @@ public class HomePageBackBean {
 			FacesMessages.instance().add("Nem adtál meg címet!");
 			return "#";
 		}
-		movieDao.save(newMovie);
-		FacesMessages.instance().add("Sikeres mentés!");
+		if (movieDao.saveOrUpdate(newMovie)) {
+			FacesMessages.instance().add("Sikeres mentés!");
+		} else {
+			FacesMessages.instance().add("A film már fel volt véve!");
+		}
 		return "home";
 	}
 

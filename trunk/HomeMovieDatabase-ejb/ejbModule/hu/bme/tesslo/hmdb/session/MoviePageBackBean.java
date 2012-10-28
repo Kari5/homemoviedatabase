@@ -4,6 +4,7 @@
 package hu.bme.tesslo.hmdb.session;
 
 import hu.bme.tesslo.hmdb.dao.MovieDao;
+import hu.bme.tesslo.hmdb.dao.UserDao;
 import hu.bme.tesslo.hmdb.model.Movie;
 import hu.bme.tesslo.hmdb.model.Rating;
 import hu.bme.tesslo.hmdb.util.ImdbReader;
@@ -18,6 +19,8 @@ import org.jboss.seam.annotations.Create;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
+import org.jboss.seam.faces.FacesMessages;
+import org.jboss.seam.security.Credentials;
 
 /**
  * @author Karcsi
@@ -33,6 +36,9 @@ public class MoviePageBackBean {
 	 */
 	@In(create = true)
 	private StateHolder<Movie> selectedMovieStateHolder;
+
+	@In
+	Credentials credentials;
 
 	private String titleFilter;
 
@@ -132,6 +138,19 @@ public class MoviePageBackBean {
 		return "moviePage";
 	}
 
+	public String remove() {
+		MovieDao movieDao;
+		try {
+			movieDao = (MovieDao) InitialContext
+					.doLookup("HomeMovieDatabase-ear/MovieDao/local");
+		} catch (NamingException e) {
+			logger.error("MovieDao nem található!", e);
+			return "#";
+		}
+		movieDao.removeMovie(this.selectedMovieStateHolder.getSelected());
+		return "home";
+	}
+
 	/**
 	 * @return the titleFilter
 	 */
@@ -160,6 +179,47 @@ public class MoviePageBackBean {
 	 */
 	public void setGenreFilter(String genreFilter) {
 		this.genreFilter = genreFilter;
+	}
+
+	/**
+	 * Felvesz vagy töröl egy filmet a kedvencek közül.
+	 * 
+	 * @return
+	 */
+	public String like() {
+		UserDao userDao;
+		try {
+			userDao = InitialContext
+					.doLookup("HomeMovieDatabase-ear/UserDao/local");
+		} catch (NamingException e) {
+			logger.error(e.getMessage());
+			FacesMessages.instance().add("Belsõ hiba!");
+			return "#";
+		}
+		if (userDao.changeFavoriteMovie(credentials.getUsername(),
+				selectedMovieStateHolder.getSelected())) {
+			FacesMessages.instance().add("Film felvéve a kedvencek közé!");
+		} else {
+			FacesMessages.instance().add("Film törölve a kedvencek közül!");
+		}
+		return "moveiPage";
+	}
+
+	/**
+	 * Visszaadja, hogy adott film kedvence-e a felhasználónak.
+	 */
+	public boolean isLiked() {
+		UserDao userDao;
+		try {
+			userDao = InitialContext
+					.doLookup("HomeMovieDatabase-ear/UserDao/local");
+		} catch (NamingException e) {
+			logger.error(e.getMessage());
+			FacesMessages.instance().add("Belsõ hiba!");
+			return false;
+		}
+		return userDao.isFavoriteMovie(credentials.getUsername(),
+				selectedMovieStateHolder.getSelected());
 	}
 
 }

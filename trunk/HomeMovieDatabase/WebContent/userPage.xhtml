@@ -12,13 +12,167 @@
 		<h:form>
 			<h:panelGrid columns="1">
 
+				<rich:simpleTogglePanel switchType="client" label="Kedvencek">
+					<rich:dataGrid columns="1" value="#{UserPageBean.favoriteMovies}"
+						var="movie" elements="6" first="0">
+						<h:panelGrid columns="2">
+							<h:graphicImage value="#{movie.posterUrl}" width="150px"
+								height="200px" title="#{movie.title}"
+								rendered="#{not (null==movie.posterUrl)}" style="cursor:pointer">
+								<a4j:support event="onclick"
+									action="#{HomePageBean.changeSelectedMovie(movie)}" />
+							</h:graphicImage>
+							<a4j:commandLink value="#{movie.title}"
+								action="#{HomePageBean.changeSelectedMovie(movie)}"
+								rendered="#{null==movie.posterUrl}" />
+							<rich:panel>
+								<h:outputText value="#{movie.title}" />
+								<rich:separator height="1" lineType="solid" />
+								<h:panelGrid columns="5">
+									<h:outputText value="#{movie.genre}" />
+									<rich:spacer width="50px" />
+									<h:outputText value="#{movie.year}" />
+									<rich:spacer width="50px" />
+									<h:graphicImage value="/img/heart.png" title="Kedvenc" />
+								</h:panelGrid>
+								<rich:separator height="1" lineType="solid" />
+
+								<rich:simpleTogglePanel switchType="client" label="Reszletek"
+									style="width:100%" opened="false">
+									<h:panelGrid columns="2" columnClasses="panel20,panel80"
+										style="width:100%">
+										<h:outputText
+											value="#{messages['hu.bme.tesslo.hmdb.runtime']}"
+											rendered="#{not (null == movie.runtime)}" />
+										<h:outputText value="#{movie.runtime}"
+											rendered="#{not (null == movie.runtime)}" />
+
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.runtime)}" />
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.runtime)}" />
+
+										<h:outputText
+											value="#{messages['hu.bme.tesslo.hmdb.director']}"
+											rendered="#{not (null == movie.director)}" />
+										<h:outputText value="#{movie.director}"
+											rendered="#{not (null == movie.director)}" />
+
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.director)}" />
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.director)}" />
+
+										<h:outputText value="#{messages['hu.bme.tesslo.hmdb.writer']}"
+											rendered="#{not (null == movie.writer)}" />
+										<h:outputText value="#{movie.writer}"
+											rendered="#{not (null == movie.writer)}" />
+
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.writer)}" />
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.writer)}" />
+
+										<h:outputText value="#{messages['hu.bme.tesslo.hmdb.actors']}"
+											rendered="#{not (null == movie.actors)}" />
+										<h:outputText value="#{movie.actors}"
+											rendered="#{not (null == movie.actors)}" />
+
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.actors)}" />
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.actors)}" />
+
+										<h:outputText value="#{messages['hu.bme.tesslo.hmdb.plot']}"
+											rendered="#{not (null == movie.plot)}" />
+										<h:outputText value="#{movie.plot}"
+											rendered="#{not (null == movie.plot)}" />
+
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.plot)}" />
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.plot)}" />
+
+										<h:outputText
+											value="#{messages['hu.bme.tesslo.hmdb.imdbRating']}"
+											rendered="#{not (null == movie.imdbRating)}" />
+										<h:outputText value="#{movie.imdbRating}"
+											rendered="#{not (null == movie.imdbRating)}" />
+
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.imdbRating)}" />
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.imdbRating)}" />
+
+										<h:outputText value="#{messages['hu.bme.tesslo.hmdb.imdbid']}"
+											rendered="#{not (null == movie.imdbID)}" />
+										<s:div rendered="#{not (null == movie.imdbID)}">
+											<a href="http://www.imdb.com/title/#{movie.imdbID}"
+												target="blank">IMDb link </a>
+										</s:div>
+
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.imdbID)}" />
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.imdbID)}" />
+
+										<h:outputText
+											value="#{messages['hu.bme.tesslo.hmdb.localURL']}"
+											rendered="#{not (null == movie.localUrl)}" />
+										<h:outputText value="#{movie.localUrl}"
+											rendered="#{not (null == movie.localUrl)}" />
+
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.localUrl)}" />
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.localUrl)}" />
+
+										<h:outputText
+											value="#{messages['hu.bme.tesslo.hmdb.language']}"
+											rendered="#{not (null == movie.language)}" />
+										<h:outputText value="#{movie.language}"
+											rendered="#{not (null == movie.language)}" />
+
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.language)}" />
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.language)}" />
+
+										<h:outputText
+											value="#{messages['hu.bme.tesslo.hmdb.subtitle']}"
+											rendered="#{not (null == movie.subtitle)}" />
+										<h:selectBooleanCheckbox value="#{movie.subtitle}"
+											readonly="true" disabled="true"
+											rendered="#{not (null == movie.subtitle)}" />
+
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.subtitle)}" />
+										<rich:separator height="1" lineType="solid"
+											rendered="#{not (null == movie.subtitle)}" />
+
+									</h:panelGrid>
+								</rich:simpleTogglePanel>
+
+							</rich:panel>
+						</h:panelGrid>
+						<f:facet name="footer">
+							<rich:datascroller />
+						</f:facet>
+					</rich:dataGrid>
+				</rich:simpleTogglePanel>
+				
+				<rich:spacer height="25px"/>
+				<rich:separator height="3" lineType="solid" />
+				<rich:spacer height="25px"/>
+				
 				<rich:simpleTogglePanel switchType="client" label="Ertekelesek">
 					<rich:dataGrid columns="2" value="#{UserPageBean.ownRatings}"
 						var="rating" elements="6" first="0">
 						<h:panelGrid columns="2">
 							<h:graphicImage value="#{rating.movie.posterUrl}" width="150px"
 								height="200px" title="#{rating.movie.title}"
-								rendered="#{not (null==rating.movie.posterUrl)}">
+								rendered="#{not (null==rating.movie.posterUrl)}"
+								style="cursor:pointer">
 								<a4j:support event="onclick"
 									action="#{HomePageBean.changeSelectedMovie(rating.movie)}" />
 							</h:graphicImage>
@@ -28,36 +182,39 @@
 
 
 							<rich:panel>
-						<h:panelGrid columns="2">
+								<h:panelGrid columns="2">
 									<h:outputText value="#{rating.movie.title}" />
-									<rich:spacer/>
-                                    <rich:separator height="1" lineType="solid" />
+									<rich:spacer />
 									<rich:separator height="1" lineType="solid" />
-									
-                                    <h:outputText value="Audio:" styleClass="label"/>
-                                    <h:outputText value="#{rating.audio}"/>
-                                    <rich:separator height="1" lineType="solid" />
 									<rich:separator height="1" lineType="solid" />
 
-                                    <h:outputText value="Video:" styleClass="label"/>
-                                    <h:outputText value="#{rating.video}"/>
-                                    <rich:separator height="1" lineType="solid" />
+									<h:outputText value="Audio:" styleClass="label" />
+									<h:outputText value="#{rating.audio}" />
 									<rich:separator height="1" lineType="solid" />
-                                    
-                                    
-                                    <h:outputText value="Summa:" styleClass="label"/>
-                                    <h:outputText value="#{rating.summa}"/>
-                                    <rich:separator height="1" lineType="solid" />
-									<rich:separator height="1" lineType="solid" />
-                                    
-                                    
-                                    <h:outputText value="Summary:" styleClass="label"/>
-                                    <h:outputText value="#{rating.summary}"/>
-                                    <rich:separator height="1" lineType="solid" />
 									<rich:separator height="1" lineType="solid" />
 
-                            </h:panelGrid>
-					</rich:panel>
+									<h:outputText value="Video:" styleClass="label" />
+									<h:outputText value="#{rating.video}" />
+									<rich:separator height="1" lineType="solid" />
+									<rich:separator height="1" lineType="solid" />
+
+
+									<h:outputText value="Summa:" styleClass="label" />
+									<h:outputText value="#{rating.summa}" />
+									<rich:separator height="1" lineType="solid" />
+									<rich:separator height="1" lineType="solid" />
+
+
+									<h:outputText value="Summary:" styleClass="label" />
+									<h:outputText value="#{rating.summary}" />
+									<rich:separator height="1" lineType="solid" />
+									<rich:separator height="1" lineType="solid" />
+
+								</h:panelGrid>
+								<h:commandButton action="#" title="Szerkeszt" image="/img/edit.png" value="Szerkeszt" styleClass="myButton" />
+								<rich:spacer width="5px"/>
+								<h:commandButton action="#" title="Torol" image="/img/delete.png" value="Torol" styleClass="myButton" />
+							</rich:panel>
 						</h:panelGrid>
 						<f:facet name="footer">
 							<rich:datascroller />
@@ -65,9 +222,7 @@
 					</rich:dataGrid>
 				</rich:simpleTogglePanel>
 
-				<rich:simpleTogglePanel switchType="client" label="Kedvencek">
 
-				</rich:simpleTogglePanel>
 			</h:panelGrid>
 		</h:form>
 	</ui:define>
