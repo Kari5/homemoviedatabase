@@ -23,8 +23,13 @@
     </h:panelGrid>
     <rich:spacer height="50px"/>
     <h:graphicImage value="#{MoviePageBean.selectedMovieStateHolder.selected.posterUrl}"/>
+    <br/>
+    <rich:spacer height="25px"/>
+    <br/>
     <h:form>
-    <h:commandButton action="movieEditPage" value="Szerkeszt" styleClass="myButton"/>
+    <h:commandButton action="movieEditPage" title="Szerkeszt" value="Szerkeszt" image="/img/edit.png" styleClass="myButton"/>
+    <rich:spacer width="5px"/>
+    <h:commandButton action="#" title="Kedvenc" value="Kedvenc" image="/img/heart.png" styleClass="myButton"/>
     </h:form>
     </rich:panel>
     
