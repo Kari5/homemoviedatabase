@@ -40,8 +40,15 @@ public interface MovieDao extends GenericDao<Movie> {
 	 * 
 	 * @param m
 	 *            elmentendõ, vagy felülírandó film
+	 * @return True, ha új elemet vett fel, false, ha régit írt felül.
 	 */
-	public void saveOrUpdate(Movie m);
+	public boolean saveOrUpdate(Movie m);
+
+	/**
+	 * Eltávolít egy filmet minden aadatbázisból.
+	 * 
+	 */
+	public void removeMovie(Movie m);
 
 	public void setDummieDate();
 }

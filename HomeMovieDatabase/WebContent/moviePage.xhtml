@@ -16,10 +16,12 @@
     
     <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.title}" styleClass="title" />
     <rich:separator height="2" lineType="solid"/>
-    <h:panelGrid columns="3">
+    <h:panelGrid columns="5">
     <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.genre}" />
     <rich:spacer width="50px"/>
     <h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.year}" />
+    <rich:spacer width="50px"/>
+    <h:graphicImage value="/img/heart.png" title="Kedvenc" rendered="#{MoviePageBean.liked}" />
     </h:panelGrid>
     <rich:spacer height="50px"/>
     <h:graphicImage value="#{MoviePageBean.selectedMovieStateHolder.selected.posterUrl}"/>
@@ -29,7 +31,8 @@
     <h:form>
     <h:commandButton action="movieEditPage" title="Szerkeszt" value="Szerkeszt" image="/img/edit.png" styleClass="myButton"/>
     <rich:spacer width="5px"/>
-    <h:commandButton action="#" title="Kedvenc" value="Kedvenc" image="/img/heart.png" styleClass="myButton"/>
+    <h:commandButton action="#{MoviePageBean.like()}" title="Kedvenc" value="Kedvenc" image="/img/heart.png" styleClass="myButton" rendered="#{not MoviePageBean.liked}"/>
+    <h:commandButton action="#{MoviePageBean.like()}" title="Kedvenc torlese" value="Kedvenc torol" image="/img/black_heart.png" styleClass="myButton" rendered="#{MoviePageBean.liked}"/>
     </h:form>
     </rich:panel>
     

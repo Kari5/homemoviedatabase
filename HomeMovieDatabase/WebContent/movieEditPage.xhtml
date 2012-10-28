@@ -14,87 +14,90 @@
     <h:panelGrid id="editPanelGrid" columns="2">
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.title']}" />
     <h:inputText value="#{selectedMovieStateHolder.selected.title}" size="100" />
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
+    <rich:separator height="1" lineType="solid"/>
+    <rich:separator height="1" lineType="solid"/>
     
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.year']}" />
     <rich:inputNumberSpinner value="#{selectedMovieStateHolder.selected.year}" minValue="1920" maxValue="2050"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
+    <rich:separator height="1" lineType="solid"/>
+    <rich:separator height="1" lineType="solid"/>
     
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.runtime']}" />
     <h:inputText value="#{selectedMovieStateHolder.selected.runtime}" size="100" />
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
+    <rich:separator height="1" lineType="solid"/>
+    <rich:separator height="1" lineType="solid"/>
     
     
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.genre']}" />
     <h:inputText value="#{selectedMovieStateHolder.selected.genre}"  size="100"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
+    <rich:separator height="1" lineType="solid"/>
+    <rich:separator height="1" lineType="solid"/>
     
     
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.director']}" />
     <h:inputText value="#{selectedMovieStateHolder.selected.director}"  size="100"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
+    <rich:separator height="1" lineType="solid"/>
+    <rich:separator height="1" lineType="solid"/>
     
     
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.writer']}" />
     <h:inputText value="#{selectedMovieStateHolder.selected.writer}" size="100"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
+    <rich:separator height="1" lineType="solid"/>
+    <rich:separator height="1" lineType="solid"/>
     
     
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.actors']}" />
     <h:inputText value="#{selectedMovieStateHolder.selected.actors}" size="100"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
+    <rich:separator height="1" lineType="solid"/>
+    <rich:separator height="1" lineType="solid"/>
     
     
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.plot']}" />
     <h:inputTextarea value="#{selectedMovieStateHolder.selected.plot}" rows="5" cols="100"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
+    <rich:separator height="1" lineType="solid"/>
+    <rich:separator height="1" lineType="solid"/>
     
     
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.posterURL']}" />
     <h:inputText value="#{selectedMovieStateHolder.selected.posterUrl}" size="100"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
+    <rich:separator height="1" lineType="solid"/>
+    <rich:separator height="1" lineType="solid"/>
     
     
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.imdbRating']}" />
     <rich:inputNumberSlider value="#{selectedMovieStateHolder.selected.imdbRating}" minValue="0" maxValue="10"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
+    <rich:separator height="1" lineType="solid"/>
+    <rich:separator height="1" lineType="solid"/>
     
     
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.imdbid']}" />
     <h:inputText value="#{selectedMovieStateHolder.selected.imdbID}" size="100"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
+    <rich:separator height="1" lineType="solid"/>
+    <rich:separator height="1" lineType="solid"/>
     
     
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.localURL']}" />
     <h:inputText value="#{selectedMovieStateHolder.selected.localUrl}" size="100"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
+    <rich:separator height="1" lineType="solid"/>
+    <rich:separator height="1" lineType="solid"/>
     
     
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.language']}" />
     <h:inputText value="#{selectedMovieStateHolder.selected.language}" size="100"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
+    <rich:separator height="1" lineType="solid"/>
+    <rich:separator height="1" lineType="solid"/>
     
     <h:outputText value="#{messages['hu.bme.tesslo.hmdb.subtitle']}" />  
     <h:selectBooleanCheckbox value="#{selectedMovieStateHolder.selected.subtitle}" />
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
-    <rich:separator height="1" lineType="solid"  rendered="#{not (null == MoviePageBean.selectedMovieStateHolder.selected.runtime)}"/>
+    <rich:separator height="1" lineType="solid"/>
+    <rich:separator height="1" lineType="solid"/>
     
     </h:panelGrid>
-    <a4j:commandButton value="IMDb" action="#{MoviePageBean.searchImdb()}" reRender="editPanelGrid" styleClass="myButton" />
-    <a4j:commandButton value="Ment" action="#{MoviePageBean.saveChanges()}" styleClass="myButton"/>
+    <a4j:commandButton title="IMDb" value="IMDb" action="#{MoviePageBean.searchImdb()}" image="/img/imdb.png" reRender="editPanelGrid" styleClass="myButton" />
+    <rich:spacer width="5px"/>
+    <a4j:commandButton title="Save" value="Ment" action="#{MoviePageBean.saveChanges()}" image="/img/save.png" styleClass="myButton"/>
+    <rich:spacer width="5px"/>
+    <a4j:commandButton title="Delete" value="Torol" action="#" styleClass="myButton" image="/img/delete.png"/>
     </h:form>
     </ui:define>
     

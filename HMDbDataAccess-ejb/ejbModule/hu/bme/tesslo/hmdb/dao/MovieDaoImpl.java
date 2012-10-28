@@ -43,28 +43,28 @@ public class MovieDaoImpl extends GenericDaoImpl<Movie> implements MovieDao {
 		logger.info("Filmek száma: " + result.size());
 		return result;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
-	public Movie getMovie(String title, Integer year){
-		if(year!=null){
-		String query="FROM Movie AS M WHERE M.title = ? AND M.year=?";
-		return (Movie)executeQuerySingleResult(query, title, year);
+	public Movie getMovie(String title, Integer year) {
+		if (year != null) {
+			String query = "FROM Movie AS M WHERE M.title = ? AND M.year=?";
+			return (Movie) executeQuerySingleResult(query, title, year);
 		} else {
-			String query="FROM Movie AS M WHERE M.title = ?";
-			return (Movie)executeQuerySingleResult(query, title);
+			String query = "FROM Movie AS M WHERE M.title = ?";
+			return (Movie) executeQuerySingleResult(query, title);
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
-	public void saveOrUpdate(Movie m){
-		Movie existing=getMovie(m.getTitle(), m.getYear());
-		if(existing==null){
+	public boolean saveOrUpdate(Movie m) {
+		Movie existing = getMovie(m.getTitle(), m.getYear());
+		if (existing == null) {
 			save(m);
-			return;
+			return true;
 		} else {
 			existing.setTitle(m.getTitle());
 			existing.setActors(m.getActors());
@@ -80,6 +80,7 @@ public class MovieDaoImpl extends GenericDaoImpl<Movie> implements MovieDao {
 			existing.setSubtitle(m.getSubtitle());
 			existing.setWriter(m.getWriter());
 		}
+		return false;
 	}
 
 	public void setDummieDate() {
@@ -101,6 +102,27 @@ public class MovieDaoImpl extends GenericDaoImpl<Movie> implements MovieDao {
 		save(movie);
 		save(movie2);
 		save(movie3);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void removeMovie(Movie m) {
+		try {
+			Movie attachedMovie = findByPrimaryKey(m.getId());
+			logger.info("Megtalált film: " + attachedMovie.getTitle());
+			String queryA = "DELETE FROM Antecendents AS A WHERE A.movie.id = ?";
+			executeUpdate(queryA, m.getId());
+			// List<User>
+			// users=executeQueryMultipleResult("FROM User AS U WHERE U.",
+			// params)
+			remove(attachedMovie);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// TODO:[Kari] Ezt még le kell ellenõrizni.
 	}
 
 }
