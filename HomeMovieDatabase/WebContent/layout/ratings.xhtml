@@ -12,28 +12,28 @@
 		<h:panelGrid columns="1" style="width:100%">
 			<rich:panel rendered="#{not RatingsBackBean.ratingExist()}">
 				<h:panelGrid columns="2">
-					<h:outputText value="Audio" />
+					<h:outputText value="#{messages['hu.bme.tesslo.hmdb.audio']}:" />
 					<rich:inputNumberSlider value="#{RatingsBackBean.newRating.audio}"
 						minValue="0" maxValue="10" showInput="false"
 						enableManualInput="false" />
 					<rich:separator height="1" lineType="solid" />
 					<rich:separator height="1" lineType="solid" />
 
-					<h:outputText value="Video" />
+					<h:outputText value="#{messages['hu.bme.tesslo.hmdb.video']}:" />
 					<rich:inputNumberSlider value="#{RatingsBackBean.newRating.video}"
 						minValue="0" maxValue="10" showInput="false"
 						enableManualInput="false" />
 					<rich:separator height="1" lineType="solid" />
 					<rich:separator height="1" lineType="solid" />
 
-					<h:outputText value="Summa" />
+					<h:outputText value="#{messages['hu.bme.tesslo.hmdb.summa']}:" />
 					<rich:inputNumberSlider value="#{RatingsBackBean.newRating.summa}"
 						minValue="0" maxValue="10" showInput="false"
 						enableManualInput="false" />
 					<rich:separator height="1" lineType="solid" />
 					<rich:separator height="1" lineType="solid" />
 
-					<h:outputText value="Summary" />
+					<h:outputText value="#{messages['hu.bme.tesslo.hmdb.comment']}" />
 					<h:inputTextarea value="#{RatingsBackBean.newRating.summary}"
 						rows="5" cols="100" />
 					<rich:separator height="1" lineType="solid" />
@@ -49,24 +49,24 @@
 					<rich:panel header="#{rating.user.lastName} #{rating.user.firstName}">
 						<h:panelGrid columns="2">
 
-                                    <h:outputText value="Audio:" styleClass="label"/>
+                                    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.audio']}:" styleClass="label"/>
                                     <h:outputText value="#{rating.audio}"/>
                                     <rich:separator height="1" lineType="solid" />
 									<rich:separator height="1" lineType="solid" />
 
-                                    <h:outputText value="Video:" styleClass="label"/>
+                                    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.video']}:" styleClass="label"/>
                                     <h:outputText value="#{rating.video}"/>
                                     <rich:separator height="1" lineType="solid" />
 									<rich:separator height="1" lineType="solid" />
                                     
                                     
-                                    <h:outputText value="Summa:" styleClass="label"/>
+                                    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.summa']}:" styleClass="label"/>
                                     <h:outputText value="#{rating.summa}"/>
                                     <rich:separator height="1" lineType="solid" />
 									<rich:separator height="1" lineType="solid" />
                                     
                                     
-                                    <h:outputText value="Summary:" styleClass="label"/>
+                                    <h:outputText value="#{messages['hu.bme.tesslo.hmdb.comment']}:" styleClass="label"/>
                                     <h:outputText value="#{rating.summary}"/>
                                     <rich:separator height="1" lineType="solid" />
 									<rich:separator height="1" lineType="solid" />

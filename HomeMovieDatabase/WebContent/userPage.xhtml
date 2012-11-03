@@ -12,7 +12,7 @@
 		<h:form>
 			<h:panelGrid columns="1">
 
-				<rich:simpleTogglePanel switchType="client" label="Kedvencek">
+				<rich:simpleTogglePanel switchType="client" label="#{messages['hu.bme.tesslo.hmdb.favorites']}">
 					<rich:dataGrid columns="1" value="#{UserPageBean.favoriteMovies}"
 						var="movie" elements="6" first="0">
 						<h:panelGrid columns="2">
@@ -25,7 +25,7 @@
 							<a4j:commandLink value="#{movie.title}"
 								action="#{HomePageBean.changeSelectedMovie(movie)}"
 								rendered="#{null==movie.posterUrl}" />
-							<rich:panel>
+							<rich:panel style="border:0px">
 								<h:outputText value="#{movie.title}" />
 								<rich:separator height="1" lineType="solid" />
 								<h:panelGrid columns="5">
@@ -33,11 +33,10 @@
 									<rich:spacer width="50px" />
 									<h:outputText value="#{movie.year}" />
 									<rich:spacer width="50px" />
-									<h:graphicImage value="/img/heart.png" title="Kedvenc" />
+									<h:graphicImage value="/img/heart.png" title="#{messages['hu.bme.tesslo.hmdb.favorite']}" />
 								</h:panelGrid>
-								<rich:separator height="1" lineType="solid" />
 
-								<rich:simpleTogglePanel switchType="client" label="Reszletek"
+								<rich:simpleTogglePanel switchType="client" label="#{messages['hu.bme.tesslo.hmdb.details']}"
 									style="width:100%" opened="false">
 									<h:panelGrid columns="2" columnClasses="panel20,panel80"
 										style="width:100%">
@@ -108,7 +107,7 @@
 											rendered="#{not (null == movie.imdbID)}" />
 										<s:div rendered="#{not (null == movie.imdbID)}">
 											<a href="http://www.imdb.com/title/#{movie.imdbID}"
-												target="blank">IMDb link </a>
+												target="blank"><h:outputText value="#{MoviePageBean.selectedMovieStateHolder.selected.imdbID}"/> </a>
 										</s:div>
 
 										<rich:separator height="1" lineType="solid"
@@ -165,7 +164,7 @@
 				<rich:separator height="3" lineType="solid" />
 				<rich:spacer height="25px"/>
 				
-				<rich:simpleTogglePanel switchType="client" label="Ertekelesek">
+				<rich:simpleTogglePanel switchType="client" label="#{messages['hu.bme.tesslo.hmdb.ratings']}">
 					<rich:dataGrid columns="2" value="#{UserPageBean.ownRatings}"
 						var="rating" elements="6" first="0">
 						<h:panelGrid columns="2">
@@ -188,32 +187,32 @@
 									<rich:separator height="1" lineType="solid" />
 									<rich:separator height="1" lineType="solid" />
 
-									<h:outputText value="Audio:" styleClass="label" />
+									<h:outputText value="#{messages['hu.bme.tesslo.hmdb.audio']}" styleClass="label" />
 									<h:outputText value="#{rating.audio}" />
 									<rich:separator height="1" lineType="solid" />
 									<rich:separator height="1" lineType="solid" />
 
-									<h:outputText value="Video:" styleClass="label" />
+									<h:outputText value="#{messages['hu.bme.tesslo.hmdb.video']}" styleClass="label" />
 									<h:outputText value="#{rating.video}" />
 									<rich:separator height="1" lineType="solid" />
 									<rich:separator height="1" lineType="solid" />
 
 
-									<h:outputText value="Summa:" styleClass="label" />
+									<h:outputText value="#{messages['hu.bme.tesslo.hmdb.summa']}" styleClass="label" />
 									<h:outputText value="#{rating.summa}" />
 									<rich:separator height="1" lineType="solid" />
 									<rich:separator height="1" lineType="solid" />
 
 
-									<h:outputText value="Summary:" styleClass="label" />
+									<h:outputText value="#{messages['hu.bme.tesslo.hmdb.comment']}" styleClass="label" />
 									<h:outputText value="#{rating.summary}" />
 									<rich:separator height="1" lineType="solid" />
 									<rich:separator height="1" lineType="solid" />
 
 								</h:panelGrid>
-								<h:commandButton action="#" title="Szerkeszt" image="/img/edit.png" value="Szerkeszt" styleClass="myButton" />
+								<h:commandButton action="#" title="#{messages['hu.bme.tesslo.hmdb.edit']}" image="/img/edit.png" value="#{messages['hu.bme.tesslo.hmdb.edit']}" styleClass="myButton" />
 								<rich:spacer width="5px"/>
-								<h:commandButton action="#" title="Torol" image="/img/delete.png" value="Torol" styleClass="myButton" />
+								<h:commandButton action="#{UserPageBean.deleteRating(rating)}" title="#{messages['hu.bme.tesslo.hmdb.delete']}" image="/img/delete.png" value="#{messages['hu.bme.tesslo.hmdb.delete']}" styleClass="myButton"/>
 							</rich:panel>
 						</h:panelGrid>
 						<f:facet name="footer">

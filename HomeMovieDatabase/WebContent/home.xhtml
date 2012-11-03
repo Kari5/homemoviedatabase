@@ -79,10 +79,10 @@
       	</rich:column>
       	<rich:column>
       		<f:facet name="header">
-      			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.more']}" />
+      			<h:outputText value="#{messages['hu.bme.tesslo.hmdb.details']}" />
       		</f:facet>
-      			<h:commandButton value="#{messages['hu.bme.tesslo.hmdb.more']}" action="#{HomePageBean.changeSelectedMovie(movie)}" styleClass="myButton" rendered="#{identity.loggedIn}"/>
-      			<h:commandButton value="#{messages['hu.bme.tesslo.hmdb.more']}" action="login" styleClass="myButton" rendered="#{not identity.loggedIn}"/>
+      			<h:commandButton value="#{messages['hu.bme.tesslo.hmdb.details']}" action="#{HomePageBean.changeSelectedMovie(movie)}" styleClass="myButton" rendered="#{identity.loggedIn}"/>
+      			<h:commandButton value="#{messages['hu.bme.tesslo.hmdb.details']}" action="login" styleClass="myButton" rendered="#{not identity.loggedIn}"/>
       		<f:facet name="footer">
       			<h:commandButton value="Save" title="Save" image="/img/save.png" action="#{HomePageBean.saveNewMovie()}" styleClass="myButton" rendered="#{identity.loggedIn}"/>
       		</f:facet>
