@@ -23,7 +23,7 @@ public class HomePageFactory {
 	private static final Logger logger = Logger
 			.getLogger(HomePageFactory.class);
 
-	@Factory(value = "moviesStateContainer", scope = ScopeType.CONVERSATION)
+	@Factory(value = "moviesStateContainer", scope = ScopeType.PAGE)
 	public StateContainer<Movie> getAllMovies() {
 		MovieDao movieDao;
 		try {
