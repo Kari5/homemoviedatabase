@@ -92,4 +92,18 @@ public class RatingDaoImpl extends GenericDaoImpl<Rating> implements RatingDao {
 		save(rating);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	public void deleteRating(Rating rating) {
+		try {
+			Rating attachedRating = findByPrimaryKey(rating.getId());
+			remove(attachedRating);
+			logger.info("Sikeres törlés!");
+		} catch (Exception e) {
+			logger.error("Törlés nem sikerült: " + e.getMessage(), e);
+		}
+
+	}
+
 }

@@ -63,4 +63,12 @@ public interface RatingDao extends GenericDao<Rating> {
 	 * @param rating
 	 */
 	public void saveRating(String userName, Rating rating);
+
+	/**
+	 * Törli az értékelést.
+	 * 
+	 * @param userName
+	 * @param rating
+	 */
+	public void deleteRating(Rating rating);
 }
