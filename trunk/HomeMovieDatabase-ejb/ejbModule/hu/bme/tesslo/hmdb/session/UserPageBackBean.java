@@ -17,6 +17,7 @@ import org.jboss.seam.annotations.Create;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
+import org.jboss.seam.faces.FacesMessages;
 import org.jboss.seam.security.Credentials;
 
 @Name("UserPageBean")
@@ -33,6 +34,8 @@ public class UserPageBackBean {
 	private List<Movie> favoriteMovies;
 
 	private List<Rating> ownRatings;
+	
+	private Rating selectedRating;
 
 	private static final Logger logger = Logger
 			.getLogger(UserPageBackBean.class);
@@ -41,6 +44,7 @@ public class UserPageBackBean {
 	public void init() {
 		this.favoriteMovies = new ArrayList<Movie>();
 		this.ownRatings = new ArrayList<Rating>();
+		selectedRating = new Rating();
 
 		try {
 			userDao = (UserDao) InitialContext
@@ -56,7 +60,8 @@ public class UserPageBackBean {
 		}
 	}
 
-	public void deleteRating(Rating rating) {
+	public String deleteRating(Rating rating) {
+		logger.info(rating.getId()+". értékelés törlése!");
 		ratingDao.deleteRating(rating);
 		// try {
 		// ratingDao = InitialContext
@@ -65,8 +70,33 @@ public class UserPageBackBean {
 		// logger.error(e.getMessage(), e);
 		// }
 		// ownRatings = ratingDao.userRatings(this.credentials.getUsername());
+		ownRatings = ratingDao.userRatings(this.credentials.getUsername());
+		logger.info("Értékelés törölve, "+ownRatings.size()+" értékelés maradt.");
+		return "userPage";
+	}
+	
+	/**
+	 * Updateli a kiválasztott értékelést.
+	 */
+	public void updateRating(){
+		if(selectedRating!=null){
+		ratingDao.updateRating(selectedRating);
+		Logger.getLogger(this.getClass()).info("ratingUpdated");
+		} else {
+			FacesMessages.instance().add("Értékelés módosítása nem sikerült!");
+		}
+		ownRatings = ratingDao.userRatings(this.credentials.getUsername());
 	}
 
+	/**
+	 * Megváltoztatja a kiválasztott értékelést.
+	 * @param rating
+	 */
+	public void changeSelectedRating(Rating rating){
+		this.selectedRating=rating;
+		Logger.getLogger(this.getClass()).info("selectedRating: "+selectedRating.getId());
+	}
+	
 	/**
 	 * @return the favoriteMovies
 	 */
@@ -95,6 +125,20 @@ public class UserPageBackBean {
 	 */
 	public void setOwnRatings(List<Rating> ownRatings) {
 		this.ownRatings = ownRatings;
+	}
+	
+	/**
+	 * @return the selectedRating
+	 */
+	public Rating getSelectedRating() {
+		return selectedRating;
+	}
+
+	/**
+	 * @param selectedRating the selectedRating to set
+	 */
+	public void setSelectedRating(Rating selectedRating) {
+		this.selectedRating = selectedRating;
 	}
 
 }

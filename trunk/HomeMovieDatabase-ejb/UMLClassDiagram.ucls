@@ -1,0 +1,179 @@
+<class-diagram version="1.0.10" icons="true" automaticImage="JPEG" always-add-relationships="true" 
+  generalizations="true" realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="hu.bme.tesslo.hmdb.factory.HomePageFactory" 
+    project="HomeMovieDatabase-ejb" 
+    file="/HomeMovieDatabase-ejb/ejbModule/hu/bme/tesslo/hmdb/factory/HomePageFactory.java" binary="false">    
+    <position height="112" width="207" x="65" y="-27"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="hu.bme.tesslo.hmdb.factory.MoviePageFactory" 
+    project="HomeMovieDatabase-ejb" 
+    file="/HomeMovieDatabase-ejb/ejbModule/hu/bme/tesslo/hmdb/factory/MoviePageFactory.java" binary="false">    
+    <position height="-1" width="-1" x="73" y="141"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="hu.bme.tesslo.hmdb.model.SimpleMovie" 
+    project="HomeMovieDatabase-ejb" file="/HomeMovieDatabase-ejb/ejbModule/hu/bme/tesslo/hmdb/model/SimpleMovie.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="980" y="285"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="hu.bme.tesslo.hmdb.session.AntecendentsBackBean" 
+    project="HomeMovieDatabase-ejb" 
+    file="/HomeMovieDatabase-ejb/ejbModule/hu/bme/tesslo/hmdb/session/AntecendentsBackBean.java" binary="false">    
+    <position height="-1" width="-1" x="537" y="-153"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="5" corner="BOTTOM_RIGHT" language="java" name="hu.bme.tesslo.hmdb.session.Authenticator" 
+    project="HomeMovieDatabase-ejb" 
+    file="/HomeMovieDatabase-ejb/ejbModule/hu/bme/tesslo/hmdb/session/Authenticator.java" binary="false">    
+    <position height="-1" width="-1" x="401" y="346"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="hu.bme.tesslo.hmdb.session.HomePageBackBean" 
+    project="HomeMovieDatabase-ejb" 
+    file="/HomeMovieDatabase-ejb/ejbModule/hu/bme/tesslo/hmdb/session/HomePageBackBean.java" binary="false">    
+    <position height="-1" width="-1" x="739" y="89"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="7" corner="BOTTOM_RIGHT" language="java" name="hu.bme.tesslo.hmdb.session.MoviePageBackBean" 
+    project="HomeMovieDatabase-ejb" 
+    file="/HomeMovieDatabase-ejb/ejbModule/hu/bme/tesslo/hmdb/session/MoviePageBackBean.java" binary="false">    
+    <position height="-1" width="-1" x="687" y="431"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="8" corner="BOTTOM_RIGHT" language="java" name="hu.bme.tesslo.hmdb.session.RatingsBackBean" 
+    project="HomeMovieDatabase-ejb" 
+    file="/HomeMovieDatabase-ejb/ejbModule/hu/bme/tesslo/hmdb/session/RatingsBackBean.java" binary="false">    
+    <position height="-1" width="-1" x="96" y="356"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="9" corner="BOTTOM_RIGHT" language="java" name="hu.bme.tesslo.hmdb.session.Registration" 
+    project="HomeMovieDatabase-ejb" file="/HomeMovieDatabase-ejb/ejbModule/hu/bme/tesslo/hmdb/session/Registration.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="395" y="657"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="10" corner="BOTTOM_RIGHT" language="java" name="hu.bme.tesslo.hmdb.session.UserPageBackBean" 
+    project="HomeMovieDatabase-ejb" 
+    file="/HomeMovieDatabase-ejb/ejbModule/hu/bme/tesslo/hmdb/session/UserPageBackBean.java" binary="false">    
+    <position height="-1" width="-1" x="142" y="695"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="11" corner="BOTTOM_RIGHT" language="java" name="hu.bme.tesslo.hmdb.util.ImdbReader" 
+    project="HomeMovieDatabase-ejb" file="/HomeMovieDatabase-ejb/ejbModule/hu/bme/tesslo/hmdb/util/ImdbReader.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="671" y="821"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="12" corner="BOTTOM_RIGHT" language="java" name="hu.bme.tesslo.hmdb.util.StateContainer" 
+    project="HomeMovieDatabase-ejb" file="/HomeMovieDatabase-ejb/ejbModule/hu/bme/tesslo/hmdb/util/StateContainer.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="172" y="-165"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="13" corner="BOTTOM_RIGHT" language="java" name="hu.bme.tesslo.hmdb.util.StateHolder" 
+    project="HomeMovieDatabase-ejb" file="/HomeMovieDatabase-ejb/ejbModule/hu/bme/tesslo/hmdb/util/StateHolder.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="418" y="78"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="14" corner="BOTTOM_RIGHT" language="java" name="hu.bme.tesslo.hmdb.webservices.HMDbWebService" 
+    project="HomeMovieDatabase-ejb" 
+    file="/HomeMovieDatabase-ejb/ejbModule/hu/bme/tesslo/hmdb/webservices/HMDbWebService.java" binary="false">    
+    <position height="-1" width="-1" x="807" y="-138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <association id="15">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="16" name="selectedMovieStateHolder"/>      
+      <multiplicity id="17" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="18">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="19">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="20">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <association id="21">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="22" name="selectedMovieStateHolder"/>      
+      <multiplicity id="23" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="24">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <association id="25">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="26" name="selectedMovieStateHolder"/>      
+      <multiplicity id="27" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="28">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

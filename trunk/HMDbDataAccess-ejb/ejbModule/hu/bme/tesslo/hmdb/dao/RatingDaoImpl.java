@@ -105,5 +105,21 @@ public class RatingDaoImpl extends GenericDaoImpl<Rating> implements RatingDao {
 		}
 
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void updateRating(Rating rating) {
+		try {
+			Rating attachedRating=findByPrimaryKey(rating.getId());
+			attachedRating.setAudio(rating.getAudio());
+			attachedRating.setMovie(rating.getMovie());
+			attachedRating.setSumma(rating.getSumma());
+			attachedRating.setSummary(rating.getSummary());
+		} catch (Exception e) {
+			logger.error("Módosítandó értékelés nem található! "+e.getMessage());
+		}
+		
+	}
 
 }

@@ -71,4 +71,10 @@ public interface RatingDao extends GenericDao<Rating> {
 	 * @param rating
 	 */
 	public void deleteRating(Rating rating);
+	
+	/**
+	 * Módosítja a megkapott értékelést.
+	 * @param rating módosítandó értékelés
+	 */
+	public void updateRating(Rating rating);
 }
