@@ -8,14 +8,17 @@ import hu.bme.tesslo.hmdb.util.StateHolder;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import org.jboss.logging.Logger;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Create;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
+import org.jboss.seam.faces.FacesMessages;
 import org.jboss.seam.security.Credentials;
 
 /**
@@ -34,6 +37,7 @@ public class RatingsBackBean {
 
 	private Rating newRating;
 
+	
 	@In
 	Credentials credentials;
 
@@ -61,7 +65,8 @@ public class RatingsBackBean {
 				.movieRatings(selectedMovieStateHolder.getSelected());
 
 	}
-
+	
+	
 	public boolean ratingExist() {
 		return ratingDao.ratingExist(credentials.getUsername(),
 				selectedMovieStateHolder.getSelected());

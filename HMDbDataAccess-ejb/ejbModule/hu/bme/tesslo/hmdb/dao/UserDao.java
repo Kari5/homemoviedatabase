@@ -42,5 +42,12 @@ public interface UserDao extends GenericDao<User> {
 	 * @return igaz, ha kedvence, hamis ha nem
 	 */
 	public boolean isFavoriteMovie(String userName, Movie m);
+	
+	/**
+	 * Egy felhasználónév alapján visszaadja a felhasználót.
+	 * @param userName felhasználónév
+	 * @return felhasználó
+	 */
+	public User getUser(String userName);
 
 }

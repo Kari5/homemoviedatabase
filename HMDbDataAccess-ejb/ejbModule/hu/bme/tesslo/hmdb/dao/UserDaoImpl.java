@@ -67,4 +67,12 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
 		return user.getFavoriteMovies().contains(m);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	public User getUser(String userName) {
+		return (User) executeQuerySingleResult(
+				"FROM User_ AS u WHERE u.userName=?", userName);
+	}
+
 }

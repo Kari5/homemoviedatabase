@@ -61,4 +61,13 @@
     </web-resource-collection>
     <auth-constraint/>
   </security-constraint>
+  <servlet>
+    <display-name>HMDbWebService</display-name>
+    <servlet-name>HMDbWebService</servlet-name>
+    <servlet-class>hu.bme.tesslo.hmdb.webservices.HMDbWebService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HMDbWebService</servlet-name>
+    <url-pattern>/HMDbWebService</url-pattern>
+  </servlet-mapping>
 </web-app>

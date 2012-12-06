@@ -1,0 +1,64 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<f:subview xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<rich:modalPanel id="editRating_panel" autosized="true"
+		domElementAttachment="form">
+		<f:facet name="header">
+			<h:panelGroup>
+				<h:outputText value="#{messages['hu.bme.tesslo.hmdb.editRating']}" />
+			</h:panelGroup>
+		</f:facet>
+		<f:facet name="controls">
+			<h:panelGroup>
+				<h:graphicImage value="/img/delete.png" styleClass="hidelink"
+					id="hidelink_program" style="cursor:pointer"
+					title="#{messages['hu.bme.tesslo.hmdb.cancel']}" />
+				<rich:componentControl for="newlocation_panel"
+					attachTo="editRating_panel" operation="hide" event="onclick">
+				</rich:componentControl>
+			</h:panelGroup>
+		</f:facet>
+<h:panelGrid columns="2">
+					<h:outputText value="#{messages['hu.bme.tesslo.hmdb.audio']}:" />
+					<rich:inputNumberSlider value="#{UserPageBean.selectedRating.audio}"
+						minValue="0" maxValue="10" showInput="false"
+						enableManualInput="false" />
+					<rich:separator height="1" lineType="solid" />
+					<rich:separator height="1" lineType="solid" />
+
+					<h:outputText value="#{messages['hu.bme.tesslo.hmdb.video']}:" />
+					<rich:inputNumberSlider value="#{UserPageBean.selectedRating.video}"
+						minValue="0" maxValue="10" showInput="false"
+						enableManualInput="false" />
+					<rich:separator height="1" lineType="solid" />
+					<rich:separator height="1" lineType="solid" />
+
+					<h:outputText value="#{messages['hu.bme.tesslo.hmdb.summa']}:" />
+					<rich:inputNumberSlider value="#{UserPageBean.selectedRating.summa}"
+						minValue="0" maxValue="10" showInput="false"
+						enableManualInput="false" />
+					<rich:separator height="1" lineType="solid" />
+					<rich:separator height="1" lineType="solid" />
+
+					<h:outputText value="#{messages['hu.bme.tesslo.hmdb.comment']}" />
+					<h:inputTextarea value="#{UserPageBean.selectedRating.summary}"
+						rows="5" cols="100" />
+					<rich:separator height="1" lineType="solid" />
+					<rich:separator height="1" lineType="solid" />
+				</h:panelGrid>
+				<h:commandButton image="img/save.png" title="#{messages['hu.bme.tesslo.hmdb.save']}" action="#{UserPageBean.updateRating()}" styleClass="myButton">
+					<a4j:support event="onclick" reRender="ratingsDataGrid"/>
+				</h:commandButton>
+
+
+	</rich:modalPanel>
+
+</f:subview>

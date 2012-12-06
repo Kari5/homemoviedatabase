@@ -9,7 +9,7 @@
 	xmlns:rich="http://richfaces.org/rich" template="layout/template.xhtml">
 
 	<ui:define name="body">
-		<h:form>
+		<a4j:form ajaxSubmit="true">
 			<h:panelGrid columns="1">
 
 				<rich:simpleTogglePanel switchType="client" label="#{messages['hu.bme.tesslo.hmdb.favorites']}">
@@ -165,7 +165,7 @@
 				<rich:spacer height="25px"/>
 				
 				<rich:simpleTogglePanel switchType="client" label="#{messages['hu.bme.tesslo.hmdb.ratings']}">
-					<rich:dataGrid columns="2" value="#{UserPageBean.ownRatings}"
+					<rich:dataGrid id="user_ratings_dataGrid" columns="2" value="#{UserPageBean.ownRatings}"
 						var="rating" elements="6" first="0">
 						<h:panelGrid columns="2">
 							<h:graphicImage value="#{rating.movie.posterUrl}" width="150px"
@@ -210,9 +210,12 @@
 									<rich:separator height="1" lineType="solid" />
 
 								</h:panelGrid>
-								<h:commandButton action="#" title="#{messages['hu.bme.tesslo.hmdb.edit']}" image="/img/edit.png" value="#{messages['hu.bme.tesslo.hmdb.edit']}" styleClass="myButton" />
+								<!-- <h:form id="editRatingsForm">  -->
+								<a4j:commandButton ajaxSingle="true" action="#{UserPageBean.changeSelectedRating(rating)}" onclick="#{rich:component('editRating_panel')}.show()" title="#{messages['hu.bme.tesslo.hmdb.edit']}" image="/img/edit.png" value="#{messages['hu.bme.tesslo.hmdb.edit']}" styleClass="myButton" reRender="editRating_panel"/>
+							
 								<rich:spacer width="5px"/>
-								<h:commandButton action="#{UserPageBean.deleteRating(rating)}" title="#{messages['hu.bme.tesslo.hmdb.delete']}" image="/img/delete.png" value="#{messages['hu.bme.tesslo.hmdb.delete']}" styleClass="myButton"/>
+								<a4j:commandButton ajaxSingle="true" action="#{UserPageBean.deleteRating(rating)}" title="#{messages['hu.bme.tesslo.hmdb.delete']}" image="/img/delete.png" value="#{messages['hu.bme.tesslo.hmdb.delete']}" styleClass="myButton" reRender="user_ratings_dataGrid"/>
+								<!-- </h:form>  -->
 							</rich:panel>
 						</h:panelGrid>
 						<f:facet name="footer">
@@ -223,7 +226,7 @@
 
 
 			</h:panelGrid>
-		</h:form>
+		</a4j:form>
+		<ui:include src="/layout/editRating.xhtml" />
 	</ui:define>
-
 </ui:composition>
