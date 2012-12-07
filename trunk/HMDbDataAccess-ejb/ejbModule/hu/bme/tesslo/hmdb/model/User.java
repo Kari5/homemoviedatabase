@@ -25,6 +25,8 @@ import org.jboss.seam.annotations.security.management.UserPrincipal;
 import org.jboss.seam.annotations.security.management.UserRoles;
 
 /**
+ * Egy felhasználót reprezentáló entitás.
+ * 
  * @author Karcsi
  * 
  */
@@ -32,33 +34,54 @@ import org.jboss.seam.annotations.security.management.UserRoles;
 public class User implements Serializable {
 
 	/**
-	 * 
+	 * Sorosíthatósághoz azonosító.
 	 */
 	private static final long serialVersionUID = -6105056252666418484L;
 
+	/**
+	 * Azonosító.
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	/**
+	 * Felhasználónév.
+	 */
 	@Column(nullable = false)
 	@UserPrincipal
 	private String userName;
 
+	/**
+	 * Jelszó. (Adatbázisban md5 hash-elt formában tárolódik.)
+	 */
 	@Column(nullable = false)
 	@UserPassword(hash = "md5")
 	private String password;
 
+	/**
+	 * Keresztnév.
+	 */
 	@UserFirstName
 	private String firstName;
 
+	/**
+	 * Vezetéknév.
+	 */
 	@UserLastName
 	private String lastName;
 
+	/**
+	 * Felhasználóhoz rendelt szabályok.
+	 */
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "Role_User", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
 	@UserRoles
 	private List<Role> roles;
 
+	/**
+	 * Felhasználó kedvenc filmjei.
+	 */
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Movie> favoriteMovies;
 

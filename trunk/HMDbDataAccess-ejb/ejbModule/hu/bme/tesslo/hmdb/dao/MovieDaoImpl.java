@@ -3,7 +3,9 @@
  */
 package hu.bme.tesslo.hmdb.dao;
 
+import hu.bme.tesslo.hmdb.model.Antecendents;
 import hu.bme.tesslo.hmdb.model.Movie;
+import hu.bme.tesslo.hmdb.model.User;
 import hu.futurion.mt.dao.GenericDaoImpl;
 
 import java.util.ArrayList;
@@ -83,6 +85,9 @@ public class MovieDaoImpl extends GenericDaoImpl<Movie> implements MovieDao {
 		return false;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setDummieDate() {
 		Movie movie = new Movie("A film", 2012, "3 h 23", "Action", "Kari",
 				null, null, null, null, 5.0, null, null, null, null);
@@ -107,22 +112,32 @@ public class MovieDaoImpl extends GenericDaoImpl<Movie> implements MovieDao {
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	public void removeMovie(Movie m) {
 		try {
 			Movie attachedMovie = findByPrimaryKey(m.getId());
 			logger.info("Megtalált film: " + attachedMovie.getTitle());
-			String queryA = "DELETE FROM Antecendents AS A WHERE A.movie.id = ?";
-			executeUpdate(queryA, m.getId());
-			// List<User>
-			// users=executeQueryMultipleResult("FROM User AS U WHERE U.",
-			// params)
+
+			List<Antecendents> antecendents = (List<Antecendents>) executeQueryMultipleResult("FROM Antecendents");
+			for (Antecendents ant : antecendents) {
+				if (ant.getMovies().contains(attachedMovie)) {
+					ant.getMovies().remove(attachedMovie);
+				}
+			}
+
+			List<User> users = (List<User>) executeQueryMultipleResult("FROM User_");
+			for (User user : users) {
+				if (user.getFavoriteMovies().contains(attachedMovie)) {
+					user.getFavoriteMovies().remove(attachedMovie);
+				}
+			}
+
+			String ratingQuery = "DELETE FROM Rating AS R WHERE R.movie.id=?";
+			executeUpdate(ratingQuery, attachedMovie.getId());
 			remove(attachedMovie);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Film törlése közben hiba! " + e.getMessage());
 		}
-
-		// TODO:[Kari] Ezt még le kell ellenõrizni.
 	}
 
 }

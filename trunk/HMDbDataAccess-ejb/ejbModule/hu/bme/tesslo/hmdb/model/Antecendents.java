@@ -18,6 +18,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 /**
+ * Elõzmények osztály. Tárolja egy felhasználó által megtekintett filmeket.
+ * 
  * @author Karcsi
  * 
  */
@@ -25,18 +27,27 @@ import javax.persistence.OneToOne;
 public class Antecendents implements Serializable {
 
 	/**
-	 * 
+	 * Sorosíthatósághoz azonosító.
 	 */
 	private static final long serialVersionUID = 4340882746130458731L;
 
+	/**
+	 * Azonosító.
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	/**
+	 * Felhasználó.
+	 */
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_antecendents_id")
 	private User user;
 
+	/**
+	 * Felhasználó elõzményei.
+	 */
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "MoviesAntecendent")
 	private List<Movie> movies;

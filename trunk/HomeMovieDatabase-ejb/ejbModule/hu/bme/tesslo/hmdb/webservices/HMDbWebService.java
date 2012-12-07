@@ -7,34 +7,49 @@ import hu.bme.tesslo.hmdb.model.SimpleMovie;
 import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
-import javax.jws.soap.SOAPBinding;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+/**
+ * Webszolgáltatás, amely egy film adatait képes automatikusan visszaadni.
+ * 
+ * @author Windisch Károly
+ * 
+ */
 @Stateless
-@WebService(name="HMDbWebService")
+@WebService(name = "HMDbWebService")
 public class HMDbWebService {
 
 	private MovieDao movieDao;
-	
+
+	/**
+	 * Filmkeresõ.
+	 * 
+	 * @param title
+	 *            cím.
+	 * @param year
+	 *            év.
+	 * @return megtalált film, vagy egy üres film, melynek Sikertelen keresés! a
+	 *         címe.
+	 */
 	@WebMethod()
 	public SimpleMovie getMovie(String title, int year) {
 		try {
-			movieDao=(MovieDao) InitialContext
+			movieDao = (MovieDao) InitialContext
 					.doLookup("HomeMovieDatabase-ear/MovieDao/local");
 		} catch (NamingException e) {
-			SimpleMovie error=new SimpleMovie();
+			SimpleMovie error = new SimpleMovie();
 			error.setTitle("Sikertelen kérés!");
 			return error;
 		}
-		System.out.println(title+" - "+ year);
-		Movie m=movieDao.getMovie(title, year);
-		if(m==null){
-			SimpleMovie error=new SimpleMovie();
+		System.out.println(title + " - " + year);
+		Movie m = movieDao.getMovie(title, year);
+		if (m == null) {
+			SimpleMovie error = new SimpleMovie();
 			error.setTitle("Sikertelen kérés!");
 			return error;
 		}
 		System.out.println(m.getId());
-	    return new SimpleMovie(m);
+		return new SimpleMovie(m);
 	}
 }

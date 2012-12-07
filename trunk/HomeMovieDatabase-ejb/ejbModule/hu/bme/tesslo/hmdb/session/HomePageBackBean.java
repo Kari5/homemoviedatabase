@@ -21,6 +21,8 @@ import org.jboss.seam.faces.FacesMessages;
 import org.jboss.seam.security.Credentials;
 
 /**
+ * HomePage-hez tartozó backBean.
+ * 
  * @author Karcsi
  * 
  */
@@ -28,17 +30,32 @@ import org.jboss.seam.security.Credentials;
 @Scope(ScopeType.PAGE)
 public class HomePageBackBean {
 
+	/**
+	 * Új film felvételéhez egy movie változó.
+	 */
 	private Movie newMovie;
 
+	/**
+	 * A kiválasztott film stateHolder-e.
+	 */
 	@In(create = true)
 	private StateHolder<Movie> selectedMovieStateHolder;
 
+	/**
+	 * Felhasználó adatai.
+	 */
 	@In
 	Credentials credentials;
 
+	/**
+	 * Logoláshoz logger.
+	 */
 	private static final Logger logger = Logger
 			.getLogger(HomePageBackBean.class);
 
+	/**
+	 * Init.
+	 */
 	@Create
 	public void init() {
 		newMovie = new Movie();
@@ -86,7 +103,8 @@ public class HomePageBackBean {
 	}
 
 	/**
-	 * Beállítja a kiválasztott filmet.
+	 * Beállítja a kiválasztott filmet. A felhasználó elõzményeit is változtatja
+	 * a megfelelõ módon.
 	 * 
 	 * @param selected
 	 *            újonnan kiválasztott film
