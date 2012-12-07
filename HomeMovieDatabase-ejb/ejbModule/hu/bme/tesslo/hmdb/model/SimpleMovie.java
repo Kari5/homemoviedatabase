@@ -4,10 +4,17 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlAccessorType(XmlAccessType.FIELD)            
+/**
+ * Egyszerûsített Movie osztály. A HMDbWebService ilyen formában adja vissza a
+ * választ.
+ * 
+ * @author Karcsi
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType
 public class SimpleMovie {
-	
+
 	/** Cím. */
 	private String title;
 
@@ -37,33 +44,36 @@ public class SimpleMovie {
 
 	/** Imdb azonosítója. */
 	private String imdbID;
-	
+
 	/** A film nyelve. */
 	private String language;
+
 	/**
 	 * Default konstruktor.
 	 */
 	public SimpleMovie() {
 		super();
 	}
-	
+
 	/**
-	 * Konstruktor egy film átadásával.
-	 * A filmbõl létrehozza az egyszerûsített film objektumot.
-	 * @param movie film
+	 * Konstruktor egy film átadásával. A filmbõl létrehozza az egyszerûsített
+	 * film objektumot.
+	 * 
+	 * @param movie
+	 *            film
 	 */
 	public SimpleMovie(Movie movie) {
-		this.title=movie.getTitle();
-		this.actors=movie.getActors();
-		this.director=movie.getActors();
-		this.genre=movie.getActors();
-		this.imdbID=movie.getImdbID();
-		this.imdbRating=movie.getImdbRating();
-		this.language=movie.getLanguage();
-		this.plot=movie.getPlot();
-		this.runtime=movie.getRuntime();
-		this.writer=movie.getWriter();
-		this.year=movie.getYear();
+		this.title = movie.getTitle();
+		this.actors = movie.getActors();
+		this.director = movie.getActors();
+		this.genre = movie.getActors();
+		this.imdbID = movie.getImdbID();
+		this.imdbRating = movie.getImdbRating();
+		this.language = movie.getLanguage();
+		this.plot = movie.getPlot();
+		this.runtime = movie.getRuntime();
+		this.writer = movie.getWriter();
+		this.year = movie.getYear();
 	}
 
 	/**
@@ -74,7 +84,8 @@ public class SimpleMovie {
 	}
 
 	/**
-	 * @param title the title to set
+	 * @param title
+	 *            the title to set
 	 */
 	public void setTitle(String title) {
 		this.title = title;
@@ -88,7 +99,8 @@ public class SimpleMovie {
 	}
 
 	/**
-	 * @param year the year to set
+	 * @param year
+	 *            the year to set
 	 */
 	public void setYear(Integer year) {
 		this.year = year;
@@ -102,7 +114,8 @@ public class SimpleMovie {
 	}
 
 	/**
-	 * @param runtime the runtime to set
+	 * @param runtime
+	 *            the runtime to set
 	 */
 	public void setRuntime(String runtime) {
 		this.runtime = runtime;
@@ -116,7 +129,8 @@ public class SimpleMovie {
 	}
 
 	/**
-	 * @param genre the genre to set
+	 * @param genre
+	 *            the genre to set
 	 */
 	public void setGenre(String genre) {
 		this.genre = genre;
@@ -130,7 +144,8 @@ public class SimpleMovie {
 	}
 
 	/**
-	 * @param director the director to set
+	 * @param director
+	 *            the director to set
 	 */
 	public void setDirector(String director) {
 		this.director = director;
@@ -144,7 +159,8 @@ public class SimpleMovie {
 	}
 
 	/**
-	 * @param writer the writer to set
+	 * @param writer
+	 *            the writer to set
 	 */
 	public void setWriter(String writer) {
 		this.writer = writer;
@@ -158,7 +174,8 @@ public class SimpleMovie {
 	}
 
 	/**
-	 * @param actors the actors to set
+	 * @param actors
+	 *            the actors to set
 	 */
 	public void setActors(String actors) {
 		this.actors = actors;
@@ -172,7 +189,8 @@ public class SimpleMovie {
 	}
 
 	/**
-	 * @param plot the plot to set
+	 * @param plot
+	 *            the plot to set
 	 */
 	public void setPlot(String plot) {
 		this.plot = plot;
@@ -186,7 +204,8 @@ public class SimpleMovie {
 	}
 
 	/**
-	 * @param imdbRating the imdbRating to set
+	 * @param imdbRating
+	 *            the imdbRating to set
 	 */
 	public void setImdbRating(Double imdbRating) {
 		this.imdbRating = imdbRating;
@@ -200,7 +219,8 @@ public class SimpleMovie {
 	}
 
 	/**
-	 * @param imdbID the imdbID to set
+	 * @param imdbID
+	 *            the imdbID to set
 	 */
 	public void setImdbID(String imdbID) {
 		this.imdbID = imdbID;
@@ -214,11 +234,11 @@ public class SimpleMovie {
 	}
 
 	/**
-	 * @param language the language to set
+	 * @param language
+	 *            the language to set
 	 */
 	public void setLanguage(String language) {
 		this.language = language;
 	}
-	
-	
+
 }

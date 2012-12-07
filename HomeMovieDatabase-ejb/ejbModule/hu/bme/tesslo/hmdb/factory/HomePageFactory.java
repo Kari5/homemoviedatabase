@@ -16,13 +16,27 @@ import org.jboss.seam.annotations.Factory;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
 
+/**
+ * HomePage-hez kellõ változók factory függvényeit tartalmazó osztály.
+ * 
+ * @author Karcsi
+ * 
+ */
 @Name("homePageFactory")
 @Scope(ScopeType.STATELESS)
 public class HomePageFactory {
 
+	/**
+	 * Logoláshoz logger.
+	 */
 	private static final Logger logger = Logger
 			.getLogger(HomePageFactory.class);
 
+	/**
+	 * moviesStateContainer. Lekérdezi adatbázisból az elérhetõ filmeket.
+	 * 
+	 * @return Elérhetõ filmek egy StateContainerben.
+	 */
 	@Factory(value = "moviesStateContainer", scope = ScopeType.PAGE)
 	public StateContainer<Movie> getAllMovies() {
 		MovieDao movieDao;

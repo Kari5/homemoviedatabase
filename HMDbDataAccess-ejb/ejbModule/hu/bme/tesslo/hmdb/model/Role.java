@@ -14,6 +14,8 @@ import org.hibernate.validator.NotNull;
 import org.jboss.seam.annotations.security.management.RoleName;
 
 /**
+ * Szabályt reprezentáló entitás.
+ * 
  * @author Karcsi
  * 
  */
@@ -21,14 +23,20 @@ import org.jboss.seam.annotations.security.management.RoleName;
 public class Role implements Serializable {
 
 	/**
-	 * 
+	 * Sorosíthatósághoz azonosító.
 	 */
 	private static final long serialVersionUID = 4156705159077883699L;
 
+	/**
+	 * Azonosító.
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	/**
+	 * Szabály neve.
+	 */
 	@RoleName
 	@NotNull
 	private String name;

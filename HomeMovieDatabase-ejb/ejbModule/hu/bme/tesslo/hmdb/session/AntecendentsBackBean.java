@@ -15,18 +15,36 @@ import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.security.Credentials;
 
+/**
+ * Elõzményekhez tartozó backBean.
+ * 
+ * @author Karcsi
+ * 
+ */
 @Name("AntecendentsBackBean")
 @Scope(ScopeType.EVENT)
 public class AntecendentsBackBean {
 
+	/**
+	 * Elõzmények.
+	 */
 	private Antecendents antecendents;
 
+	/**
+	 * Felhasználó adatai.
+	 */
 	@In
 	private Credentials credentials;
 
+	/**
+	 * Logoláshoz logger.
+	 */
 	private static final Logger logger = Logger
 			.getLogger(AntecendentsDaoImpl.class);
 
+	/**
+	 * Inicializáló függvény, lekérdezi a felhasználó elõzményeit.
+	 */
 	@Create
 	public void init() {
 		AntecendentsDao antecendentsDao;

@@ -23,11 +23,13 @@ import org.jboss.seam.faces.FacesMessages;
 import org.jboss.seam.security.Credentials;
 
 /**
+ * MoviePage back bean-je.
+ * 
  * @author Karcsi
  * 
  */
 @Name("MoviePageBean")
-@Scope(ScopeType.EVENT)
+@Scope(ScopeType.PAGE)
 public class MoviePageBackBean {
 
 	/**
@@ -37,24 +39,39 @@ public class MoviePageBackBean {
 	@In(create = true)
 	private StateHolder<Movie> selectedMovieStateHolder;
 
+	/**
+	 * Felhasználó adatai.
+	 */
 	@In
 	Credentials credentials;
 
+	/**
+	 * Címre szûréshez.
+	 */
 	private String titleFilter;
 
+	/**
+	 * Mûfajra szûréshez.
+	 */
 	private String genreFilter;
 
+	/**
+	 * Saját értékelés.
+	 */
 	private Rating ownRating;
 
 	/** Logger. */
 	private static final Logger logger = Logger
 			.getLogger(MoviePageBackBean.class);
 
+	/**
+	 * Init függvény. Tesztelés esetén használható.
+	 */
 	@Create
 	public void init() {
 		ownRating = new Rating();
 
-		// FIXME:[Kari] Teszthez kell, ki lesz javítva
+		// FIXME:[Kari] Teszthez kell
 		if (selectedMovieStateHolder.getSelected() == null) {
 			Movie movie3 = new Movie(
 					"C film",
@@ -102,6 +119,10 @@ public class MoviePageBackBean {
 		this.ownRating = ownRating;
 	}
 
+	/**
+	 * A kiválasztott filmre rákeres IMDb-n, és ha megtalálja, akkor kitölti a
+	 * lehetséges mezõit.
+	 */
 	public void searchImdb() {
 		System.out.println("Kiválasztott film: "
 				+ this.selectedMovieStateHolder.getSelected().getTitle());
@@ -111,6 +132,7 @@ public class MoviePageBackBean {
 				.getSelected().getImdbID());
 		Movie searchResult = reader.parseJson();
 		if (searchResult == null) {
+			FacesMessages.instance().add("Keresett film nem található!");
 			return;
 		}
 		String localUrl = this.selectedMovieStateHolder.getSelected()
@@ -125,6 +147,11 @@ public class MoviePageBackBean {
 		this.selectedMovieStateHolder.getSelected().setSubtitle(subtitle);
 	}
 
+	/**
+	 * Elmenti a film részleteinek módosítását.
+	 * 
+	 * @return sikeres mentés esetén moviePage-re visszavisz.
+	 */
 	public String saveChanges() {
 		MovieDao movieDao;
 		try {
@@ -138,6 +165,11 @@ public class MoviePageBackBean {
 		return "moviePage";
 	}
 
+	/**
+	 * Eltávolít egy filmet az adtabázisból
+	 * 
+	 * @return
+	 */
 	public String remove() {
 		MovieDao movieDao;
 		try {

@@ -11,6 +11,8 @@ import java.util.List;
 import javax.ejb.Local;
 
 /**
+ * Movie adatbázis tábla hozzáférés interfésze.
+ * 
  * @author Karcsi
  * 
  */
@@ -45,10 +47,13 @@ public interface MovieDao extends GenericDao<Movie> {
 	public boolean saveOrUpdate(Movie m);
 
 	/**
-	 * Eltávolít egy filmet minden aadatbázisból.
+	 * Eltávolít egy filmet minden adatbázisból.
 	 * 
 	 */
 	public void removeMovie(Movie m);
 
+	/**
+	 * Teszteléshez. Beállít néhány teszt adatot, és elmenti az adatbázisba.
+	 */
 	public void setDummieDate();
 }

@@ -34,7 +34,7 @@ public class UserPageBackBean {
 	private List<Movie> favoriteMovies;
 
 	private List<Rating> ownRatings;
-	
+
 	private Rating selectedRating;
 
 	private static final Logger logger = Logger
@@ -60,8 +60,8 @@ public class UserPageBackBean {
 		}
 	}
 
-	public String deleteRating(Rating rating) {
-		logger.info(rating.getId()+". értékelés törlése!");
+	public void deleteRating(Rating rating) {
+		logger.info(rating.getId() + ". értékelés törlése!");
 		ratingDao.deleteRating(rating);
 		// try {
 		// ratingDao = InitialContext
@@ -70,18 +70,19 @@ public class UserPageBackBean {
 		// logger.error(e.getMessage(), e);
 		// }
 		// ownRatings = ratingDao.userRatings(this.credentials.getUsername());
-		ownRatings = ratingDao.userRatings(this.credentials.getUsername());
-		logger.info("Értékelés törölve, "+ownRatings.size()+" értékelés maradt.");
-		return "userPage";
+		ownRatings.remove(rating);
+		logger.info("Értékelés törölve, " + ownRatings.size()
+				+ " értékelés maradt.");
+		// return "userPage";
 	}
-	
+
 	/**
 	 * Updateli a kiválasztott értékelést.
 	 */
-	public void updateRating(){
-		if(selectedRating!=null){
-		ratingDao.updateRating(selectedRating);
-		Logger.getLogger(this.getClass()).info("ratingUpdated");
+	public void updateRating() {
+		if (selectedRating != null) {
+			ratingDao.updateRating(selectedRating);
+			Logger.getLogger(this.getClass()).info("ratingUpdated");
 		} else {
 			FacesMessages.instance().add("Értékelés módosítása nem sikerült!");
 		}
@@ -90,13 +91,15 @@ public class UserPageBackBean {
 
 	/**
 	 * Megváltoztatja a kiválasztott értékelést.
+	 * 
 	 * @param rating
 	 */
-	public void changeSelectedRating(Rating rating){
-		this.selectedRating=rating;
-		Logger.getLogger(this.getClass()).info("selectedRating: "+selectedRating.getId());
+	public void changeSelectedRating(Rating rating) {
+		this.selectedRating = rating;
+		Logger.getLogger(this.getClass()).info(
+				"selectedRating: " + selectedRating.getId());
 	}
-	
+
 	/**
 	 * @return the favoriteMovies
 	 */
@@ -126,7 +129,7 @@ public class UserPageBackBean {
 	public void setOwnRatings(List<Rating> ownRatings) {
 		this.ownRatings = ownRatings;
 	}
-	
+
 	/**
 	 * @return the selectedRating
 	 */
@@ -135,7 +138,8 @@ public class UserPageBackBean {
 	}
 
 	/**
-	 * @param selectedRating the selectedRating to set
+	 * @param selectedRating
+	 *            the selectedRating to set
 	 */
 	public void setSelectedRating(Rating selectedRating) {
 		this.selectedRating = selectedRating;

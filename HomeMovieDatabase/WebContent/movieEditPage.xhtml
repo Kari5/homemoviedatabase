@@ -95,9 +95,9 @@
     </h:panelGrid>
     <a4j:commandButton title="IMDb" value="IMDb" action="#{MoviePageBean.searchImdb()}" image="/img/imdb.png" reRender="editPanelGrid" styleClass="myButton" />
     <rich:spacer width="5px"/>
-    <a4j:commandButton title="Save" value="Ment" action="#{MoviePageBean.saveChanges()}" image="/img/save.png" styleClass="myButton"/>
+    <a4j:commandButton title="#{messages['hu.bme.tesslo.hmdb.save']}" value="#{messages['hu.bme.tesslo.hmdb.save']}" action="#{MoviePageBean.saveChanges()}" image="/img/save.png" styleClass="myButton"/>
     <rich:spacer width="5px"/>
-    <a4j:commandButton title="Delete" value="Torol" action="#" styleClass="myButton" image="/img/delete.png"/>
+    <a4j:commandButton ajaxSingle="true" title="Delete" value="Torol" action="#{MoviePageBean.remove()}" styleClass="myButton" image="/img/delete.png"/>
     </h:form>
     </ui:define>
     

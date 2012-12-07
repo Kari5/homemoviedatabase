@@ -164,7 +164,7 @@
 				<rich:separator height="3" lineType="solid" />
 				<rich:spacer height="25px"/>
 				
-				<rich:simpleTogglePanel switchType="client" label="#{messages['hu.bme.tesslo.hmdb.ratings']}">
+				<rich:simpleTogglePanel switchType="client" id="ownRatingsPanel" label="#{messages['hu.bme.tesslo.hmdb.ratings']}">
 					<rich:dataGrid id="user_ratings_dataGrid" columns="2" value="#{UserPageBean.ownRatings}"
 						var="rating" elements="6" first="0">
 						<h:panelGrid columns="2">
@@ -211,10 +211,10 @@
 
 								</h:panelGrid>
 								<!-- <h:form id="editRatingsForm">  -->
-								<a4j:commandButton ajaxSingle="true" action="#{UserPageBean.changeSelectedRating(rating)}" onclick="#{rich:component('editRating_panel')}.show()" title="#{messages['hu.bme.tesslo.hmdb.edit']}" image="/img/edit.png" value="#{messages['hu.bme.tesslo.hmdb.edit']}" styleClass="myButton" reRender="editRating_panel"/>
+								<a4j:commandButton ajaxSingle="true" action="#{UserPageBean.changeSelectedRating(rating)}" oncomplete="#{rich:component('editRating_panel')}.show()" title="#{messages['hu.bme.tesslo.hmdb.edit']}" image="/img/edit.png" value="#{messages['hu.bme.tesslo.hmdb.edit']}" styleClass="myButton" reRender="editRating_panel"/>
 							
 								<rich:spacer width="5px"/>
-								<a4j:commandButton ajaxSingle="true" action="#{UserPageBean.deleteRating(rating)}" title="#{messages['hu.bme.tesslo.hmdb.delete']}" image="/img/delete.png" value="#{messages['hu.bme.tesslo.hmdb.delete']}" styleClass="myButton" reRender="user_ratings_dataGrid"/>
+								<a4j:commandButton ajaxSingle="true" action="#{UserPageBean.deleteRating(rating)}" title="#{messages['hu.bme.tesslo.hmdb.delete']}" image="/img/delete.png" value="#{messages['hu.bme.tesslo.hmdb.delete']}" styleClass="myButton" reRender="ownRatingsPanel"/>
 								<!-- </h:form>  -->
 							</rich:panel>
 						</h:panelGrid>

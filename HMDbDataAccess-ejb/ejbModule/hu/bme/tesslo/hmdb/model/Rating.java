@@ -19,6 +19,8 @@ import javax.persistence.OneToOne;
 import org.hibernate.validator.NotNull;
 
 /**
+ * Egy értékelést reprezentáló entitás.
+ * 
  * @author Karcsi
  * 
  */
@@ -26,29 +28,50 @@ import org.hibernate.validator.NotNull;
 public class Rating implements Serializable {
 
 	/**
-	 * 
+	 * Sorosíthatósághoz azonosító.
 	 */
 	private static final long serialVersionUID = -7834717990858215899L;
 
+	/**
+	 * Azonosító.
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	/**
+	 * A felhasználó, aki felvette az értékelést.
+	 */
 	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	@JoinColumn(name = "UserId")
 	@NotNull
 	private User user;
 
+	/**
+	 * A film, amihez tartozik az értékelés.
+	 */
 	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	@NotNull
 	private Movie movie;
 
+	/**
+	 * Hang minõség.
+	 */
 	private Integer audio;
 
+	/**
+	 * Videó minõség.
+	 */
 	private Integer video;
 
+	/**
+	 * Összesített érték.
+	 */
 	private Integer summa;
 
+	/**
+	 * Szöveges összefoglaló, comment.
+	 */
 	@Column(length = 8000)
 	private String summary;
 
@@ -166,8 +189,10 @@ public class Rating implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((movie == null) ? 0 : movie.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result
+				+ ((getMovie() == null) ? 0 : getMovie().hashCode());
+		result = prime * result
+				+ ((getUser() == null) ? 0 : getUser().hashCode());
 		return result;
 	}
 
@@ -185,15 +210,15 @@ public class Rating implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Rating other = (Rating) obj;
-		if (movie == null) {
-			if (other.movie != null)
+		if (getMovie() == null) {
+			if (other.getMovie() != null)
 				return false;
-		} else if (!movie.equals(other.movie))
+		} else if (!getMovie().equals(other.getMovie()))
 			return false;
-		if (user == null) {
-			if (other.user != null)
+		if (getUser() == null) {
+			if (other.getUser() != null)
 				return false;
-		} else if (!user.equals(other.user))
+		} else if (!getUser().equals(other.getUser()))
 			return false;
 		return true;
 	}

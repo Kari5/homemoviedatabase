@@ -12,6 +12,8 @@ import java.util.List;
 import javax.ejb.Local;
 
 /**
+ * Értékelések táblához való hozzáférés.
+ * 
  * @author Karcsi
  * 
  */
@@ -71,10 +73,12 @@ public interface RatingDao extends GenericDao<Rating> {
 	 * @param rating
 	 */
 	public void deleteRating(Rating rating);
-	
+
 	/**
 	 * Módosítja a megkapott értékelést.
-	 * @param rating módosítandó értékelés
+	 * 
+	 * @param rating
+	 *            módosítandó értékelés
 	 */
 	public void updateRating(Rating rating);
 }

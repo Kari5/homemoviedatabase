@@ -12,6 +12,8 @@ import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
 
 /**
+ * A MoviePage-hez kellõ változók factory metódusait tartalmazó osztály.
+ * 
  * @author Karcsi
  * 
  */
@@ -19,6 +21,11 @@ import org.jboss.seam.annotations.Scope;
 @Scope(ScopeType.STATELESS)
 public class MoviePageFactory {
 
+	/**
+	 * A kiválasztott filmet tároló StateHoldert hozza létre.
+	 * 
+	 * @return
+	 */
 	@Factory(value = "selectedMovieStateHolder", scope = ScopeType.CONVERSATION)
 	public StateHolder<Movie> getSelectedMovie() {
 		return new StateHolder<Movie>();
