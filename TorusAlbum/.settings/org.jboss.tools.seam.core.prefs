@@ -1,0 +1,16 @@
+action.package=hu.bme.dtt.torusalbum.session
+action.sources=/TorusAlbum-ejb/ejbModule
+eclipse.preferences.version=1
+model.package=hu.bme.dtt.torusalbum.entity
+model.sources=/TorusAlbum-ejb/ejbModule
+seam.ear.project=TorusAlbum-ear
+seam.ejb.project=TorusAlbum-ejb
+seam.project.connection.profile=TorusAlbumDb
+seam.project.deployment.type=ear
+seam.project.settings.version=1.1
+seam.project.web.root.folder=/TorusAlbum/WebContent
+seam.runtime.name=jboss-seam-2.2.2.Final
+seam.test.creating=false
+seam.test.project=TorusAlbum-test
+test.package=org.domain.torusalbum.test
+test.sources=/TorusAlbum-test/test-src
