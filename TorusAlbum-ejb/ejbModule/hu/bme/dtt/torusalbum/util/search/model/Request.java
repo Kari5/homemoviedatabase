@@ -1473,6 +1473,8 @@ public class Request {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Type: Request \nq=");
 		builder.append(q);
+		builder.append(",\nkey=");
+		builder.append(key);
 		builder.append(",\nc2coff=");
 		builder.append(c2coff);
 		builder.append(",\ncr=");
