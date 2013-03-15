@@ -23,6 +23,17 @@ public class Request {
 	 */
 	private String key;
 	/**
+	 * Data format for the response.
+	 * <ul>
+	 * <li>Valid values: json, atom
+	 * <li>Default value: json
+	 */
+	private String alt;
+	/**
+	 * OAuth 2.0 token for the current user.
+	 */
+	private String access_token;
+	/**
 	 * Turns off the translation between zh-CN and zh-TW.
 	 */
 	private String c2coff;
@@ -1538,5 +1549,41 @@ public class Request {
 		builder.append(",\nstart=");
 		builder.append(start);
 		return builder.toString();
+	}
+
+	/**
+	 * @param alt
+	 *            Data format for the response.
+	 *            <ul>
+	 *            <li>Valid values: json, atom
+	 *            <li>Default value: json
+	 */
+	public void setAlt(String alt) {
+		this.alt = alt;
+	}
+
+	/**
+	 * @return Data format for the response.
+	 *         <ul>
+	 *         <li>Valid values: json, atom
+	 *         <li>Default value: json
+	 */
+	public String getAlt() {
+		return alt;
+	}
+
+	/**
+	 * @param access_token
+	 *            OAuth 2.0 token for the current user.
+	 */
+	public void setAccess_token(String access_token) {
+		this.access_token = access_token;
+	}
+
+	/**
+	 * @return OAuth 2.0 token for the current user.
+	 */
+	public String getAccess_token() {
+		return access_token;
 	}
 }
