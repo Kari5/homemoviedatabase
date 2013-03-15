@@ -14,6 +14,7 @@ public class Picture implements Serializable {
 	 * Sorosíthatósághoz azonosító.
 	 */
 	private static final long serialVersionUID = 4909103647373597857L;
+
 	/**
 	 * Azonosító.
 	 */
@@ -21,7 +22,23 @@ public class Picture implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	/**
+	 * Kép url-je.
+	 */
 	private String url;
+
+	/**
+	 * Default konstruktor.
+	 */
+	public Picture() {
+	}
+
+	/**
+	 * Konstruktor értékátadással.
+	 */
+	public Picture(String url) {
+		this.url = url;
+	}
 
 	/**
 	 * @return the id
