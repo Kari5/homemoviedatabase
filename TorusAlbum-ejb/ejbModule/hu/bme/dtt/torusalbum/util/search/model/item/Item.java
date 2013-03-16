@@ -21,6 +21,10 @@ public class Item {
 	/**
 	 * The title of the search result, in plain text.
 	 */
+	private String title;
+	/**
+	 * The title of the search result, in plain text.
+	 */
 	private String htmlTitle;
 	/**
 	 * The full URL to which the search result is pointing, e.g.
@@ -34,7 +38,7 @@ public class Item {
 	/**
 	 * The snippet of the search result, in plain text.
 	 */
-	private String asnippet;
+	private String snippet;
 	/**
 	 * The snippet of the search result, in HTML.
 	 */
@@ -139,7 +143,7 @@ public class Item {
 	 * @return The snippet of the search result, in plain text.
 	 */
 	public String getAsnippet() {
-		return asnippet;
+		return snippet;
 	}
 
 	/**
@@ -147,7 +151,7 @@ public class Item {
 	 *            The snippet of the search result, in plain text.
 	 */
 	public void setAsnippet(String asnippet) {
-		this.asnippet = asnippet;
+		snippet = asnippet;
 	}
 
 	/**
@@ -275,6 +279,21 @@ public class Item {
 		this.image = image;
 	}
 
+	/**
+	 * @param title
+	 *            The title of the search result, in plain text.
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	/**
+	 * @return The title of the search result, in plain text.
+	 */
+	public String getTitle() {
+		return title;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -285,6 +304,8 @@ public class Item {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Type: Item \n##### ITEM #####\nkind=");
 		builder.append(kind);
+		builder.append(",\ntitle=");
+		builder.append(title);
 		builder.append(",\nhtmlTitle=");
 		builder.append(htmlTitle);
 		builder.append(",\nlink=");
@@ -292,7 +313,7 @@ public class Item {
 		builder.append(",\ndisplayLink=");
 		builder.append(displayLink);
 		builder.append(",\nasnippet=");
-		builder.append(asnippet);
+		builder.append(snippet);
 		builder.append(",\nhtmlSnippet=");
 		builder.append(htmlSnippet);
 		builder.append(",\ncacheId=");
