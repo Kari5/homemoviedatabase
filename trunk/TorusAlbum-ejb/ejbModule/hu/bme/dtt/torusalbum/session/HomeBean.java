@@ -72,6 +72,7 @@ public class HomeBean {
 			searchParams.put("key", searchEngine.getApiKey());
 			searchParams.put("cx", searchEngine.getCxKey());
 			searchParams.put("alt", "json");
+			// searchParams.put("searchType", "image");
 			try {
 				search.executeSearch(searchParams);
 			} catch (IllegalArgumentException e) {
