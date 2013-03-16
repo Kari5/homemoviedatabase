@@ -61,10 +61,11 @@ public class Context {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: Context \ntitle=");
+		builder.append("Type: Context \n##### CONTEXT #####\ntitle=");
 		builder.append(title);
 		builder.append(",\nfacets=");
 		builder.append(facets);
+		builder.append("\n##### CONTEXT #####");
 		return builder.toString();
 	}
 }

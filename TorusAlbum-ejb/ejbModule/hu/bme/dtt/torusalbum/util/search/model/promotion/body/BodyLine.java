@@ -92,7 +92,7 @@ public class BodyLine {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: BodyLine \ntitle=");
+		builder.append("Type: BodyLine \n##### BODYLINE #####\ntitle=");
 		builder.append(title);
 		builder.append(",\nurl=");
 		builder.append(url);
@@ -100,6 +100,7 @@ public class BodyLine {
 		builder.append(link);
 		builder.append(",\nhtmlTitle=");
 		builder.append(htmlTitle);
+		builder.append("\n##### BODYLINE #####");
 		return builder.toString();
 	}
 }

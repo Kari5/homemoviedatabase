@@ -54,10 +54,11 @@ public class Spelling {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: Spelling \ncorrectedQuery=");
+		builder.append("Type: Spelling \n##### SPELLING #####\ncorrectedQuery=");
 		builder.append(correctedQuery);
 		builder.append(",\nhtmlCorrectedQuery=");
 		builder.append(htmlCorrectedQuery);
+		builder.append("\n##### SPELLING #####");
 		return builder.toString();
 	}
 }

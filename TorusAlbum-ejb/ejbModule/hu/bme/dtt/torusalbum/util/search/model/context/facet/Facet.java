@@ -60,10 +60,11 @@ public class Facet {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: Facet \nlabel=");
+		builder.append("Type: Facet \n##### FACET #####\nlabel=");
 		builder.append(label);
 		builder.append(",\nanchor=");
 		builder.append(anchor);
+		builder.append("\n##### FACET #####");
 		return builder.toString();
 	}
 }

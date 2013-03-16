@@ -1482,7 +1482,7 @@ public class Request {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: Request \nq=");
+		builder.append("Type: Request \n##### REQUEST #####\nq=");
 		builder.append(q);
 		builder.append(",\nkey=");
 		builder.append(key);
@@ -1548,6 +1548,7 @@ public class Request {
 		builder.append(sort);
 		builder.append(",\nstart=");
 		builder.append(start);
+		builder.append("\n##### REQUEST #####");
 		return builder.toString();
 	}
 

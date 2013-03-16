@@ -195,7 +195,7 @@ public class Response {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: Response \nkind=");
+		builder.append("Type: Response \n##### RESPONSE #####\nkind=");
 		builder.append(kind);
 		builder.append(",\nurl=");
 		builder.append(url);
@@ -211,6 +211,7 @@ public class Response {
 		builder.append(items);
 		builder.append(",\nspelling=");
 		builder.append(spelling);
+		builder.append("\n##### RESPONSE #####");
 		return builder.toString();
 	}
 

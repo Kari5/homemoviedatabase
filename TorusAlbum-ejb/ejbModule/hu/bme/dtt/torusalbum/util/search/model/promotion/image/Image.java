@@ -73,12 +73,13 @@ public class Image {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: Image \nsource=");
+		builder.append("Type: Image \n##### IMAGE #####\nsource=");
 		builder.append(source);
 		builder.append(",\nwidth=");
 		builder.append(width);
 		builder.append(",\nheight=");
 		builder.append(height);
+		builder.append("\n##### IMAGE #####");
 		return builder.toString();
 	}
 }

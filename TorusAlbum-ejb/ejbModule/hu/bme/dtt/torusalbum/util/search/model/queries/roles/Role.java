@@ -1337,7 +1337,7 @@ public class Role {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: Role \ntitle=");
+		builder.append("Type: " + this.getClass() + " \n##### ROLE #####\ntitle=");
 		builder.append(title);
 		builder.append(",\ntotalResults=");
 		builder.append(totalResults);
@@ -1411,6 +1411,7 @@ public class Role {
 		builder.append(imgColorType);
 		builder.append(",\nimgDominantColor=");
 		builder.append(imgDominantColor);
+		builder.append("\n##### ROLE #####");
 		return builder.toString();
 	}
 

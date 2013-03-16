@@ -50,8 +50,9 @@ public class Queries {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: Queries \nroles=");
+		builder.append("Type: Queries \n##### QUERIES #####\nroles=");
 		builder.append(roles);
+		builder.append("\n##### QUERIES #####");
 		return builder.toString();
 	}
 }
