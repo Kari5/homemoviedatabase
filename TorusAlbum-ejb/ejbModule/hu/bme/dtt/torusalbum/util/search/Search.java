@@ -2,6 +2,8 @@ package hu.bme.dtt.torusalbum.util.search;
 
 import hu.bme.dtt.torusalbum.util.search.model.Request;
 import hu.bme.dtt.torusalbum.util.search.model.Response;
+import hu.bme.dtt.torusalbum.util.search.model.item.pagemap.Pagemap;
+import hu.bme.dtt.torusalbum.util.search.model.item.pagemap.PagemapDeserializer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,7 +14,7 @@ import java.util.Map;
 
 import org.jboss.logging.Logger;
 
-import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * Object for performing search through the Google Custom Search API.
@@ -60,8 +62,9 @@ public class Search {
 	 */
 	private Response convertJSON(String json) {
 		LOGGER.debug("Converting to Response object! JSON: " + json);
-		Gson gson = new Gson();
-		Response result = gson.fromJson(json, Response.class);
+		GsonBuilder gson = new GsonBuilder();
+		gson.registerTypeAdapter(Pagemap.class, new PagemapDeserializer());
+		Response result = gson.create().fromJson(json, Response.class);
 		LOGGER.debug("Conversion result: " + result);
 		return result;
 	}
