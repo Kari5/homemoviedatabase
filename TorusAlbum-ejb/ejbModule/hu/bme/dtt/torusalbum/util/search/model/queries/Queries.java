@@ -1,11 +1,11 @@
 package hu.bme.dtt.torusalbum.util.search.model.queries;
 
-import hu.bme.dtt.torusalbum.util.search.model.Request;
 import hu.bme.dtt.torusalbum.util.search.model.queries.roles.Correction;
 import hu.bme.dtt.torusalbum.util.search.model.queries.roles.Example;
 import hu.bme.dtt.torusalbum.util.search.model.queries.roles.NextPage;
 import hu.bme.dtt.torusalbum.util.search.model.queries.roles.PreviousPage;
 import hu.bme.dtt.torusalbum.util.search.model.queries.roles.Related;
+import hu.bme.dtt.torusalbum.util.search.model.queries.roles.Request;
 import hu.bme.dtt.torusalbum.util.search.model.queries.roles.Subset;
 import hu.bme.dtt.torusalbum.util.search.model.queries.roles.Superset;
 
