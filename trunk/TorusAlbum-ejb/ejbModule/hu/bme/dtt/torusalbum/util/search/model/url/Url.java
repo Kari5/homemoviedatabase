@@ -56,10 +56,11 @@ public class Url {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: Url \ntype=");
+		builder.append("Type: Url \n##### URL #####\ntype=");
 		builder.append(type);
 		builder.append(",\ntemplate=");
 		builder.append(template);
+		builder.append("\n##### URL #####");
 		return builder.toString();
 	}
 }

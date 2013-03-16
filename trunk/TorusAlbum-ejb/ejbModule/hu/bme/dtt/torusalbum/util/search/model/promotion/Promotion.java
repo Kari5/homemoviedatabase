@@ -140,7 +140,7 @@ public class Promotion {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: Promotion \ntitle=");
+		builder.append("Type: Promotion \n##### PROMOTION #####\ntitle=");
 		builder.append(title);
 		builder.append(",\nlink=");
 		builder.append(link);
@@ -152,6 +152,7 @@ public class Promotion {
 		builder.append(image);
 		builder.append(",\nhtmlTitle=");
 		builder.append(htmlTitle);
+		builder.append("\n##### PROMOTION #####");
 		return builder.toString();
 	}
 }

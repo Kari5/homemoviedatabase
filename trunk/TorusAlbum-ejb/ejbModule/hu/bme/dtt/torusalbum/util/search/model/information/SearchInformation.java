@@ -97,7 +97,7 @@ public class SearchInformation {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: SearchInformation \nsearchTime=");
+		builder.append("Type: SearchInformation \n##### SEARCHINFORMATION #####\nsearchTime=");
 		builder.append(searchTime);
 		builder.append(",\nformattedSearchTime=");
 		builder.append(formattedSearchTime);
@@ -105,6 +105,7 @@ public class SearchInformation {
 		builder.append(totalResults);
 		builder.append(",\nformattedTotalResults=");
 		builder.append(formattedTotalResults);
+		builder.append("\n##### SEARCHINFORMATION #####");
 		return builder.toString();
 	}
 }

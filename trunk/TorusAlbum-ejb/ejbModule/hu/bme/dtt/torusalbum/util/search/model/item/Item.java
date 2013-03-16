@@ -283,7 +283,7 @@ public class Item {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: Item \nkind=");
+		builder.append("Type: Item \n##### ITEM #####\nkind=");
 		builder.append(kind);
 		builder.append(",\nhtmlTitle=");
 		builder.append(htmlTitle);
@@ -309,6 +309,7 @@ public class Item {
 		builder.append(labels);
 		builder.append(",\nimage=");
 		builder.append(image);
+		builder.append("\n##### ITEM #####");
 		return builder.toString();
 	}
 }

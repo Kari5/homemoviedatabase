@@ -149,7 +149,7 @@ public class Image {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: Image \ncontextLink=");
+		builder.append("Type: Image \n##### IMAGE #####\ncontextLink=");
 		builder.append(contextLink);
 		builder.append(",\nheight=");
 		builder.append(height);
@@ -163,6 +163,7 @@ public class Image {
 		builder.append(thumbnailHeight);
 		builder.append(",\nthumbnailWidth=");
 		builder.append(thumbnailWidth);
+		builder.append("\n##### IMAGE #####");
 		return builder.toString();
 	}
 }

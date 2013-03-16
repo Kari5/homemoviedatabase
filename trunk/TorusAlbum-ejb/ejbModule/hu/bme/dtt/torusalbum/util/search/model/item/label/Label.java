@@ -63,10 +63,11 @@ public class Label {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: Label \nname=");
+		builder.append("Type: Label \n##### LABEL #####\nname=");
 		builder.append(name);
 		builder.append(",\ndisplayName=");
 		builder.append(displayName);
+		builder.append("\n##### LABEL #####");
 		return builder.toString();
 	}
 
