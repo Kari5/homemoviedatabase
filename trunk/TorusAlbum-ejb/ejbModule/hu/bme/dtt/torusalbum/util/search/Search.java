@@ -48,9 +48,7 @@ public class Search {
 		LOGGER.debug("Request object: " + searchRequest);
 		String requestURL = searchRequest.createRequestURL();
 		LOGGER.debug("Request URL: " + requestURL);
-		Response result = convertJSON(htmlGetRequest(requestURL));
-		LOGGER.debug("Response object: " + result);
-		return result;
+		return convertJSON(htmlGetRequest(requestURL));
 	}
 
 	/**

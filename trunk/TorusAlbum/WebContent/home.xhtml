@@ -12,6 +12,7 @@
 		<a4j:form>
 		
 		<a4j:commandButton image="/img/Folder-Add-icon.png" title="Add new album" action="#{HomeBean.addNewAlbum()}" reRender="albumGrid"/>
+		<a4j:commandButton title="Execute test search" action="#{HomeBean.testSearch()}" reRender="albumGrid" value="Search"/>
 		<br />
 		<rich:dataGrid id="albumGrid" value="#{allAlbumStateContainer.list}" var="album"
 			columns="4">
