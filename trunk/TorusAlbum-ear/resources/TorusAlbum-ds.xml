@@ -7,7 +7,7 @@
    <local-tx-datasource>
       <jndi-name>TorusAlbumDatasource</jndi-name>
       <use-java-context>true</use-java-context>
-      <connection-url>jdbc:sqlserver://localhost:1433;databaseName=TorusAlbum</connection-url>
+      <connection-url>jdbc:sqlserver://localhost\SQLExpress:1433;databaseName=TorusAlbum</connection-url>
       <driver-class>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver-class>
       <user-name>Kari</user-name>
       <password>password5</password>

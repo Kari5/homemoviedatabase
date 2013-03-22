@@ -7,6 +7,7 @@ import hu.bme.dtt.torusalbum.entity.Picture;
 import hu.bme.dtt.torusalbum.entity.SearchEngine;
 import hu.bme.dtt.torusalbum.util.StateHolder;
 import hu.bme.dtt.torusalbum.util.search.Search;
+import hu.bme.dtt.torusalbum.util.search.model.Response;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -34,6 +35,12 @@ public class HomeBean {
 	 */
 	@In(create = true)
 	private StateHolder<Album> selectedAlbumStateHolder;
+	
+	private String searchQuery;
+	private boolean imageSearch;
+	
+	@In(create=true)
+	private StateHolder<String> resultStringStateHolder;
 
 	/**
 	 * A paraméterként megkapott albumot álítja be a kiválasztottnak.
@@ -64,17 +71,21 @@ public class HomeBean {
 		try {
 			SearchEngine searchEngine = ((SearchEngineDao) InitialContext
 					.doLookup("TorusAlbum-ear/searchEngineDao/local"))
-					.getSearchEngine("Test Engine");
+					.getSearchEngine("Torus");
 			Search search = new Search();
 			Map<String, Object> searchParams = new HashMap<String, Object>();
-			String query = "lamborghini diablo";
+			String query = searchQuery;
 			searchParams.put("q", URLEncoder.encode(query, "UTF-8"));
 			searchParams.put("key", searchEngine.getApiKey());
 			searchParams.put("cx", searchEngine.getCxKey());
 			searchParams.put("alt", "json");
-			// searchParams.put("searchType", "image");
+			//searchParams.put("userIp", "192.168.0.1");
+			if(this.imageSearch){
+			searchParams.put("searchType", "image");
+			}
 			try {
-				search.executeSearch(searchParams);
+				Response executeSearch = search.executeSearch(searchParams);
+				this.resultStringStateHolder.setSelected(executeSearch.toString().replaceAll("\n", "<br>"));
 			} catch (IllegalArgumentException e) {
 				LOGGER.error(e.getMessage(), e);
 			} catch (IllegalAccessException e) {
@@ -88,4 +99,33 @@ public class HomeBean {
 			LOGGER.error(e.getMessage(), e);
 		}
 	}
+
+	/**
+	 * @return the searchQuery
+	 */
+	public String getSearchQuery() {
+		return searchQuery;
+	}
+
+	/**
+	 * @param searchQuery the searchQuery to set
+	 */
+	public void setSearchQuery(String searchQuery) {
+		this.searchQuery = searchQuery;
+	}
+
+	/**
+	 * @return the imageSearch
+	 */
+	public boolean isImageSearch() {
+		return imageSearch;
+	}
+
+	/**
+	 * @param imageSearch the imageSearch to set
+	 */
+	public void setImageSearch(boolean imageSearch) {
+		this.imageSearch = imageSearch;
+	}
+
 }

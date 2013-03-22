@@ -34,6 +34,10 @@ public class Request {
 	 */
 	private String access_token;
 	/**
+	 * IP address of the end user for whom the API call is being made.
+	 */
+	private String userIp;
+	/**
 	 * Turns off the translation between zh-CN and zh-TW.
 	 */
 	private String c2coff;
@@ -1085,7 +1089,8 @@ public class Request {
 	 */
 	public void setNum(Integer num) {
 		if (num < 0) {
-			throw new IllegalArgumentException("Parameter num must be non negative!");
+			throw new IllegalArgumentException(
+					"Parameter num must be non negative!");
 		}
 		this.num = num;
 	}
@@ -1302,7 +1307,8 @@ public class Request {
 	 */
 	public void setStart(Integer start) {
 		if (start < 0) {
-			throw new IllegalArgumentException("Parameter start must be non negative!");
+			throw new IllegalArgumentException(
+					"Parameter start must be non negative!");
 		}
 		this.start = start;
 	}
@@ -1318,8 +1324,8 @@ public class Request {
 	 * @throws IllegalAccessException
 	 *             if the underlying field is either inaccessible or final.
 	 */
-	public void setParameters(Map<String, Object> params) throws IllegalArgumentException,
-			IllegalAccessException {
+	public void setParameters(Map<String, Object> params)
+			throws IllegalArgumentException, IllegalAccessException {
 		Field[] fields = this.getClass().getDeclaredFields();
 		for (Field field : fields) {
 			if (params.containsKey(field.getName())) {
@@ -1340,7 +1346,8 @@ public class Request {
 			throw new IllegalArgumentException("The 'key' parameter is NULL!");
 		}
 		if ((cx == null) && (cref == null)) {
-			throw new IllegalArgumentException("The 'cr' and 'cref' parameters are both NULL!");
+			throw new IllegalArgumentException(
+					"The 'cr' and 'cref' parameters are both NULL!");
 		}
 		StringBuilder requestURL = new StringBuilder(GOOGLE_URL);
 		requestURL.append("q=");
@@ -1354,6 +1361,10 @@ public class Request {
 		if (cref != null) {
 			requestURL.append("&cref=");
 			requestURL.append(cref);
+		}
+		if(userIp != null){
+			requestURL.append("&userIp=");
+			requestURL.append(userIp);
 		}
 		if (c2coff != null) {
 			requestURL.append("&c2coff=");
@@ -1486,6 +1497,8 @@ public class Request {
 		builder.append(q);
 		builder.append(",\nkey=");
 		builder.append(key);
+		builder.append(",\nuserIp=");
+		builder.append(userIp);
 		builder.append(",\nc2coff=");
 		builder.append(c2coff);
 		builder.append(",\ncr=");
@@ -1586,5 +1599,23 @@ public class Request {
 	 */
 	public String getAccess_token() {
 		return access_token;
+	}
+
+	/**
+	 * 
+	 * @return IP address of the end user for whom the API call is being made.
+	 */
+	public String getUserIp() {
+		return userIp;
+	}
+
+	/**
+	 * 
+	 * @param userIp
+	 *            IP address of the end user for whom the API call is being
+	 *            made.
+	 */
+	public void setUserIp(String userIp) {
+		this.userIp = userIp;
 	}
 }

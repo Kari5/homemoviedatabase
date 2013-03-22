@@ -54,5 +54,11 @@ public class FactoryUtil {
 			return new StateContainer<Album>();
 		}
 	}
+	
+	@Factory(value = "resultStringStateHolder", scope = ScopeType.CONVERSATION)
+	public StateHolder<String> resultStringFactroy(){
+	return new StateHolder<String>();	
+	
+	}
 
 }
