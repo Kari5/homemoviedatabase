@@ -112,7 +112,9 @@ public class AlbumBean {
 		for (int i = 0; i < selectedTitles.size() - 1; i++) {
 			title.append(selectedTitles.get(i) + ", ");
 		}
-		title.append(selectedTitles.get(selectedTitles.size() - 1));
+		if (selectedTitles.size() > 0) {
+			title.append(selectedTitles.get(selectedTitles.size() - 1));
+		}
 		this.selectedAlbumStateHolder.getSelected().setTitle(title.toString());
 		try {
 			getAlbumDao().changeAlbumTitle(
