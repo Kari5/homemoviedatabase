@@ -60,4 +60,21 @@ public class AlbumDaoImpl extends GenericDaoImpl<Album> implements AlbumDao {
 
 	}
 
+	/**
+	 * 
+	 */
+	public void changeAlbumTitle(Long id, String title) {
+		Album attachedAlbum;
+		try {
+			attachedAlbum = findByPrimaryKey(id);
+			logger.info(id + ". album neve " + attachedAlbum.getTitle()
+					+ "-ról " + title + "-re változik.");
+			attachedAlbum.setTitle(title);
+		} catch (Exception e1) {
+			logger.error("Album beolvaása közben hiba történt!", e1);
+			return;
+		}
+
+	}
+
 }

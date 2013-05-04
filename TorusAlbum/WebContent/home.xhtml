@@ -28,7 +28,7 @@
 					action="#{HomeBean.changeSelectedAlbum(album)}" />
 				<br />
 				<h:outputText
-					value="#{album.title == null ? 'Nevtelen album' : album.title}" />
+					value="#{album.title == null ? messages['torusalbum.noTitle'] : album.title}" />
 				<br />
 				<h:outputText value="Kepek szama: #{album.pictures.size()}" />
 			</rich:dataGrid>

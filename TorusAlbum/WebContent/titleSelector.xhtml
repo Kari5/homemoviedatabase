@@ -1,0 +1,44 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<f:subview xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:sdh="http://richfaces.org/session-data-helper">
+
+	<rich:modalPanel id="selectTitle_panel" autosized="true"
+		domElementAttachment="form">
+		<f:facet name="header">
+			<h:panelGroup>
+				<h:outputText value="#{messages['torusalbum.selectTitle']}" />
+			</h:panelGroup>
+		</f:facet>
+		<f:facet name="controls">
+			<a4j:form>
+				<h:panelGroup>
+					<h:graphicImage value="/img/delete.png" styleClass="hidelink"
+						id="hidelink_program" style="cursor:pointer" title="Megse" />
+					<rich:componentControl for="selectTitle_panel"
+						attachTo="hidelink_program" operation="hide" event="onclick">
+					</rich:componentControl>
+				</h:panelGroup>
+			</a4j:form>
+		</f:facet>
+		<a4j:form>
+		<rich:pickList value="#{AlbumBean.selectedTitles}">
+			<f:selectItems value="#{AlbumBean.optinalAlbumTitles}"/>
+		</rich:pickList>
+		<h:commandButton image="img/save.png"
+				title="Mentes"
+				action="#{AlbumBean.saveNewTitle()}" styleClass="myButton">
+				<a4j:support event="oncomplete" reRender="headerToolBar" />
+			</h:commandButton>
+		</a4j:form>
+	</rich:modalPanel>
+
+
+</f:subview>
