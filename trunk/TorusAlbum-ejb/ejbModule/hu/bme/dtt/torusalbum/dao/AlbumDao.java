@@ -32,4 +32,12 @@ public interface AlbumDao extends GenericDao<Album> {
 	 */
 	public void addPicture(Album album, String url);
 
+	/**
+	 * MMegváltoztatja egy album nevét.
+	 * 
+	 * @param id
+	 * @param title
+	 */
+	public void changeAlbumTitle(Long id, String title);
+
 }
