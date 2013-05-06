@@ -31,6 +31,15 @@
 	float:left;
 }
 
+.panel0{
+	width:10%;
+	height:100%;
+	text-align: left;
+	bottom: auto;
+	float:left;
+}
+
+
 .panel80{
 	width:75%;
 	height:100%;
@@ -141,4 +150,90 @@
 	line-height: 145%;
 	font-size: 14pt;
 	font-variant: small-caps;
+}
+
+.codeBody {
+	text-align: center; 
+	color: black;
+	font-family: Arial,Verdana,sans-serif;
+	letter-spacing: 0.1em;
+	background-image: url("../img/background.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 100%; 
+	height: 100%;
+	min-height:800px;
+	margin-left: 0px; 
+	margin-right: 0px; 
+	border: 0px;
+}
+
+.codeContent {
+	text-align: center; 
+	color: black;
+	font-family: Arial,Verdana,sans-serif;
+	letter-spacing: 0.1em;
+	background: white;
+	width: 60%;
+	height: 100%; 
+	min-height:800px;
+	margin-left: auto; 
+	margin-right: auto; 
+}
+
+.codePanel {
+		width: 100%;
+		border: 0px;
+		margin: 0px;
+}
+
+.codeMainContent{
+	
+	min-height: 400px;
+}
+
+.codeFooter{
+	text-align: center;
+	font-size: 11px;
+	margin-bottom: 10px;
+	font-family: Arial,Verdana,sans-serif;
+	width: 100%;
+	border: 0px;
+	margin: 0px;
+	position: relative;
+	bottom: 50px;
+}
+
+.codeHeader {
+	min-height: 100px;
+	color: white;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 35px;
+	margin-bottom: 0px;
+	text-align: center;
+	font-weight: normal;
+	background: gray;	
+}
+
+.searchTextFiled {
+padding: 0px;
+margin: 0px;
+height: auto;
+width: 100%;
+background-image: url(data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw%3D%3D);
+background-color: transparent;
+z-index: 6;
+left: 0px;
+outline: none;
+background-position: initial initial;
+background-repeat: initial initial;
+}
+
+.left{
+	float:left;
+}
+.searchGrid {
+	height: auto;
+	width: 100%;
+	background-color: "#ccc"
 }
