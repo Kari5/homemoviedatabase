@@ -42,7 +42,11 @@ public class GoogleSearch {
 					.doLookup("TorusAlbum-ear/searchEngineDao/local")).getSearchEngine("Torus");
 			Search search = new Search();
 			Map<String, Object> searchParams = new HashMap<String, Object>();
-			searchParams.put("q", URLEncoder.encode(query + " " + lang, "UTF-8"));
+			String searchQuery = query;
+			if (lang != null) {
+				query += " " + lang;
+			}
+			searchParams.put("q", URLEncoder.encode(searchQuery, "UTF-8"));
 			searchParams.put("key", searchEngine.getApiKey());
 			searchParams.put("cx", searchEngine.getCxKey());
 			searchParams.put("fileType", fileType);
@@ -53,7 +57,7 @@ public class GoogleSearch {
 				for (Item item : response.getItems()) {
 					Result result = new Result();
 					result.setName(item.getHtmlTitle());
-					result.setUrl(item.getHtmlFormattedUrl());
+					result.setUrl(item.getLink());
 					result.setSnippet(item.getHtmlSnippet());
 					resultList.add(result);
 				}
