@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -62,14 +63,14 @@ public class SearchCo {
 						JSONObject lines = new JSONObject(arrayObject.getString("lines"));
 						JSONArray names = lines.names();
 						for (int j = 0; j < names.length(); j++) {
-							snippet += "<pre>" + names.getString(j) + ":	" + lines.getString(names.getString(j))
-									+ "<\\pre><br>";
+							snippet += StringEscapeUtils.escapeHtml4(names.getString(j)) + ":	"
+									+ StringEscapeUtils.escapeHtml4(lines.getString(names.getString(j))) + "<br>";
 						}
 					} catch (JSONException e) {
 						LOGGER.warn("Lines parameter is not an object!");
 						JSONArray lines = new JSONArray(arrayObject.getString("lines"));
 						for (int j = 0; j < lines.length(); j++) {
-							snippet += "<pre>" + lines.getString(j) + "<\\pre><br>";
+							snippet += StringEscapeUtils.escapeHtml4(lines.getString(j)) + "<br>";
 						}
 					}
 
