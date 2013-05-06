@@ -4,6 +4,7 @@ public class Result {
 	private String name;
 	private String url;
 	private String snippet;
+	private Boolean relevant;
 
 	public String getName() {
 		return name;
@@ -33,4 +34,20 @@ public class Result {
 	public void setSnippet(String snippet) {
 		this.snippet = snippet;
 	}
+
+	/**
+	 * @return the relevant
+	 */
+	public Boolean getRelevant() {
+		return relevant;
+	}
+
+	/**
+	 * @param relevant the relevant to set
+	 */
+	public void setRelevant(Boolean relevant) {
+		this.relevant = relevant;
+	}
+	
+	
 }
