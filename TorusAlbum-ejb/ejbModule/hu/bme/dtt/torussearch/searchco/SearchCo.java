@@ -44,7 +44,7 @@ public class SearchCo {
 	private List<Result> executeCodeSearch(String query) {
 		List<Result> resultList = new ArrayList<Result>();
 		try {
-			LOGGER.info("SEARCHING FOR CODE");
+			// LOGGER.info("SEARCHING FOR CODE");
 			String resultString = search.searchCode(query, null);
 			JSONObject jsonObject = new JSONObject(resultString);
 			JSONArray jsonArray = new JSONArray(jsonObject.getString("results"));
@@ -52,7 +52,7 @@ public class SearchCo {
 				try {
 					Result result = new Result();
 					JSONObject arrayObject = new JSONObject(jsonArray.getString(i));
-					LOGGER.info(arrayObject);
+					// LOGGER.info(arrayObject);
 					result.setName(arrayObject.getString("name") + ": " + arrayObject.getString("location") + "/"
 							+ arrayObject.getString("filename"));
 					result.setUrl(SEARC_CO_VIEW_URL + arrayObject.getString("id"));
