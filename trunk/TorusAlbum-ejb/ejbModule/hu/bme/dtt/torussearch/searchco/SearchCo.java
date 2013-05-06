@@ -58,11 +58,20 @@ public class SearchCo {
 					result.setUrl(SEARC_CO_VIEW_URL + arrayObject.getString("id"));
 
 					String snippet = "";
-					JSONObject lines = new JSONObject(arrayObject.getString("lines"));
-					JSONArray names = lines.names();
-					for (int j = 0; j < names.length(); j++) {
-						snippet += names.getString(j) + ":	" + lines.getString(names.getString(j)) + "\n";
+					try {
+						JSONObject lines = new JSONObject(arrayObject.getString("lines"));
+						JSONArray names = lines.names();
+						for (int j = 0; j < names.length(); j++) {
+							snippet += names.getString(j) + ":	" + lines.getString(names.getString(j)) + "\n";
+						}
+					} catch (JSONException e) {
+						LOGGER.warn("Lines parameter is not an object!");
+						JSONArray lines = new JSONArray(arrayObject.getString("lines"));
+						for (int j = 0; j < lines.length(); j++) {
+							snippet += lines.getString(j) + "\n";
+						}
 					}
+
 					result.setSnippet(snippet);
 					resultList.add(result);
 				} catch (JSONException e) {
