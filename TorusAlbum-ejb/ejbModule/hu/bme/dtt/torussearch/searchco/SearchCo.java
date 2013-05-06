@@ -62,13 +62,13 @@ public class SearchCo {
 						JSONObject lines = new JSONObject(arrayObject.getString("lines"));
 						JSONArray names = lines.names();
 						for (int j = 0; j < names.length(); j++) {
-							snippet += names.getString(j) + ":	" + lines.getString(names.getString(j)) + "\n";
+							snippet += names.getString(j) + ":	" + lines.getString(names.getString(j)) + "<br>";
 						}
 					} catch (JSONException e) {
 						LOGGER.warn("Lines parameter is not an object!");
 						JSONArray lines = new JSONArray(arrayObject.getString("lines"));
 						for (int j = 0; j < lines.length(); j++) {
-							snippet += lines.getString(j) + "\n";
+							snippet += lines.getString(j) + "<br>";
 						}
 					}
 
