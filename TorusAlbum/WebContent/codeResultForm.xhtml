@@ -1,7 +1,7 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<f:subview xmlns="http://www.w3.org/1999/xhtml"
+<f:subview id="searchResult" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:s="http://jboss.com/products/seam/taglib"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -10,10 +10,19 @@
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:sdh="http://richfaces.org/session-data-helper">
 	<a4j:form>
-	<rich:dataGrid columns="1" var="result">
-	
-	
-	
+	<rich:dataGrid columns="1" value="#{searchBackBean.resultList}" var="result">
+		<rich:spacer height="15px"/>
+		<h:panelGrid columns="2">
+		<rich:panel style="width:100%;cursor:pointer" bodyClass="sourceCodeStyle" onclick="window.open('#{result.url}','_blank')">
+			<f:facet name="header">
+				<h:outputText value="#{result.name}" escape="false"/>
+			</f:facet>
+			<h:outputText value="#{result.snippet}" escape="false" styleClass="sourceCodeStyle"/>
+			
+		</rich:panel>
+		<h:selectBooleanCheckbox value="" />
+			</h:panelGrid>
+	<rich:spacer height="15px"/>
 	</rich:dataGrid>
 	
 	</a4j:form>
