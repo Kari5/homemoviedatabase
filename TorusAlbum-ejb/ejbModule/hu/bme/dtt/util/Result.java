@@ -1,10 +1,11 @@
 package hu.bme.dtt.util;
 
-public class Result {
+public class Result implements Comparable<Result> {
 	private String name;
 	private String url;
 	private String snippet;
 	private Boolean relevant;
+	private Double position;
 
 	public String getName() {
 		return name;
@@ -49,5 +50,22 @@ public class Result {
 		this.relevant = relevant;
 	}
 	
+	public Double getPosition() {
+		return position;
+	}
+	
+	public void setPosition(double position) {
+		this.position = position;
+	}
+
+	public int compareTo(Result o) {
+		if(getPosition()<o.getPosition()){
+			return -1;
+		} else if(getPosition().equals(o.getPosition())) {
+			return 0;
+		} else {
+			return 1;
+		}
+	}
 	
 }

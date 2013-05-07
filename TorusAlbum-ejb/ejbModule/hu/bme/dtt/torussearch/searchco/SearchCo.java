@@ -52,6 +52,8 @@ public class SearchCo {
 			for (int i = 0; i < jsonArray.length(); i++) {
 				try {
 					Result result = new Result();
+					result.setPosition(i);
+					result.setRelevant(true);
 					JSONObject arrayObject = new JSONObject(jsonArray.getString(i));
 					// LOGGER.info(arrayObject);
 					result.setName(arrayObject.getString("name") + ": " + arrayObject.getString("location") + "/"
