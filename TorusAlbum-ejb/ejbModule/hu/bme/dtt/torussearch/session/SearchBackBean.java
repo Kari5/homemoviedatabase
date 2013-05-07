@@ -60,15 +60,13 @@ public class SearchBackBean {
 	public void search() {
 		SearchCo sc = new SearchCo();
 		GoogleSearch gs = new GoogleSearch();
-		String scQuery = query + " " + evRep();
-		String gsQuery = query;
 		List<Result> googleResultList;
 		List<Result> searchCodeResultList;
 		List<Result> result = new ArrayList<Result>();
 		if (query != null) {
-			googleResultList = gs.executeSearch(gsQuery, evExt(), evTut(),
+			googleResultList = gs.executeSearch(query + " " + repoS, evExt(), evTut(),
 					evLan());
-			searchCodeResultList = sc.searchCode(scQuery, evExt(), evLan(),
+			searchCodeResultList = sc.searchCode(query, evExt(), evLan(),
 					null, evRep());
 		} else {
 			return;
@@ -105,8 +103,8 @@ public class SearchBackBean {
 				int levenResult = LevenshteinDistance
 						.computeLevenshteinDistance(splittedResult[i],
 								splittedQuery[j]);
-				LOGGER.info(splittedQuery[j] + " + " + splittedResult[i]
-						+ " -> " + levenResult);
+				//LOGGER.info(splittedQuery[j] + " + " + splittedResult[i]
+				//		+ " -> " + levenResult);
 				if (levenResult < 3) {
 					counter += 1.0;
 				}
@@ -114,6 +112,9 @@ public class SearchBackBean {
 		}
 		if (counter > 0.0) {
 			double newPosition = result.getPosition() + (1.0 / counter);
+			result.setPosition(newPosition);
+		} else {
+			double newPosition = result.getPosition() + (1.0);
 			result.setPosition(newPosition);
 		}
 		return result;

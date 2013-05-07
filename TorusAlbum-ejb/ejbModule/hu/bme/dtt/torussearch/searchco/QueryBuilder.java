@@ -1,5 +1,8 @@
 package hu.bme.dtt.torussearch.searchco;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 public class QueryBuilder {
 	public static String buildQuery(String query, String ext, String lang,
 			String repo, String url) {
@@ -16,6 +19,11 @@ public class QueryBuilder {
 		if (url != null) {
 			result += " url:" + url;
 		}
-		return result;
+		try {
+			return URLEncoder.encode(result,"UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} return result;
 	}
 }
