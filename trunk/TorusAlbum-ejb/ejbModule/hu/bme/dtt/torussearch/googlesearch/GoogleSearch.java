@@ -50,16 +50,20 @@ public class GoogleSearch {
 			searchParams.put("key", searchEngine.getApiKey());
 			searchParams.put("cx", searchEngine.getCxKey());
 			searchParams.put("fileType", fileType);
-			searchParams.put("siteSearch", url);
+			searchParams.put("relatedSite", url);
 			searchParams.put("alt", "json");
 			try {
 				Response response = search.executeSearch(searchParams);
+				int i=0;
 				for (Item item : response.getItems()) {
 					Result result = new Result();
+					result.setRelevant(true);
+					result.setPosition(i);
 					result.setName(item.getHtmlTitle());
 					result.setUrl(item.getLink());
 					result.setSnippet(item.getHtmlSnippet());
 					resultList.add(result);
+					i++;
 				}
 			} catch (IllegalArgumentException e) {
 				LOGGER.error(e.getMessage(), e);
