@@ -15,12 +15,12 @@
 		<h:panelGrid columns="2">
 		<rich:panel style="width:100%;cursor:pointer" bodyClass="sourceCodeStyle" onclick="window.open('#{result.url}','_blank')">
 			<f:facet name="header">
-				<h:outputText value="#{result.name}" escape="false"/>
+				<h:outputText value="#{result.position}: #{result.name}" escape="false"/>
 			</f:facet>
 			<h:outputText value="#{result.snippet}" escape="false" styleClass="sourceCodeStyle"/>
 			
 		</rich:panel>
-		<h:selectBooleanCheckbox value="" />
+		<h:selectBooleanCheckbox value="#{result.relevant}" />
 			</h:panelGrid>
 	<rich:spacer height="15px"/>
 	</rich:dataGrid>
