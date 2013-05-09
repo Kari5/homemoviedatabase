@@ -18,51 +18,69 @@
 					styleClass="searchTextFiled" />
 				<a4j:commandButton title="Search" image="/img/search.png"
 					action="#{searchBackBean.search()}" eventsQueue="searchPageQueue"
-					value="Search" reRender="resultDiv" />
+					value="Search" reRender="resultDiv,precisionDiv" />
+
 			</h:panelGrid>
 
 			<br></br>
-
 			<h:panelGrid columns="3">
-				<h:outputText value="#{messages['torusSearch.extension']}:" />
-				<h:selectBooleanCheckbox value="#{searchBackBean.extension}"
-					title="#{messages['torusSearch.extension']}" />
-				<h:inputText value="#{searchBackBean.extensionS}" title="#{messages['torusSearch.extension']}"
-					styleClass="searchTextFiled" style="width:100%;" />
+				<s:div id="precisionDiv">
+					<h:outputText
+						value="#{messages['torusSearch.percision']}: #{searchBackBean.prec()}"
+						rendered="#{not empty searchBackBean.resultList}" />
+					<h:outputText
+						value="#{messages['torusSearch.percision']}: "
+						rendered="#{empty searchBackBean.resultList}" />
+				</s:div>
+				<rich:spacer width="20px"/>
+				<h:panelGrid columns="3">
+					<h:outputText value="#{messages['torusSearch.extension']}:" />
+					<h:selectBooleanCheckbox value="#{searchBackBean.extension}"
+						title="#{messages['torusSearch.extension']}" />
+					<h:inputText value="#{searchBackBean.extensionS}"
+						title="#{messages['torusSearch.extension']}"
+						styleClass="searchTextFiled" style="width:100%;" />
 
-				<h:outputText value="#{messages['torusSearch.language']}:" />
-				<h:selectBooleanCheckbox value="#{searchBackBean.langugage}"
-					title="#{messages['torusSearch.language']}" />
-				<h:inputText value="#{searchBackBean.langugageS}" title="#{messages['torusSearch.language']}"
-					styleClass="searchTextFiled" style="width:100%;" />
+					<h:outputText value="#{messages['torusSearch.language']}:" />
+					<h:selectBooleanCheckbox value="#{searchBackBean.langugage}"
+						title="#{messages['torusSearch.language']}" />
+					<h:inputText value="#{searchBackBean.langugageS}"
+						title="#{messages['torusSearch.language']}"
+						styleClass="searchTextFiled" style="width:100%;" />
 
-				<h:outputText value="#{messages['torusSearch.URLfilter']}:" />
-				<h:selectBooleanCheckbox value="#{searchBackBean.repo}"
-					title="#{messages['torusSearch.URLfilter']}" />
-				<h:selectOneMenu value="#{searchBackBean.repoS}" style="width:100%;">
-					<f:selectItem itemLabel="GitHub" itemValue="github" />
-					<f:selectItem itemLabel="Fedora Source Code" itemValue="fedora" />
-					<f:selectItem itemLabel="Bitbucket" itemValue="bitbucket" />
-					<f:selectItem itemLabel="SourceForge" itemValue="sourceforge" />
-					<f:selectItem itemLabel="CodePlex" itemValue="codeplex" />
-					<f:selectItem itemLabel="Google Code" itemValue="google" />
-				</h:selectOneMenu>
+					<h:outputText value="#{messages['torusSearch.URLfilter']}:" />
+					<h:selectBooleanCheckbox value="#{searchBackBean.repo}"
+						title="#{messages['torusSearch.URLfilter']}" />
+					<h:selectOneMenu value="#{searchBackBean.repoS}"
+						style="width:100%;">
+						<f:selectItem itemLabel="GitHub" itemValue="github" />
+						<f:selectItem itemLabel="Fedora Source Code" itemValue="fedora" />
+						<f:selectItem itemLabel="Bitbucket" itemValue="bitbucket" />
+						<f:selectItem itemLabel="SourceForge" itemValue="sourceforge" />
+						<f:selectItem itemLabel="CodePlex" itemValue="codeplex" />
+						<f:selectItem itemLabel="Google Code" itemValue="google" />
+					</h:selectOneMenu>
 
-				<h:outputText value="#{messages['torusSearch.tutorial']}:" />
-				<h:selectBooleanCheckbox value="#{searchBackBean.tutorial}"
-					title="#{messages['torusSearch.tutorial']}" />
-				<h:selectOneMenu value="#{searchBackBean.tutorialS}" style="width:100%;">
-					<f:selectItem itemLabel="Stackoverflow" itemValue="http://stackoverflow.com/" />
-					<f:selectItem itemLabel="Code Ranch" itemValue="http://www.coderanch.com/" />
-					<f:selectItem itemLabel="Code Project" itemValue="http://www.codeproject.com/" />
-					<f:selectItem itemLabel="msdn" itemValue="http://msdn.microsoft.com/" />
-				</h:selectOneMenu>
+					<h:outputText value="#{messages['torusSearch.tutorial']}:" />
+					<h:selectBooleanCheckbox value="#{searchBackBean.tutorial}"
+						title="#{messages['torusSearch.tutorial']}" />
+					<h:selectOneMenu value="#{searchBackBean.tutorialS}"
+						style="width:100%;">
+						<f:selectItem itemLabel="Stackoverflow"
+							itemValue="http://stackoverflow.com/" />
+						<f:selectItem itemLabel="Code Ranch"
+							itemValue="http://www.coderanch.com/" />
+						<f:selectItem itemLabel="Code Project"
+							itemValue="http://www.codeproject.com/" />
+						<f:selectItem itemLabel="msdn"
+							itemValue="http://msdn.microsoft.com/" />
+					</h:selectOneMenu>
+				</h:panelGrid>
 			</h:panelGrid>
-
 			<br />
-<!-- 			<h:outputText id="oldSearchResult" -->
-<!-- 				value="#{resultStringStateHolder.selected}" -->
-<!-- 				style="width: 100%; height: 100%" escape="false" /> -->
+			<!-- 			<h:outputText id="oldSearchResult" -->
+			<!-- 				value="#{resultStringStateHolder.selected}" -->
+			<!-- 				style="width: 100%; height: 100%" escape="false" /> -->
 		</center>
 	</a4j:form>
 

@@ -20,7 +20,12 @@
 			<h:outputText value="#{result.snippet}" escape="false" styleClass="sourceCodeStyle"/>
 			
 		</rich:panel>
-		<h:selectBooleanCheckbox value="#{result.relevant}" />
+		<h:panelGrid columns="1">
+		<h:outputText value="#{messages['torusSearch.relevant']}" />
+		<h:selectBooleanCheckbox value="#{result.relevant}" > 
+			<a4j:support event="onchange" reRender="precisionDiv"/>
+		</h:selectBooleanCheckbox>
+		</h:panelGrid>
 			</h:panelGrid>
 	<rich:spacer height="15px"/>
 	</rich:dataGrid>

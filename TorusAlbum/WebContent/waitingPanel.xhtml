@@ -1,0 +1,21 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:subview xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+	<a4j:status id="ajaxStatus"
+   onstart="#{rich:component('waitPanel')}.show()"
+   onstop="#{rich:component('waitPanel')}.hide()" />
+		<br />
+		<h:form id="waitForm">
+			<rich:modalPanel id="waitPanel" autosized="true"
+				domElementAttachment="form">
+				<h:graphicImage value="/img/loadingAnimation.gif" />
+			</rich:modalPanel>
+		</h:form>
+	
+</f:subview>

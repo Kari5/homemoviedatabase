@@ -63,6 +63,9 @@ public class SearchBackBean {
 		List<Result> googleResultList;
 		List<Result> searchCodeResultList;
 		List<Result> result = new ArrayList<Result>();
+		if(!isRepo){
+			repoS="";
+		}
 		if (query != null) {
 			googleResultList = gs.executeSearch(query + " " + repoS, evExt(), evTut(),
 					evLan());
@@ -118,6 +121,16 @@ public class SearchBackBean {
 			result.setPosition(newPosition);
 		}
 		return result;
+	}
+	
+	public double prec(){
+		double i=0.0;
+		for(Result result : this.resultList){
+			if(result.getRelevant()){
+				i++;
+			}
+		}
+		return (i/(double)this.resultList.size());
 	}
 
 	private String evLan() {
