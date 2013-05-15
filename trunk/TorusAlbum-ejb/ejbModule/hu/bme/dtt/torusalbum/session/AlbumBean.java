@@ -103,6 +103,7 @@ public class AlbumBean {
 		return dummy;
 
 	}
+	
 
 	/**
 	 * Elmenti a kiválasztott neveket.
