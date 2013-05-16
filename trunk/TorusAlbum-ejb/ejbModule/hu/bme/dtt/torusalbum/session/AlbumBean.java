@@ -3,6 +3,8 @@ package hu.bme.dtt.torusalbum.session;
 import hu.bme.dtt.torusalbum.dao.AlbumDao;
 import hu.bme.dtt.torusalbum.entity.Album;
 import hu.bme.dtt.torusalbum.util.StateHolder;
+import hu.bme.dtt.torusalbum.util.Tag;
+import hu.bme.dtt.torusalbum.util.TitleFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,22 +90,37 @@ public class AlbumBean {
 	 * @return
 	 */
 	public List<SelectItem> getOptinalAlbumTitles() {
-		// TODO: Ez a függvény fogja majd visszaadni a lehetséges neveket.
-		// Egyelõre dummy adatokkal feltöltöm, hogy a felületet meg tudjam
-		// csinálni.
-		SelectItem si1 = new SelectItem("Forradalom", "Forradalom");
-		SelectItem si2 = new SelectItem("Szabadságharc", "Szabadságharc");
-		SelectItem si3 = new SelectItem("Március 15.", "Március 15.");
-		SelectItem si4 = new SelectItem("Nemzeti ünnep", "Nemzeti ünnep");
+		List<Tag> rawResult = TitleFactory.getTitels();
 		List<SelectItem> dummy = new ArrayList<SelectItem>();
-		dummy.add(si1);
-		dummy.add(si2);
-		dummy.add(si3);
-		dummy.add(si4);
+		if (rawResult.size() > 0) {
+			SelectItem si1 = new SelectItem(rawResult.get(0).getName(),
+					rawResult.get(0).getName());
+			dummy.add(si1);
+			if (rawResult.size() > 1) {
+				SelectItem si2 = new SelectItem(rawResult.get(1).getName(),
+						rawResult.get(1).getName());
+				dummy.add(si2);
+				if (rawResult.size() > 2) {
+					SelectItem si3 = new SelectItem(rawResult.get(2).getName(),
+							rawResult.get(2).getName());
+					dummy.add(si3);
+					if (rawResult.size() > 3) {
+						SelectItem si4 = new SelectItem(rawResult.get(3)
+								.getName(), rawResult.get(3).getName());
+						dummy.add(si4);
+						if (rawResult.size() > 4) {
+							SelectItem si5 = new SelectItem(rawResult.get(4)
+									.getName(), rawResult.get(4).getName());
+							dummy.add(si5);
+						}
+					}
+				}
+			}
+		}
+
 		return dummy;
 
 	}
-	
 
 	/**
 	 * Elmenti a kiválasztott neveket.
