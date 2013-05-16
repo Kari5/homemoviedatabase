@@ -90,7 +90,7 @@ public class AlbumBean {
 	 * @return
 	 */
 	public List<SelectItem> getOptinalAlbumTitles() {
-		List<Tag> rawResult = TitleFactory.getTitels();
+		List<Tag> rawResult = TitleFactory.getTitels(this.selectedAlbumStateHolder.getSelected());
 		List<SelectItem> dummy = new ArrayList<SelectItem>();
 		if (rawResult.size() > 0) {
 			SelectItem si1 = new SelectItem(rawResult.get(0).getName(),
