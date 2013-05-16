@@ -89,7 +89,7 @@ public class AlbumBean {
 	 * 
 	 * @return
 	 */
-	public List<SelectItem> getOptinalAlbumTitles() {
+	public List<SelectItem> getOptionalAlbumTitles() {
 		List<Tag> rawResult = TitleFactory.getTitels(this.selectedAlbumStateHolder.getSelected());
 		List<SelectItem> dummy = new ArrayList<SelectItem>();
 		if (rawResult.size() > 0) {
@@ -117,7 +117,9 @@ public class AlbumBean {
 				}
 			}
 		}
-
+		if(dummy.size() == 0){
+			dummy.add(new SelectItem("Névtelen Album", "Névtelen Album"));
+		}
 		return dummy;
 
 	}
