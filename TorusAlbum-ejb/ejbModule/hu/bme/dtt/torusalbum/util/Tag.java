@@ -3,9 +3,6 @@
  */
 package hu.bme.dtt.torusalbum.util;
 
-import org.richfaces.component.Sortable;
-import org.richfaces.model.SortOrder;
-
 /**
  * @author windisch.karoly
  * 
@@ -18,7 +15,7 @@ public class Tag implements Comparable<Tag> {
 
 	public Tag(String name) {
 		this.name = name;
-		this.counter = 1;
+		counter = 1;
 	}
 
 	/**
@@ -52,7 +49,7 @@ public class Tag implements Comparable<Tag> {
 	}
 
 	public void raisCounter() {
-		this.counter++;
+		counter++;
 	}
 
 	/*
@@ -75,28 +72,48 @@ public class Tag implements Comparable<Tag> {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Tag other = (Tag) obj;
 		if (name == null) {
-			if (other.name != null)
+			if (other.name != null) {
 				return false;
-		} else if (!name.equals(other.name))
+			}
+		} else if (!name.equals(other.name)) {
 			return false;
+		}
 		return true;
 	}
 
 	public int compareTo(Tag o) {
-		if (this.counter > o.counter) {
-			return 1;
-		} else if (this.counter == o.counter) {
+		if (counter > o.counter) {
+			return -1;
+		} else if (counter == o.counter) {
 			return 0;
 		}
-		return -1;
+		return 1;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Type: Tag \nname=");
+		builder.append(name);
+		builder.append(",\ncounter=");
+		builder.append(counter);
+		return builder.toString();
 	}
 
 }

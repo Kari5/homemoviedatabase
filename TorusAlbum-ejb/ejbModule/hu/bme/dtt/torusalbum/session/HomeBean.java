@@ -35,11 +35,11 @@ public class HomeBean {
 	 */
 	@In(create = true)
 	private StateHolder<Album> selectedAlbumStateHolder;
-	
+
 	private String searchQuery;
 	private boolean imageSearch;
-	
-	@In(create=true)
+
+	@In(create = true)
 	private StateHolder<String> resultStringStateHolder;
 
 	/**
@@ -70,8 +70,7 @@ public class HomeBean {
 	public void testSearch() {
 		try {
 			SearchEngine searchEngine = ((SearchEngineDao) InitialContext
-					.doLookup("TorusAlbum-ear/searchEngineDao/local"))
-					.getSearchEngine("Torus");
+					.doLookup("TorusAlbum-ear/searchEngineDao/local")).getSearchEngine("Torus");
 			Search search = new Search();
 			Map<String, Object> searchParams = new HashMap<String, Object>();
 			String query = searchQuery;
@@ -79,13 +78,13 @@ public class HomeBean {
 			searchParams.put("key", searchEngine.getApiKey());
 			searchParams.put("cx", searchEngine.getCxKey());
 			searchParams.put("alt", "json");
-			//searchParams.put("userIp", "192.168.0.1");
-			if(this.imageSearch){
-			searchParams.put("searchType", "image");
+			// searchParams.put("userIp", "192.168.0.1");
+			if (imageSearch) {
+				searchParams.put("searchType", "image");
 			}
 			try {
-				Response executeSearch = search.executeSearch(searchParams);
-				this.resultStringStateHolder.setSelected(executeSearch.toString().replaceAll("\n", "<br>"));
+				Response response = search.executeSearch(searchParams);
+				LOGGER.info(response);
 			} catch (IllegalArgumentException e) {
 				LOGGER.error(e.getMessage(), e);
 			} catch (IllegalAccessException e) {
@@ -108,7 +107,8 @@ public class HomeBean {
 	}
 
 	/**
-	 * @param searchQuery the searchQuery to set
+	 * @param searchQuery
+	 *            the searchQuery to set
 	 */
 	public void setSearchQuery(String searchQuery) {
 		this.searchQuery = searchQuery;
@@ -122,7 +122,8 @@ public class HomeBean {
 	}
 
 	/**
-	 * @param imageSearch the imageSearch to set
+	 * @param imageSearch
+	 *            the imageSearch to set
 	 */
 	public void setImageSearch(boolean imageSearch) {
 		this.imageSearch = imageSearch;

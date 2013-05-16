@@ -44,12 +44,12 @@ public class Search {
 	 */
 	public Response executeSearch(Map<String, Object> searchParams)
 			throws IllegalArgumentException, IllegalAccessException, IOException {
-		LOGGER.info("Initiating search!");
+		LOGGER.debug("Initiating search!");
 		Request searchRequest = new Request();
 		searchRequest.setParameters(searchParams);
-		LOGGER.info("Request object: " + searchRequest);
+		// LOGGER.debug("Request object: " + searchRequest);
 		String requestURL = searchRequest.createRequestURL();
-		LOGGER.info("Request URL: " + requestURL);
+		// LOGGER.debug("Request URL: " + requestURL);
 		return convertJSON(htmlGetRequest(requestURL));
 	}
 
@@ -61,11 +61,11 @@ public class Search {
 	 * @return The Response object.
 	 */
 	private Response convertJSON(String json) {
-		LOGGER.info("Converting to Response object! JSON: " + json);
+		// LOGGER.debug("Converting to Response object! JSON: " + json);
 		GsonBuilder gson = new GsonBuilder();
 		gson.registerTypeAdapter(Pagemap.class, new PagemapDeserializer());
 		Response result = gson.create().fromJson(json, Response.class);
-		LOGGER.info("Conversion result: " + result);
+		// LOGGER.debug("Conversion result: " + result);
 		return result;
 	}
 

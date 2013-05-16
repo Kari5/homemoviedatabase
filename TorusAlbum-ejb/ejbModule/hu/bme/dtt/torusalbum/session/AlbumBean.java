@@ -15,13 +15,14 @@ import javax.naming.NamingException;
 
 import org.jboss.logging.Logger;
 import org.jboss.seam.ScopeType;
+import org.jboss.seam.annotations.Create;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.faces.FacesMessages;
 
 @Name("AlbumBean")
-@Scope(ScopeType.EVENT)
+@Scope(ScopeType.PAGE)
 public class AlbumBean {
 
 	private String newPictureURL;
@@ -32,6 +33,8 @@ public class AlbumBean {
 	@In(create = true)
 	private StateHolder<Album> selectedAlbumStateHolder;
 
+	private List<SelectItem> optionalAlbumTitles;
+
 	/**
 	 * A kiválasztott nevek.
 	 */
@@ -39,16 +42,21 @@ public class AlbumBean {
 
 	private static final Logger logger = Logger.getLogger(AlbumBean.class);
 
+	@Create
+	public void onCreate() {
+		optionalAlbumTitles = new ArrayList<SelectItem>();
+		optionalAlbumTitles.add(new SelectItem("Névtelen Album", "Névtelen Album"));
+	}
+
 	public void addPicture() {
-		if (newPictureURL.isEmpty() || newPictureURL.length() < 7) {
+		if (newPictureURL.isEmpty() || (newPictureURL.length() < 7)) {
 			logger.warn("Nem lett megadva url!");
 			FacesMessages.instance().add("Nem lett URL megadva!");
 			return;
 		}
 		logger.info("Kép hozzáadása: " + newPictureURL);
 		try {
-			getAlbumDao().addPicture(selectedAlbumStateHolder.getSelected(),
-					newPictureURL);
+			getAlbumDao().addPicture(selectedAlbumStateHolder.getSelected(), newPictureURL);
 		} catch (NamingException e) {
 			logger.error("Kép mentése nem sikerült!" + e);
 		}
@@ -58,17 +66,14 @@ public class AlbumBean {
 
 	private void refresh() {
 		try {
-			this.selectedAlbumStateHolder.setSelected(getAlbumDao()
-					.findByPrimaryKey(
-							selectedAlbumStateHolder.getSelected().getId()));
+			selectedAlbumStateHolder.setSelected(getAlbumDao().findByPrimaryKey(
+					selectedAlbumStateHolder.getSelected().getId()));
 		} catch (NamingException e) {
 			logger.error("AlbumDao behúzása nem siekrült!" + e.getMessage());
-			FacesMessages.instance().add(
-					"Váratlan hiba történt, kérjük próbálkozzon újra!");
+			FacesMessages.instance().add("Váratlan hiba történt, kérjük próbálkozzon újra!");
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
-			FacesMessages.instance().add(
-					"Váratlan hiba történt, kérjük próbálkozzon újra!");
+			FacesMessages.instance().add("Váratlan hiba történt, kérjük próbálkozzon újra!");
 		}
 	}
 
@@ -79,49 +84,55 @@ public class AlbumBean {
 	 * @throws NamingException
 	 */
 	private AlbumDao getAlbumDao() throws NamingException {
-		return (AlbumDao) InitialContext
-				.doLookup("TorusAlbum-ear/AlbumDao/local");
+		return (AlbumDao) InitialContext.doLookup("TorusAlbum-ear/AlbumDao/local");
 	}
 
-	/**
-	 * Lefuttatja a keresést, és az elsõ 10 eredményt egy SelectItem listaként
-	 * visszaadja.
-	 * 
-	 * @return
-	 */
-	public List<SelectItem> getOptionalAlbumTitles() {
-		List<Tag> rawResult = TitleFactory.getTitels(this.selectedAlbumStateHolder.getSelected());
+	public void gatherOptionalAlbumTitles() {
+		optionalAlbumTitles = new ArrayList<SelectItem>();
+		List<Tag> rawResult = TitleFactory.getTags(selectedAlbumStateHolder.getSelected());
 		List<SelectItem> dummy = new ArrayList<SelectItem>();
-		if (rawResult.size() > 0) {
-			SelectItem si1 = new SelectItem(rawResult.get(0).getName(),
-					rawResult.get(0).getName());
-			dummy.add(si1);
-			if (rawResult.size() > 1) {
-				SelectItem si2 = new SelectItem(rawResult.get(1).getName(),
-						rawResult.get(1).getName());
-				dummy.add(si2);
-				if (rawResult.size() > 2) {
-					SelectItem si3 = new SelectItem(rawResult.get(2).getName(),
-							rawResult.get(2).getName());
-					dummy.add(si3);
-					if (rawResult.size() > 3) {
-						SelectItem si4 = new SelectItem(rawResult.get(3)
-								.getName(), rawResult.get(3).getName());
-						dummy.add(si4);
-						if (rawResult.size() > 4) {
-							SelectItem si5 = new SelectItem(rawResult.get(4)
-									.getName(), rawResult.get(4).getName());
-							dummy.add(si5);
-						}
-					}
-				}
-			}
+		while ((dummy.size() < 7) && (dummy.size() < rawResult.size())) {
+			SelectItem si = new SelectItem(rawResult.get(dummy.size()).getName(), rawResult.get(
+					dummy.size()).getName()
+					+ "(" + rawResult.get(dummy.size()).getCounter() + ")");
+			dummy.add(si);
 		}
-		if(dummy.size() == 0){
+		// if (rawResult.size() > 0) {
+		// SelectItem si1 = new SelectItem(rawResult.get(0).getName(),
+		// rawResult.get(0).getName());
+		// dummy.add(si1);
+		// if (rawResult.size() > 1) {
+		// SelectItem si2 = new SelectItem(rawResult.get(1).getName(),
+		// rawResult.get(1)
+		// .getName());
+		// dummy.add(si2);
+		// if (rawResult.size() > 2) {
+		// SelectItem si3 = new SelectItem(rawResult.get(2).getName(),
+		// rawResult.get(2)
+		// .getName());
+		// dummy.add(si3);
+		// if (rawResult.size() > 3) {
+		// SelectItem si4 = new SelectItem(rawResult.get(3).getName(), rawResult
+		// .get(3).getName());
+		// dummy.add(si4);
+		// if (rawResult.size() > 4) {
+		// SelectItem si5 = new SelectItem(rawResult.get(4).getName(), rawResult
+		// .get(4).getName());
+		// dummy.add(si5);
+		// }
+		// }
+		// }
+		// }
+		// }
+		if (dummy.size() == 0) {
 			dummy.add(new SelectItem("Névtelen Album", "Névtelen Album"));
 		}
-		return dummy;
+		optionalAlbumTitles = dummy;
 
+	}
+
+	public List<SelectItem> getOptionalAlbumTitles() {
+		return optionalAlbumTitles;
 	}
 
 	/**
@@ -135,15 +146,13 @@ public class AlbumBean {
 		if (selectedTitles.size() > 0) {
 			title.append(selectedTitles.get(selectedTitles.size() - 1));
 		}
-		this.selectedAlbumStateHolder.getSelected().setTitle(title.toString());
+		selectedAlbumStateHolder.getSelected().setTitle(title.toString());
 		try {
-			getAlbumDao().changeAlbumTitle(
-					this.selectedAlbumStateHolder.getSelected().getId(),
+			getAlbumDao().changeAlbumTitle(selectedAlbumStateHolder.getSelected().getId(),
 					title.toString());
 		} catch (NamingException e) {
 			logger.error("AlbumDao behúzása nem siekrült!" + e.getMessage());
-			FacesMessages.instance().add(
-					"Váratlan hiba történt, kérjük próbálkozzon újra!");
+			FacesMessages.instance().add("Váratlan hiba történt, kérjük próbálkozzon újra!");
 		}
 	}
 

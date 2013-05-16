@@ -1,54 +1,53 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:s="http://jboss.com/products/seam/taglib"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:a4j="http://richfaces.org/a4j"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich" template="layout/template.xhtml">
 
 	<ui:define name="body">
-		<a4j:form>
-			<rich:toolBar id="headerToolBar">
-				<rich:toolBarGroup location="left" itemSeparator="line">
+
+		<rich:toolBar id="headerToolBar">
+			<rich:toolBarGroup location="left" itemSeparator="line">
+				<a4j:form>
 					<h:panelGrid columns="1">
 						<h:panelGrid columns="2">
 							<h:outputText value="#{messages['torusalbum.NewPicture']}:" />
-							<h:inputText value="#{AlbumBean.newPictureURL}"
-								title="Kep url-je!" required="true" />
+							<h:inputText value="#{AlbumBean.newPictureURL}" title="Kep url-je!" required="true" />
 						</h:panelGrid>
 						<center>
-							<a4j:commandButton image="/img/image-add-icon.png"
-								title="Add new picture" action="#{AlbumBean.addPicture()}"
-								reRender="pictureGrid" styleClass="myButton" />
+							<a4j:commandButton image="/img/image-add-icon.png" title="Add new picture"
+								action="#{AlbumBean.addPicture()}" reRender="pictureGrid" styleClass="myButton" />
 						</center>
 					</h:panelGrid>
-				</rich:toolBarGroup>
-				<rich:toolBarGroup itemSeparator="line" location="right">
-				<h:outputText value="#{selectedAlbumStateHolder.selected.title == null ? messages['torusalbum.noTitle'] : selectedAlbumStateHolder.selected.title}" styleClass="title" />
-				</rich:toolBarGroup>
-				<rich:toolBarGroup location="right" itemSeparator="line">
+				</a4j:form>
+			</rich:toolBarGroup>
+			<rich:toolBarGroup itemSeparator="line" location="right">
+				<h:outputText
+					value="#{selectedAlbumStateHolder.selected.title == null ? messages['torusalbum.noTitle'] : selectedAlbumStateHolder.selected.title}"
+					styleClass="title" />
+			</rich:toolBarGroup>
+			<rich:toolBarGroup location="right" itemSeparator="line">
+				<a4j:form>
 					<h:panelGrid columns="1">
 						<h:outputText value="#{messages['torusalbum.createName']}" />
-						<a4j:commandButton image="/img/execute.png"
-							title="Create Album Name" reRender="pictureGrid"
-							styleClass="myButton"  oncomplete="#{rich:component('selectTitle_panel')}.show()" />
+						<a4j:commandButton image="/img/execute.png" action="#{AlbumBean.gatherOptionalAlbumTitles()}"
+							title="Create Album Name" reRender="selectTitle_panel" styleClass="myButton"
+							oncomplete="#{rich:component('selectTitle_panel')}.show()" />
 					</h:panelGrid>
+				</a4j:form>
+			</rich:toolBarGroup>
+		</rich:toolBar>
 
-				</rich:toolBarGroup>
-			</rich:toolBar>
-		</a4j:form>
 		<br />
 		<a4j:form>
-			<rich:dataGrid id="pictureGrid"
-				value="#{selectedAlbumStateHolder.selected.pictures}" var="picture"
-				columns="4">
+			<rich:dataGrid id="pictureGrid" value="#{selectedAlbumStateHolder.selected.pictures}"
+				var="picture" columns="4">
 				<h:graphicImage value="#{picture.url}" width="300" />
 			</rich:dataGrid>
 
 		</a4j:form>
-		
-		<ui:include src="titleSelector.xhtml"/>
+
+		<ui:include src="titleSelector.xhtml" />
 	</ui:define>
 </ui:composition>
